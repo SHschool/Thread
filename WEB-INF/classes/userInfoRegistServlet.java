@@ -21,7 +21,7 @@ public class UserInfoRegistServlet extends HttpServlet{
         int id = req.getParameter("id");
         String name = req.getParameter("name");
 
-        //Insertクラスをインスタンス化して値を渡す。
+        //Insertクラスをインスタンス化して値を渡す。（比嘉のクラスをここで使う）
 
         //値をJSPに渡すため登録
 
