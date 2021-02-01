@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -6,20 +7,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import orcl.ThreadDataBase;
+import bean.TB_POST_Bean;
+
 public class ThreadServlet extends HttpServlet {
     
     // ユーザー名の氏名を格納するインスタンス変数
     private String _userName;
+    private ArrayList<TB_POST_Bean> threads = new ArrayList<TB_POST_Bean>();
 
-    protected void doGet(HttpServletRequest req, HttpServletResponse res)
-            throws ServletException, IOException {
-        // 出力する内容のデータ・タイプと文字コードを指定する
-        res.setContentType("text/html; charset=Windows-31J");
+    // protected void doGet(HttpServletRequest req, HttpServletResponse res)
+    //         throws ServletException, IOException {
+    //     // 出力する内容のデータ・タイプと文字コードを指定する
+    //     res.setCharacterEncoding("Windows-31J");
 
 
 
 
-    }
+    // }
     protected void doPost(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
         // クライアントからのrequestに含まれていたデータの
@@ -27,28 +32,33 @@ public class ThreadServlet extends HttpServlet {
         req.setCharacterEncoding("Windows-31J");
 
         //POST要求によって送信されたパラメータを取得する
-        String n = req.getParameter("name");
-        String c = req.getParameter("content");
-        String t = req.getParameter("tag");
+        String name = req.getParameter("name");
+        String content = req.getParameter("content");
+        String tag = req.getParameter("tag");
 
-        // ip.UserProfileクラスのインスタンスを生成し
-        // ユーザー名やパスワードをリセットする
-        orcl.ThreadDataBase th_db = new orcl.ThreadDataBase();
-        th_db.IsThreadInsert(n,c,t);
+        //oracle接続クラスをよびデータを挿入する
+        ThreadDataBase th_db = new ThreadDataBase();
+        
+        if(th_db.IsThreadInsert(name,content,tag)){
+            TB_POST_Bean threadInfo = new TB_POST_Bean();
+            threadInfo.setUser_name(name);
+            threadInfo.setContent(content);
+            threadInfo.setTag(tag);
 
-        // HttpServletRequestの実装クラスのインスタンスに
-        // ip.UserProfileのインスタンスを登録する
-        // この時の登録名profが式言語で使用する識別子になる
-//         req.setAttribute("post",post);
+            threads.add(threadInfo); //ArrayListにBeanのインスタンスを渡す
+        }
+
+
+
+        // 式言語として登録
+       req.setAttribute("threads",threads);
 
         // RequestDispatcherインターフェイスを実装するクラスのインスタンスを取得する
         // 引数は転送先のURL
         RequestDispatcher dispatcher =
-                req.getRequestDispatcher("thread");
+                req.getRequestDispatcher("index");
 
         //転送先に要求を転送する
         dispatcher.forward(req, res);
     }
 }
-
-// javac -cp C:\tomcat8.5\lib\servlet-api.jar ShareServlet.java
