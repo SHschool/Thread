@@ -27,14 +27,16 @@ public class ThreadServlet extends HttpServlet {
         req.setCharacterEncoding("Windows-31J");
 
         //POST要求によって送信されたパラメータを取得する
+        int i = req.getParameter("id");
+        String n = req.getParameter("name");
         String c = req.getParameter("content");
         String t = req.getParameter("tag");
 
         // ip.UserProfileクラスのインスタンスを生成し
         // ユーザー名やパスワードをリセットする
-        ip.Post post = new ip.Post();
-        post.setContent(c);
-        post.setTag(tag);
+        orcl.ThreadDataBase th_db = new orcl.ThreadDataBase();
+        th_db.IsThreadInsert(i,n,c,t);
+        th_db.setTag(tag);
 
         // HttpServletRequestの実装クラスのインスタンスに
         // ip.UserProfileのインスタンスを登録する
