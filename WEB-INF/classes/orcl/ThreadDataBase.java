@@ -32,7 +32,7 @@ public class ThreadDataBase{
 			content = ",'" + content + "'";
 
 			Statement st=cn.createStatement();
-			ResultSet rs=st.executeQuery(sql+id+","+name+","+content+sql2);
+			ResultSet rs=st.executeQuery(sql+id+name+content+sql2);
 			
 			Integer id = new Integer(id);
 			String id = id.toString();
@@ -72,7 +72,7 @@ public class ThreadDataBase{
 			tag = ",'" + tag + "'";
 
 			Statement st=cn.createStatement();
-			ResultSet rs=st.executeQuery(sql+id+","+name+","+content+tag+sql2);
+			ResultSet rs=st.executeQuery(sql+id+name+content+tag+sql2);
 			
 			Integer id = new Integer(id);
 			String id = id.toString();
