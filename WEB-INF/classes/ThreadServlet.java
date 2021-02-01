@@ -28,7 +28,7 @@ public class ThreadServlet extends HttpServlet {
 
         //POST要求によって送信されたパラメータを取得する
         String c = req.getParameter("content");
-        String c = req.getParameter("tag");
+        String t = req.getParameter("tag");
 
         // ip.UserProfileクラスのインスタンスを生成し
         // ユーザー名やパスワードをリセットする
