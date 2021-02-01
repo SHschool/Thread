@@ -36,7 +36,6 @@ public class ThreadServlet extends HttpServlet {
         // ユーザー名やパスワードをリセットする
         orcl.ThreadDataBase th_db = new orcl.ThreadDataBase();
         th_db.IsThreadInsert(i,n,c,t);
-        th_db.setTag(tag);
 
         // HttpServletRequestの実装クラスのインスタンスに
         // ip.UserProfileのインスタンスを登録する
