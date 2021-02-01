@@ -21,7 +21,7 @@
                     <div class="row">
                         <!-- 右寄せ用 -->
                         <div class="col-1"></div>
-                        <!-- アイコン群 -->
+                        <!-- sidebar -->
                         <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 d-none d-md-block">
                             <div class="row d-flex flex-column align-items-center">
                                 <a href="index.jsp" style="color: cornflowerblue;"><i class="fab fa-twitter fa-fw fa-3x my-4"></i></a>
@@ -64,22 +64,22 @@
                             </div>
 
                             <!-- tweet -->
-                            <c:forEach var="" items="${}">
+                            <c:forEach var="変数名" items="${list名}">
                                 <div class="row border border-top-0">
                                     <div class="col-xl-1 col-lg-2 col-md-2 col-sm-2 col-3 my-4">
                                         <i class="far fa-user-circle fa-4x"></i>
                                     </div>
                                     <div class="col-xl-11 col-lg-10 col-md-10 col-sm-10 col-9 mt-4">
-                                        <span class="h4 ">${name}</span>
-                                        <span class="h4 ml-3 text-muted">${id}</span>
-                                        <span class="h5 ml-3 text-muted">${date}</span>
-                                        <p class="h3 my-3">${content}${tag}</p>
+                                        <span class="h4"><c:out value="${変数名.name}"/></span>
+                                        <span class="h5 ml-2 text-muted">@<c:out value="${変数名.id}"/></span>
+                                        <span class="h5 ml-2 text-muted"><c:out value="${変数名.date}"/></span>
+                                        <p class="h4 my-2"><c:out value="${変数名.content}"></p>
                                         <div class="row">
                                             <div class="col-3">
-                                                <a href="test.jsp" style="color:gray;"><i class="far fa-comment fa-fw fa-lg my-3 mb-4"></i></a>
+                                                <a href="reply.jsp" style="color:gray;"><i class="far fa-comment fa-fw fa-lg mt-2 mb-4"></i></a>
                                             </div>
                                             <div class="col-3">
-                                                <a href="test.jsp" style="color:red"><i class="far fa-heart fa-fw fa-lg my-3"><span class="ml-3" style="color: black;">10</span></i></a>
+                                                <a href="" style="color:red;" ><i class="far fa-heart fa-fw fa-lg mt-2 mb-4"><span class="ml-2" style="color: black;">10</span></i></a>
                                             </div>
                                         </div>
                                     </div>
