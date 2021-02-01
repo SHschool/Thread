@@ -3,20 +3,36 @@ package bean;
 import java.io.Serializable;
 
 public class TB_POST_Bean implements Serializable {
-    private int thread_id; // ƒXƒŒƒbƒhID
-    private String user_name; //ƒ†[ƒU–¼
-    private String content; // –{•¶
-    private String tag; // ƒ^ƒO
-    private String date; // “Še“ú
+    private int thread_id; // ã‚¹ãƒ¬ãƒƒãƒ‰ID
+    private String user_name; //ãƒ¦ãƒ¼ã‚¶å
+    private String content; // æœ¬æ–‡
+    private String tag; // ã‚¿ã‚°
+    private String date; // æŠ•ç¨¿æ—¥æ™‚
 
     public TB_POST_Bean(){}
 
     public TB_POST_Bean(int thread_id, String user_name, String content, String tag, String date) {
         this.thread_id = thread_id;
         this.user_name = user_name;
-        this.content = content;
+        this.content = content; 
         this.tag = tag;
         this.date = date;
+    }
+
+    public void setThread_id(int id){
+        thread_id = id;
+    }
+
+    public void setUser_name(String name){
+        user_name = name;
+    }
+
+    public void setContent(String content){
+        this.content = content;
+    }
+
+    public void setTag(String tag){
+        this.tag = tag;
     }
 
     public int getThread_id() {
