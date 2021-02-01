@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 
 public class ThreadServlet extends HttpServlet {
     
-    // ƒ†[ƒU[–¼‚Ì–¼‚ğŠi”[‚·‚éƒCƒ“ƒXƒ^ƒ“ƒX•Ï”
+    // ãƒ¦ãƒ¼ã‚¶ãƒ¼åã®æ°åã‚’æ ¼ç´ã™ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å¤‰æ•°
     private String _userName;
 
     protected void doGet(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
-        // o—Í‚·‚é“à—e‚Ìƒf[ƒ^Eƒ^ƒCƒv‚Æ•¶šƒR[ƒh‚ğw’è‚·‚é
+        // å‡ºåŠ›ã™ã‚‹å†…å®¹ã®ãƒ‡ãƒ¼ã‚¿ãƒ»ã‚¿ã‚¤ãƒ—ã¨æ–‡å­—ã‚³ãƒ¼ãƒ‰ã‚’æŒ‡å®šã™ã‚‹
         res.setContentType("text/html; charset=Windows-31J");
 
 
@@ -22,33 +22,31 @@ public class ThreadServlet extends HttpServlet {
     }
     protected void doPost(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
-        // ƒNƒ‰ƒCƒAƒ“ƒg‚©‚ç‚Ìrequest‚ÉŠÜ‚Ü‚ê‚Ä‚¢‚½ƒf[ƒ^‚Ì
-        // •¶šƒR[ƒh‚ğw’è‚·‚é
+        // ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‹ã‚‰ã®requestã«å«ã¾ã‚Œã¦ã„ãŸãƒ‡ãƒ¼ã‚¿ã®
+        // æ–‡å­—ã‚³ãƒ¼ãƒ‰ã‚’æŒ‡å®šã™ã‚‹
         req.setCharacterEncoding("Windows-31J");
 
-        //POST—v‹‚É‚æ‚Á‚Ä‘—M‚³‚ê‚½ƒpƒ‰ƒ[ƒ^‚ğæ“¾‚·‚é
-        String i = req.getParameter("id");
-        String n = req.getParameter("name");
+        //POSTè¦æ±‚ã«ã‚ˆã£ã¦é€ä¿¡ã•ã‚ŒãŸãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹
         String c = req.getParameter("content");
+        String c = req.getParameter("tag");
 
-        // ip.UserProfileƒNƒ‰ƒX‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚µ
-        // ƒ†[ƒU[–¼‚âƒpƒXƒ[ƒh‚ğƒŠƒZƒbƒg‚·‚é
+        // ip.UserProfileã‚¯ãƒ©ã‚¹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã—
+        // ãƒ¦ãƒ¼ã‚¶ãƒ¼åã‚„ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’ãƒªã‚»ãƒƒãƒˆã™ã‚‹
         ip.Post post = new ip.Post();
-        profile.setUserId(i);
-        profile.setUserName(n);
         profile.setContent(c);
+        profile.setTag(tag);
 
-        // HttpServletRequest‚ÌÀ‘•ƒNƒ‰ƒX‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚É
-        // ip.UserProfile‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ“o˜^‚·‚é
-        // ‚±‚Ì‚Ì“o˜^–¼prof‚ª®Œ¾Œê‚Åg—p‚·‚é¯•Êq‚É‚È‚é
+        // HttpServletRequestã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã«
+        // ip.UserProfileã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç™»éŒ²ã™ã‚‹
+        // ã“ã®æ™‚ã®ç™»éŒ²åprofãŒå¼è¨€èªã§ä½¿ç”¨ã™ã‚‹è­˜åˆ¥å­ã«ãªã‚‹
         req.setAttribute("post",post);
 
-        // RequestDispatcherƒCƒ“ƒ^[ƒtƒFƒCƒX‚ğÀ‘•‚·‚éƒNƒ‰ƒX‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚·‚é
-        // ˆø”‚Í“]‘—æ‚ÌURL
+        // RequestDispatcherã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã‚’å®Ÿè£…ã™ã‚‹ã‚¯ãƒ©ã‚¹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã™ã‚‹
+        // å¼•æ•°ã¯è»¢é€å…ˆã®URL
         RequestDispatcher dispatcher =
                 req.getRequestDispatcher("thread");
 
-        //“]‘—æ‚É—v‹‚ğ“]‘—‚·‚é
+        //è»¢é€å…ˆã«è¦æ±‚ã‚’è»¢é€ã™ã‚‹
         dispatcher.forward(req, res);
     }
 }
