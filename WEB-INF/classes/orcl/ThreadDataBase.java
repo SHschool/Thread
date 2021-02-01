@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 package orcl;
 
-public class ThreadDB{
+public class ThreadDataBase{
 
 	// public static void main(String[] args){
 	private boolean insertFlag = false;
