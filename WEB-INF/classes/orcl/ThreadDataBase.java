@@ -1,3 +1,6 @@
+
+package orcl;
+
 import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -9,15 +12,13 @@ import java.sql.Statement;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
-package orcl;
-
 public class ThreadDataBase{
 
 	// public static void main(String[] args){
 	private boolean insertFlag = false;
-	public ArrayList<String> list = new ArrayList<String>();
+	public ArrayList<String> _list = new ArrayList<String>();
 
-	public boolean IsThreadInsert(int id,String name,String content) {
+	public boolean IsThreadInsert(String name,String content) {
 		try{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
@@ -26,13 +27,13 @@ public class ThreadDataBase{
 				DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl",
 				"info","pro");
 
-			String sql="INSERT INTO tb_post(thread_id,user_name,content,thread_date) VALUES(";
+			String sql="INSERT INTO tb_post(thread_id,user_name,content,thread_date) VALUES(threadId.NEXTVAL";
 			String sql2=",SYSDATE)";
 			name = ",'" + name + "'";
 			content = ",'" + content + "'";
 
 			Statement st=cn.createStatement();
-			ResultSet rs=st.executeQuery(sql+id+name+content+sql2);
+			ResultSet rs=st.executeQuery(sql+name+content+sql2);
 			
 			//Oracleから切断する
 			cn.close();
@@ -49,7 +50,7 @@ public class ThreadDataBase{
 		}
 		return insertFlag;
 	}
-	public boolean IsThreadInsert(int id,String name,String content,String tag) {
+	public boolean IsThreadInsert(String name,String content,String tag) {
 		try{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
@@ -58,14 +59,14 @@ public class ThreadDataBase{
 				DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl",
 				"info","pro");
 
-			String sql="INSERT INTO tb_post(thread_id,user_name,content,tag,thread_date) VALUES(";
+			String sql="INSERT INTO tb_post(thread_id,user_name,content,tag,thread_date) VALUES(threadId.NEXTVAL";
 			String sql2=",SYSDATE)";
 			name = ",'" + name + "'";
 			content = ",'" + content + "'";
 			tag = ",'" + tag + "'";
 
 			Statement st=cn.createStatement();
-			ResultSet rs=st.executeQuery(sql+id+","+name+","+content+tag+sql2);
+			ResultSet rs=st.executeQuery(sql+name+content+tag+sql2);
 						
 			//Oracleから切断する
 			cn.close();
@@ -82,7 +83,7 @@ public class ThreadDataBase{
 		}
 		return insertFlag;
 	}
-	public ArrayList SelectThreadInfo(){ //返信情報を取得してArrayListで返す
+	public ArrayList SelectResInfo(){ //返信情報を取得してArrayListで返す
 		try{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
@@ -118,7 +119,7 @@ public class ThreadDataBase{
 
             //Oracleから切断する
             cn.close();
-        
+		}
         catch(ClassNotFoundException e){
             e.printStackTrace();
             System.out.println("クラスがないみたい。");
@@ -127,8 +128,8 @@ public class ThreadDataBase{
             System.out.println("SQL関連の例外みたい。");
             }catch(Exception e){
             e.printStackTrace();
-            }
+			}
+			
+			return _list;
         }
-        return _list;
     }
-}
