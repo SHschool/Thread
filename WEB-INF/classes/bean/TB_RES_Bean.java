@@ -1,20 +1,20 @@
 package bean;
 
 import java.io.Serializable;
-import java.sql.Date;
 
 public class TB_RES_Bean implements Serializable {
-    private int res_id; //レスID
+    private int thread_id; // スレッドID
+    private int res_id; // レスID
+    private int res_likes; // いいね数
+    private int res_count; // 返信数
     private String res_name; // レスの名前
     private String res_content; // レスの本文
-    private int res_likes; // いいね数
-    private Date res_date; // 投稿日時
-    private int res_count; // 返信数
-    private int thread_id; // スレッドID
+    private String res_date; // 投稿日時
 
-    public TB_RES_Bean(){}
+    public TB_RES_Bean() {}
 
-    public TB_RES_Bean(int res_id, String res_name, String res_content, int res_likes, Date res_date, int res_count, int thread_id) {
+    public TB_RES_Bean(int res_id, String res_name, String res_content, int res_likes, String res_date, int res_count,
+            int thread_id) {
         this.res_id = res_id;
         this.res_name = res_name;
         this.res_content = res_content;
@@ -40,7 +40,7 @@ public class TB_RES_Bean implements Serializable {
         return res_likes;
     }
 
-    public Date getRes_date() {
+    public String getRes_date() {
         return res_date;
     }
 

@@ -1,18 +1,17 @@
 package bean;
 
 import java.io.Serializable;
-import java.sql.Date;
 
 public class TB_POST_Bean implements Serializable {
     private int thread_id; // スレッドID
     private String user_name; //ユーザ名
     private String content; // 本文
     private String tag; // タグ
-    private Date date; // 投稿日時
+    private String date; // 投稿日時
 
     public TB_POST_Bean(){}
 
-    public TB_POST_Bean(int thread_id, String user_name, String content, String tag, Date date) {
+    public TB_POST_Bean(int thread_id, String user_name, String content, String tag, String date) {
         this.thread_id = thread_id;
         this.user_name = user_name;
         this.content = content;
@@ -36,7 +35,7 @@ public class TB_POST_Bean implements Serializable {
         return content;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 }
