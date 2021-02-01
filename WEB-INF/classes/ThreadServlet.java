@@ -27,7 +27,6 @@ public class ThreadServlet extends HttpServlet {
         req.setCharacterEncoding("Windows-31J");
 
         //POST要求によって送信されたパラメータを取得する
-        int i = Integer.parseInt(req.getParameter("id"));
         String n = req.getParameter("name");
         String c = req.getParameter("content");
         String t = req.getParameter("tag");
