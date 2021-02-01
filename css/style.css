@@ -1,1 +1,9 @@
+#textarea {
+    padding: 8px;
+    line-height: 20px;
+    resize: none;
+}
 
+::placeholder {
+    font-size: 1.5rem;
+}
