@@ -21,7 +21,7 @@ public class ThreadDataBase{
 		try{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
-			//Oracleã«æ¥ç¶šã™ã‚‹
+			//Oracle‚ÉÚ‘±‚·‚é
 			Connection cn=
 				DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl",
 				"info","pro");
@@ -34,23 +34,16 @@ public class ThreadDataBase{
 			Statement st=cn.createStatement();
 			ResultSet rs=st.executeQuery(sql+id+name+content+sql2);
 			
-			Integer id = new Integer(id);
-			String id = id.toString();
-
-			list.add(id);
-			list.add(name);
-			list.add(content);
-			
-			//Oracleã‹ã‚‰åˆ‡æ–­ã™ã‚‹
+			//Oracle‚©‚çØ’f‚·‚é
 			cn.close();
 
 			insertFlag = true;
 		}catch(ClassNotFoundException e){
 			e.printStackTrace();
-			System.out.println("ã‚¯ãƒ©ã‚¹ãŒãªã„ã¿ãŸã„ã€‚");
+			System.out.println("ƒNƒ‰ƒX‚ª‚È‚¢‚İ‚½‚¢B");
 		}catch(SQLException e){
 			e.printStackTrace();
-			System.out.println("SQLé–¢é€£ã®ä¾‹å¤–ã¿ãŸã„ã€‚");
+			System.out.println("SQLŠÖ˜A‚Ì—áŠO‚İ‚½‚¢B");
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -60,7 +53,7 @@ public class ThreadDataBase{
 		try{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
-			//Oracleã«æ¥ç¶šã™ã‚‹
+			//Oracle‚ÉÚ‘±‚·‚é
 			Connection cn=
 				DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl",
 				"info","pro");
@@ -72,32 +65,70 @@ public class ThreadDataBase{
 			tag = ",'" + tag + "'";
 
 			Statement st=cn.createStatement();
-			ResultSet rs=st.executeQuery(sql+id+name+content+tag+sql2);
-			
-			Integer id = new Integer(id);
-			String id = id.toString();
-
-			list.add(id);
-			list.add(name);
-			list.add(content);
-			list.add(tag);
-			
-			//Oracleã‹ã‚‰åˆ‡æ–­ã™ã‚‹
+			ResultSet rs=st.executeQuery(sql+id+","+name+","+content+tag+sql2);
+						
+			//Oracle‚©‚çØ’f‚·‚é
 			cn.close();
 
 			insertFlag = true;
 		}catch(ClassNotFoundException e){
 			e.printStackTrace();
-			System.out.println("ã‚¯ãƒ©ã‚¹ãŒãªã„ã¿ãŸã„ã€‚");
+			System.out.println("ƒNƒ‰ƒX‚ª‚È‚¢‚İ‚½‚¢B");
 		}catch(SQLException e){
 			e.printStackTrace();
-			System.out.println("SQLé–¢é€£ã®ä¾‹å¤–ã¿ãŸã„ã€‚");
+			System.out.println("SQLŠÖ˜A‚Ì—áŠO‚İ‚½‚¢B");
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 		return insertFlag;
 	}
-	public ArrayList selectThreadInfo(){
-		return list;
-	}
+	public ArrayList SelectResInfo(){ //•ÔMî•ñ‚ğæ“¾‚µ‚ÄArrayList‚Å•Ô‚·
+		try{
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+
+			//Oracle‚ÉÚ‘±‚·‚é
+			Connection cn=
+				DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl",
+                "info","pro");
+			
+			//select•¶
+			String sql=" SELECT * FROM tb_post";
+
+			//StatementƒCƒ“ƒ^[ƒtƒFƒCƒX‚ğÀ‘•‚·‚éƒNƒ‰ƒX‚ğƒCƒ“ƒXƒ^ƒ“ƒX‰»‚·‚é
+			Statement st=cn.createStatement();
+
+			//select•¶‚ğÀs‚µ
+			//ResultSetƒCƒ“ƒ^[ƒtƒFƒCƒX‚ğÀ‘•‚µ‚½ƒNƒ‰ƒX‚Ì
+			//ƒCƒ“ƒXƒ^ƒ“ƒX‚ª•Ô‚é
+			ResultSet rs=st.executeQuery(sql);
+            //ƒJ[ƒ\ƒ‹‚ğˆês‚¾‚¯ƒXƒNƒ[ƒ‹‚µAƒf[ƒ^‚ğƒtƒFƒbƒ`‚·‚é
+            rs.next(); 
+            String id=rs.getString(1);	//1—ñ–Ú‚Ìƒf[ƒ^‚ğæ“¾
+            String name=rs.getString(2);	//2—ñ–Ú‚Ìƒf[ƒ^‚ğæ“¾
+			String content=rs.getString (3);	//3—ñ–Ú‚Ìƒf[ƒ^‚ğæ“¾
+            String tag=rs.getString (4);	//4—ñ–Ú‚Ìƒf[ƒ^‚ğæ“¾
+            String date=rs.getString (5);	//5—ñ–Ú‚Ìƒf[ƒ^‚ğæ“¾
+
+            _list.add(id);
+            _list.add(name);
+            _list.add(content);
+            _list.add(tag);
+            _list.add(date);
+
+
+            //Oracle‚©‚çØ’f‚·‚é
+            cn.close();
+        
+        catch(ClassNotFoundException e){
+            e.printStackTrace();
+            System.out.println("ƒNƒ‰ƒX‚ª‚È‚¢‚İ‚½‚¢B");
+            }catch(SQLException e){
+            e.printStackTrace();
+            System.out.println("SQLŠÖ˜A‚Ì—áŠO‚İ‚½‚¢B");
+            }catch(Exception e){
+            e.printStackTrace();
+            }
+        }
+        return _list;
+    }
 }
