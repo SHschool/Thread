@@ -7,10 +7,16 @@ import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+
 package orcl;
-public class insertThread{
+
+public class ThreadDB{
+
 	// public static void main(String[] args){
 	private boolean insertFlag = false;
+	public ArrayList<String> list = new ArrayList<String>();
+
 	public boolean IsThreadInsert(int id,String name,String content) {
 		try{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -27,7 +33,13 @@ public class insertThread{
 
 			Statement st=cn.createStatement();
 			ResultSet rs=st.executeQuery(sql+id+","+name+","+content+sql2);
+			
+			Integer id = new Integer(id);
+			String id = id.toString();
 
+			list.add(id);
+			list.add(name);
+			list.add(content);
 			
 			//Oracleから切断する
 			cn.close();
@@ -61,7 +73,14 @@ public class insertThread{
 
 			Statement st=cn.createStatement();
 			ResultSet rs=st.executeQuery(sql+id+","+name+","+content+tag+sql2);
+			
+			Integer id = new Integer(id);
+			String id = id.toString();
 
+			list.add(id);
+			list.add(name);
+			list.add(content);
+			list.add(tag);
 			
 			//Oracleから切断する
 			cn.close();
@@ -77,5 +96,8 @@ public class insertThread{
 			e.printStackTrace();
 		}
 		return insertFlag;
+	}
+	public ArrayList selectThreadInfo(){
+		return list;
 	}
 }
