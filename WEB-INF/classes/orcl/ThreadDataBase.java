@@ -21,7 +21,7 @@ public class ThreadDataBase{
 		try{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
-			//Oracle‚ÉÚ‘±‚·‚é
+			//Oracleã«æ¥ç¶šã™ã‚‹
 			Connection cn=
 				DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl",
 				"info","pro");
@@ -34,16 +34,16 @@ public class ThreadDataBase{
 			Statement st=cn.createStatement();
 			ResultSet rs=st.executeQuery(sql+id+name+content+sql2);
 			
-			//Oracle‚©‚çØ’f‚·‚é
+			//Oracleã‹ã‚‰åˆ‡æ–­ã™ã‚‹
 			cn.close();
 
 			insertFlag = true;
 		}catch(ClassNotFoundException e){
 			e.printStackTrace();
-			System.out.println("ƒNƒ‰ƒX‚ª‚È‚¢‚İ‚½‚¢B");
+			System.out.println("ã‚¯ãƒ©ã‚¹ãŒãªã„ã¿ãŸã„ã€‚");
 		}catch(SQLException e){
 			e.printStackTrace();
-			System.out.println("SQLŠÖ˜A‚Ì—áŠO‚İ‚½‚¢B");
+			System.out.println("SQLé–¢é€£ã®ä¾‹å¤–ã¿ãŸã„ã€‚");
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -53,7 +53,7 @@ public class ThreadDataBase{
 		try{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
-			//Oracle‚ÉÚ‘±‚·‚é
+			//Oracleã«æ¥ç¶šã™ã‚‹
 			Connection cn=
 				DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl",
 				"info","pro");
@@ -67,47 +67,47 @@ public class ThreadDataBase{
 			Statement st=cn.createStatement();
 			ResultSet rs=st.executeQuery(sql+id+","+name+","+content+tag+sql2);
 						
-			//Oracle‚©‚çØ’f‚·‚é
+			//Oracleã‹ã‚‰åˆ‡æ–­ã™ã‚‹
 			cn.close();
 
 			insertFlag = true;
 		}catch(ClassNotFoundException e){
 			e.printStackTrace();
-			System.out.println("ƒNƒ‰ƒX‚ª‚È‚¢‚İ‚½‚¢B");
+			System.out.println("ã‚¯ãƒ©ã‚¹ãŒãªã„ã¿ãŸã„ã€‚");
 		}catch(SQLException e){
 			e.printStackTrace();
-			System.out.println("SQLŠÖ˜A‚Ì—áŠO‚İ‚½‚¢B");
+			System.out.println("SQLé–¢é€£ã®ä¾‹å¤–ã¿ãŸã„ã€‚");
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 		return insertFlag;
 	}
-	public ArrayList SelectResInfo(){ //•ÔMî•ñ‚ğæ“¾‚µ‚ÄArrayList‚Å•Ô‚·
+	public ArrayList SelectThreadInfo(){ //è¿”ä¿¡æƒ…å ±ã‚’å–å¾—ã—ã¦ArrayListã§è¿”ã™
 		try{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
-			//Oracle‚ÉÚ‘±‚·‚é
+			//Oracleã«æ¥ç¶šã™ã‚‹
 			Connection cn=
 				DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl",
                 "info","pro");
 			
-			//select•¶
+			//selectæ–‡
 			String sql=" SELECT * FROM tb_post";
 
-			//StatementƒCƒ“ƒ^[ƒtƒFƒCƒX‚ğÀ‘•‚·‚éƒNƒ‰ƒX‚ğƒCƒ“ƒXƒ^ƒ“ƒX‰»‚·‚é
+			//Statementã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã‚’å®Ÿè£…ã™ã‚‹ã‚¯ãƒ©ã‚¹ã‚’ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã™ã‚‹
 			Statement st=cn.createStatement();
 
-			//select•¶‚ğÀs‚µ
-			//ResultSetƒCƒ“ƒ^[ƒtƒFƒCƒX‚ğÀ‘•‚µ‚½ƒNƒ‰ƒX‚Ì
-			//ƒCƒ“ƒXƒ^ƒ“ƒX‚ª•Ô‚é
+			//selectæ–‡ã‚’å®Ÿè¡Œã—
+			//ResultSetã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã‚’å®Ÿè£…ã—ãŸã‚¯ãƒ©ã‚¹ã®
+			//ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãŒè¿”ã‚‹
 			ResultSet rs=st.executeQuery(sql);
-            //ƒJ[ƒ\ƒ‹‚ğˆês‚¾‚¯ƒXƒNƒ[ƒ‹‚µAƒf[ƒ^‚ğƒtƒFƒbƒ`‚·‚é
+            //ã‚«ãƒ¼ã‚½ãƒ«ã‚’ä¸€è¡Œã ã‘ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã—ã€ãƒ‡ãƒ¼ã‚¿ã‚’ãƒ•ã‚§ãƒƒãƒã™ã‚‹
             rs.next(); 
-            String id=rs.getString(1);	//1—ñ–Ú‚Ìƒf[ƒ^‚ğæ“¾
-            String name=rs.getString(2);	//2—ñ–Ú‚Ìƒf[ƒ^‚ğæ“¾
-			String content=rs.getString (3);	//3—ñ–Ú‚Ìƒf[ƒ^‚ğæ“¾
-            String tag=rs.getString (4);	//4—ñ–Ú‚Ìƒf[ƒ^‚ğæ“¾
-            String date=rs.getString (5);	//5—ñ–Ú‚Ìƒf[ƒ^‚ğæ“¾
+            String id=rs.getString(1);	//1åˆ—ç›®ã®ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—
+            String name=rs.getString(2);	//2åˆ—ç›®ã®ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—
+			String content=rs.getString (3);	//3åˆ—ç›®ã®ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—
+            String tag=rs.getString (4);	//4åˆ—ç›®ã®ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—
+            String date=rs.getString (5);	//5åˆ—ç›®ã®ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—
 
             _list.add(id);
             _list.add(name);
@@ -116,15 +116,15 @@ public class ThreadDataBase{
             _list.add(date);
 
 
-            //Oracle‚©‚çØ’f‚·‚é
+            //Oracleã‹ã‚‰åˆ‡æ–­ã™ã‚‹
             cn.close();
         
         catch(ClassNotFoundException e){
             e.printStackTrace();
-            System.out.println("ƒNƒ‰ƒX‚ª‚È‚¢‚İ‚½‚¢B");
+            System.out.println("ã‚¯ãƒ©ã‚¹ãŒãªã„ã¿ãŸã„ã€‚");
             }catch(SQLException e){
             e.printStackTrace();
-            System.out.println("SQLŠÖ˜A‚Ì—áŠO‚İ‚½‚¢B");
+            System.out.println("SQLé–¢é€£ã®ä¾‹å¤–ã¿ãŸã„ã€‚");
             }catch(Exception e){
             e.printStackTrace();
             }
