@@ -1,61 +1,55 @@
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
+
 public class ThreadServlet extends HttpServlet {
+    
     // ユーザー名の氏名を格納するインスタンス変数
     private String _userName;
-    @Override
+
     protected void doGet(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
         // 出力する内容のデータ・タイプと文字コードを指定する
         res.setContentType("text/html; charset=Windows-31J");
-        // HttpResponseインターフェイスを実装するクラスのインスタンスから
-        // PrintWriterのサブクラスのインスタンスを取得する
-        // PrintWriter out = res.getWriter();
-        // // 以下文字列を出力する
-        // out.println("<html>");
-        // out.println("<head>");
-        // out.println("<title>氏名の確認</title>");
-        // out.println("</head>");
-        // out.println("<body>");
-        // out.println("<p>氏名の確認＝" + _userName + "</p>");
-        // out.println("</body>");
-        // out.println("</html>");
+
+
+
+
     }
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+    protected void doPost(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
         // クライアントからのrequestに含まれていたデータの
         // 文字コードを指定する
         req.setCharacterEncoding("Windows-31J");
-        // クライアントからのrequestのメッセージボディに
-        // 含まれていたデータを取り出す
-        // エンコードされていたデータは、
-        // ここでデコード（＝復元）されて取り出される。
-        // String n = req.getParameter("txt");
-        // // インスタンス変数に格納する
-        // _userName = n;
-        // String[] values = req.getParameterValues("chk");
-        // // 出力する内容のデータ・タイプと文字コードを指定する
-        // resp.setContentType("text/html; charset=Windows-31J");
-        // // HttpResponseインターフェイスを実装するクラスのインスタンスから
-        // // PrintWriterのサブクラスのインスタンスを取得する
-        // PrintWriter out = resp.getWriter();
-        // // 以下文字列を出力する
-        // out.println("<html>");
-        // out.println("<head>");
-        // out.println("<title>氏名と選択されたソフトウェア</title>");
-        // out.println("</head>");
-        // out.println("<body>");
-        // out.println("<p>氏名＝" + n + "</p>");
-        // for (int i = 0; i < values.length; i++) {
-        //     out.println("<p>チェック＝" + values[i] + "</p>");
-        // }
-        // out.println("</body>");
-        // out.println("</html>");
+
+        //POST要求によって送信されたパラメータを取得する
+        String i = req.getParameter("id");
+        String n = req.getParameter("name");
+        String c = req.getParameter("content");
+
+        // ip.UserProfileクラスのインスタンスを生成し
+        // ユーザー名やパスワードをリセットする
+        ip.Post post = new ip.Post();
+        profile.setUserId(i);
+        profile.setUserName(n);
+        profile.setContent(c);
+
+        // HttpServletRequestの実装クラスのインスタンスに
+        // ip.UserProfileのインスタンスを登録する
+        // この時の登録名profが式言語で使用する識別子になる
+        req.setAttribute("post",post);
+
+        // RequestDispatcherインターフェイスを実装するクラスのインスタンスを取得する
+        // 引数は転送先のURL
+        RequestDispatcher dispatcher =
+                req.getRequestDispatcher("thread");
+
+        //転送先に要求を転送する
+        dispatcher.forward(req, res);
     }
 }
 
