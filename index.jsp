@@ -65,7 +65,7 @@
                             </div>
 
                             <!-- tweet -->
-                            <!-- <c:forEach var="thread" items="${threads}"> -->
+                            <c:forEach var="thread" items="${threads}">
                                 <div class="row border border-top-0">
                                     <div class="col-xl-1 col-lg-2 col-md-2 col-sm-2 col-3 my-4">
                                         <i class="far fa-user-circle fa-4x"></i>
@@ -84,7 +84,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            <!-- </c:forEach> -->
+                            </c:forEach>
                         </div>
                     </div>
                 </div>
