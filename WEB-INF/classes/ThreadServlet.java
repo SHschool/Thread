@@ -40,7 +40,7 @@ public class ThreadServlet extends HttpServlet {
         // HttpServletRequestの実装クラスのインスタンスに
         // ip.UserProfileのインスタンスを登録する
         // この時の登録名profが式言語で使用する識別子になる
-        req.setAttribute("post",post);
+//         req.setAttribute("post",post);
 
         // RequestDispatcherインターフェイスを実装するクラスのインスタンスを取得する
         // 引数は転送先のURL
