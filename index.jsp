@@ -6,7 +6,7 @@
         <html lang="ja">
 
         <head>
-            <meta charset="UTF-8">
+            <meta charset="SJIS">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
             <link rel="stylesheet" href="css/style.css">
@@ -19,7 +19,7 @@
             <main>
                 <div class="container-fluid">
                     <div class="row">
-                        <!-- Âè≥ÂØÑ„ÅõÁî® -->
+                        <!-- âEäÒÇπóp -->
                         <div class="col-1"></div>
                         <!-- sidebar -->
                         <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 d-none d-md-block">
@@ -37,11 +37,10 @@
                         <div class="col-xl-7 col-lg-9 col-md-9 col-sm-9 col-12">
                             <div class="row">
                                 <div class="col-12 bg-white border border-top-0">
-                                    <p class="h2 my-3 ml-1">„Éõ„Éº„É†</p>
+                                    <p class="h2 my-3 ml-1">ÉzÅ[ÉÄ</p>
                                 </div>
                             </div>
-
-                            <!-- ÊäïÁ®ø -->
+                            <!-- ìäçe -->
                             <div class="row border border-top-0">
                                 <!-- icon -->
                                 <div class="col-xl-1 col-lg-2 col-md-2 col-sm-2 col-3">
@@ -50,30 +49,31 @@
                                 <!--  -->
                                 <div class="col-xl-11 col-lg-10 col-md-10 col-sm-10 col-9">
                                     <!-- form -->
-                                    <form method="POST" action="Âæå„Åß">
+                                    <form method="POST" action="thread">
                                         <div class="form-group">
+                                            <input type="text" name="name" class="form-control form-control-lg mt-2" placeholder="ñºëO" pattern="\S+" required>
                                             <div class="input-group input-group-lg mt-4">
-                                                <textarea name="content" id="textarea" class="form-control rounded" placeholder="„ÅÑ„Åæ„Å©„ÅÜ„Åó„Å¶„ÇãÔºü" maxlength="280" style="border: none;" required></textarea>
+                                                <textarea name="content" id="textarea" class="form-control rounded" placeholder="Ç¢Ç‹Ç«Ç§ÇµÇƒÇÈÅH" maxlength="280" style="border: none;" required></textarea>
                                             </div>
+                                            <input type="text" name="tag" class="form-control form-control-lg mt-2" placeholder="É^ÉOÇì¸óÕÇµÇƒâ∫Ç≥Ç¢" pattern="\S+" required>
                                         </div>
                                         <div class="text-right">
-                                            <button type="submit" class="btn btn-primary btn-lg my-3 rounded-pill"><span>„ÉÑ„Ç§„Éº„Éà„Åô„Çã</span></button>
+                                            <button type="submit" class="btn btn-primary btn-lg my-3 rounded-pill"><span>ÉcÉCÅ[ÉgÇ∑ÇÈ</span></button>
                                         </div>
                                     </form>
                                 </div>
                             </div>
 
                             <!-- tweet -->
-                            <c:forEach var="Â§âÊï∞Âêç" items="${listÂêç}">
+                            <!-- <c:forEach var="thread" items="${threads}"> -->
                                 <div class="row border border-top-0">
                                     <div class="col-xl-1 col-lg-2 col-md-2 col-sm-2 col-3 my-4">
                                         <i class="far fa-user-circle fa-4x"></i>
                                     </div>
                                     <div class="col-xl-11 col-lg-10 col-md-10 col-sm-10 col-9 mt-4">
-                                        <span class="h4"><c:out value="${Â§âÊï∞Âêç.name}"/></span>
-                                        <span class="h5 ml-2 text-muted">@<c:out value="${Â§âÊï∞Âêç.id}"/></span>
-                                        <span class="h5 ml-2 text-muted"><c:out value="${Â§âÊï∞Âêç.date}"/></span>
-                                        <p class="h4 my-2"><c:out value="${Â§âÊï∞Âêç.content}"></p>
+                                        <span class="h4">${thread.user_name}</span>
+                                        <p class="h4 my-2">${thread.content}</p>
+                                        <p class="h4 my-2">${thread.tag}</p>
                                         <div class="row">
                                             <div class="col-3">
                                                 <a href="reply.jsp" style="color:gray;"><i class="far fa-comment fa-fw fa-lg mt-2 mb-4"></i></a>
@@ -84,13 +84,13 @@
                                         </div>
                                     </div>
                                 </div>
-                            </c:forEach>
+                            <!-- </c:forEach> -->
                         </div>
                     </div>
                 </div>
             </main>
 
-            <!-- „Çπ„Éû„ÉõÁî®icon -->
+            <!-- ÉXÉ}Ézópicon -->
             <footer class="border-top fixed-bottom bg-white">
                 <div class="container d-block d-sm-none ">
                     <div class="row">
@@ -119,16 +119,12 @@
                         evt.preventDefault();
                         evt.stopPropagation();
                     }
-                    form.classList.add('was-validated');
-
                 });
 
-                // „ÉÜ„Ç≠„Çπ„Éà„Ç®„É™„Ç¢„ÅÆÈ´ò„ÅïËá™ÂãïË™øÊï¥
+                // ÉeÉLÉXÉgÉGÉäÉAÇÃçÇÇ≥é©ìÆí≤êÆ
                 $("textarea").attr("rows", 2).on("input", e => {
                     $(e.target).height(0).innerHeight(e.target.scrollHeight);
                 });
             </script>
-
         </body>
-
         </html>
