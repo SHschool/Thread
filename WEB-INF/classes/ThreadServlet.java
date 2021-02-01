@@ -33,8 +33,8 @@ public class ThreadServlet extends HttpServlet {
         // ip.UserProfileクラスのインスタンスを生成し
         // ユーザー名やパスワードをリセットする
         ip.Post post = new ip.Post();
-        profile.setContent(c);
-        profile.setTag(tag);
+        post.setContent(c);
+        post.setTag(tag);
 
         // HttpServletRequestの実装クラスのインスタンスに
         // ip.UserProfileのインスタンスを登録する
