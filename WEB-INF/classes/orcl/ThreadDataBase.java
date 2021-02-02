@@ -11,12 +11,13 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import bean.TB_POST_Bean;
 
 public class ThreadDataBase{
 
 	// public static void main(String[] args){
 	private boolean insertFlag = false;
-	public ArrayList<String> _list = new ArrayList<String>();
+	public ArrayList<TB_POST_Bean> _list = new ArrayList<TB_POST_Bean>();
 
 	public boolean IsThreadInsert(String name,String content) {
 		try{
@@ -83,7 +84,7 @@ public class ThreadDataBase{
 		}
 		return insertFlag;
 	}
-	public ArrayList SelectResInfo(){ //返信情報を取得してArrayListで返す
+	public ArrayList<TB_POST_Bean> SelectThreadInfo(){ //返信情報を取得してArrayListで返す
 		try{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
@@ -102,20 +103,22 @@ public class ThreadDataBase{
 			//ResultSetインターフェイスを実装したクラスの
 			//インスタンスが返る
 			ResultSet rs=st.executeQuery(sql);
-            //カーソルを一行だけスクロールし、データをフェッチする
-            rs.next(); 
-            String id=rs.getString(1);	//1列目のデータを取得
-            String name=rs.getString(2);	//2列目のデータを取得
-			String content=rs.getString (3);	//3列目のデータを取得
-            String tag=rs.getString (4);	//4列目のデータを取得
-            String date=rs.getString (5);	//5列目のデータを取得
+			//カーソルを一行だけスクロールし、データをフェッチする
+            while(rs.next()){
+				TB_POST_Bean user = new TB_POST_Bean();
 
-            _list.add(id);
-            _list.add(name);
-            _list.add(content);
-            _list.add(tag);
-            _list.add(date);
+				String id=rs.getString(1);	//1列目のデータを取得
+				String name=rs.getString(2);	//2列目のデータを取得
+				String content=rs.getString (3);	//3列目のデータを取得
+				String tag=rs.getString (4);	//4列目のデータを取得
+				String date=rs.getString (5);	//5列目のデータを取得
 
+				user.setUser_name(name);
+				user.setContent(content);
+				user.setTag(tag);
+
+				_list.add(user);
+			}
 
             //Oracleから切断する
             cn.close();
