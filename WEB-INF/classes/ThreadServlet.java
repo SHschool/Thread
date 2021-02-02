@@ -11,20 +11,32 @@ import orcl.ThreadDataBase;
 import bean.TB_POST_Bean;
 
 public class ThreadServlet extends HttpServlet {
-    
-    // ユーザー名の氏名を格納するインスタンス変数
-    private String _userName;
     private ArrayList<TB_POST_Bean> threads = new ArrayList<TB_POST_Bean>();
 
-    // protected void doGet(HttpServletRequest req, HttpServletResponse res)
-    //         throws ServletException, IOException {
-    //     // 出力する内容のデータ・タイプと文字コードを指定する
-    //     res.setCharacterEncoding("Windows-31J");
+    protected void doGet(HttpServletRequest req, HttpServletResponse res)
+             throws ServletException, IOException {
+                threads.clear();
+                req.setCharacterEncoding("Windows-31J");
+                
+                ThreadDataBase th_db = new ThreadDataBase();
+                ArrayList<String> threadList = th_db.SelectThreadInfo();
+                String name = threadList.get[1];
+                String content = threadList.get[2];
+                String tag = threadList.get[3];
 
+                TB_POST_Bean threadInfo = new TB_POST_Bean();
 
+                threadInfo.setUser_name(name);
+                threadInfo.setContent(content);
+                threadInfo.setTag(tag);
 
+                threads.add(threadInfo);
 
-    // }
+                req.setAttribute("threads",threads);
+                
+                RequestDispatcher dis = req.getRequestDispatcher("index");
+                dis.forward(req,res);
+             }
     protected void doPost(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
         // クライアントからのrequestに含まれていたデータの
