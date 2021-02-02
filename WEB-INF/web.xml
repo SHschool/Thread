@@ -4,11 +4,12 @@
     xsi:schemaLocation="http://emlns.jcp.org/xml/ns/javaee;
     http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
     version="3.1" metadata-complete="true">
-
-    <servlet-name>thread</servlet-name>
-    <servlet-class>ThreadServlet</servlet-class>
-
-    <servlet-name>thread</servlet-name>
-    <url-pattern>/thread</url-pattern>
-    
+    <servlet>
+        <servlet-name>thread</servlet-name>
+        <servlet-class>ThreadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>thread</servlet-name>
+        <url-pattern>/thread</url-pattern>
+    </servlet-mapping>
 </web-app>
