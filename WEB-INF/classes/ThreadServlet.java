@@ -1,76 +1,138 @@
+
+package orcl;
+
 import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.math.BigDecimal;
 import java.util.ArrayList;
-
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import orcl.ThreadDataBase;
 import bean.TB_POST_Bean;
 
-public class ThreadServlet extends HttpServlet {
-    private ArrayList<TB_POST_Bean> threads = new ArrayList<TB_POST_Bean>();
+public class ThreadDataBase{
 
-    protected void doGet(HttpServletRequest req, HttpServletResponse res)
-             throws ServletException, IOException {
-                threads.clear();
-                req.setCharacterEncoding("Windows-31J");
-                
-                ThreadDataBase th_db = new ThreadDataBase();
-                ArrayList<String> threadList = th_db.SelectThreadInfo();
-                String name = threadList.get[1];
-                String content = threadList.get[2];
-                String tag = threadList.get[3];
+	// public static void main(String[] args){
+	private boolean insertFlag = false;
+	public ArrayList<TB_POST_Bean> _list = new ArrayList<TB_POST_Bean>();
 
-                TB_POST_Bean threadInfo = new TB_POST_Bean();
+	public boolean IsThreadInsert(String name,String content) {
+		try{
+			Class.forName("oracle.jdbc.driver.OracleDriver");
 
-                threadInfo.setUser_name(name);
-                threadInfo.setContent(content);
-                threadInfo.setTag(tag);
+			//Oracleに接続する
+			Connection cn=
+				DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl",
+				"info","pro");
 
-                threads.add(threadInfo);
+			String sql="INSERT INTO tb_post(thread_id,user_name,content,thread_date) VALUES(threadId.NEXTVAL";
+			String sql2=",SYSDATE)";
+			name = ",'" + name + "'";
+			content = ",'" + content + "'";
 
-                req.setAttribute("threads",threads);
-                
-                RequestDispatcher dis = req.getRequestDispatcher("index");
-                dis.forward(req,res);
-             }
-    protected void doPost(HttpServletRequest req, HttpServletResponse res)
-            throws ServletException, IOException {
-        // クライアントからのrequestに含まれていたデータの
-        // 文字コードを指定する
-        req.setCharacterEncoding("Windows-31J");
+			Statement st=cn.createStatement();
+			ResultSet rs=st.executeQuery(sql+name+content+sql2);
+			
+			//Oracleから切断する
+			cn.close();
 
-        //POST要求によって送信されたパラメータを取得する
-        String name = req.getParameter("name");
-        String content = req.getParameter("content");
-        String tag = req.getParameter("tag");
+			insertFlag = true;
+		}catch(ClassNotFoundException e){
+			e.printStackTrace();
+			System.out.println("クラスがないみたい。");
+		}catch(SQLException e){
+			e.printStackTrace();
+			System.out.println("SQL関連の例外みたい。");
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return insertFlag;
+	}
+	public boolean IsThreadInsert(String name,String content,String tag) {
+		try{
+			Class.forName("oracle.jdbc.driver.OracleDriver");
 
-        //oracle接続クラスをよびデータを挿入する
-        ThreadDataBase th_db = new ThreadDataBase();
-        
-        if(th_db.IsThreadInsert(name,content,tag)){
-            TB_POST_Bean threadInfo = new TB_POST_Bean();
-            threadInfo.setUser_name(name);
-            threadInfo.setContent(content);
-            threadInfo.setTag(tag);
+			//Oracleに接続する
+			Connection cn=
+				DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl",
+				"info","pro");
 
-            threads.add(threadInfo); //ArrayListにBeanのインスタンスを渡す
+			String sql="INSERT INTO tb_post(thread_id,user_name,content,tag,thread_date) VALUES(threadId.NEXTVAL";
+			String sql2=",SYSDATE)";
+			name = ",'" + name + "'";
+			content = ",'" + content + "'";
+			tag = ",'" + tag + "'";
+
+			Statement st=cn.createStatement();
+			ResultSet rs=st.executeQuery(sql+name+content+tag+sql2);
+						
+			//Oracleから切断する
+			cn.close();
+
+			insertFlag = true;
+		}catch(ClassNotFoundException e){
+			e.printStackTrace();
+			System.out.println("クラスがないみたい。");
+		}catch(SQLException e){
+			e.printStackTrace();
+			System.out.println("SQL関連の例外みたい。");
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return insertFlag;
+	}
+	public ArrayList<TB_POST_Bean> SelectThreadInfo(){ //返信情報を取得してArrayListで返す
+		try{
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+
+			//Oracleに接続する
+			Connection cn=
+				DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl",
+                "info","pro");
+			
+			//select文
+			String sql=" SELECT * FROM tb_post";
+
+			//Statementインターフェイスを実装するクラスをインスタンス化する
+			Statement st=cn.createStatement();
+
+			//select文を実行し
+			//ResultSetインターフェイスを実装したクラスの
+			//インスタンスが返る
+			ResultSet rs=st.executeQuery(sql);
+			//カーソルを一行だけスクロールし、データをフェッチする
+            while(rs.next()){
+				TB_POST_Bean user = new TB_POST_Bean();
+
+				String id=rs.getString(1);	//1列目のデータを取得
+				String name=rs.getString(2);	//2列目のデータを取得
+				String content=rs.getString (3);	//3列目のデータを取得
+				String tag=rs.getString (4);	//4列目のデータを取得
+				String date=rs.getString (5);	//5列目のデータを取得
+
+				user.setUser_name(name);
+				user.setContent(content);
+				user.setTag(tag);
+
+				_list.add(user);
+			}
+
+            //Oracleから切断する
+            cn.close();
+		}
+        catch(ClassNotFoundException e){
+            e.printStackTrace();
+            System.out.println("クラスがないみたい。");
+            }catch(SQLException e){
+            e.printStackTrace();
+            System.out.println("SQL関連の例外みたい。");
+            }catch(Exception e){
+            e.printStackTrace();
+			}
+			
+			return _list;
         }
-
-
-
-        // 式言語として登録
-       req.setAttribute("threads",threads);
-
-        // RequestDispatcherインターフェイスを実装するクラスのインスタンスを取得する
-        // 引数は転送先のURL
-        RequestDispatcher dispatcher =
-                req.getRequestDispatcher("index");
-
-        //転送先に要求を転送する
-        dispatcher.forward(req, res);
     }
-}
