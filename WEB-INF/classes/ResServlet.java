@@ -1,62 +1,62 @@
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
+
+import orcl.ResDB;
+import bean.TB_Res_Bean;
+
 public class ResServlet extends HttpServlet {
-    // ƒ†[ƒU[–¼‚Ì–¼‚ğŠi”[‚·‚éƒCƒ“ƒXƒ^ƒ“ƒX•Ï”
+    
+    // ãƒ¦ãƒ¼ã‚¶ãƒ¼åã®æ°åã‚’æ ¼ç´ã™ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å¤‰æ•°
     private String _userName;
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse res)
+    private ArrayList<TB_RES_Bean> res = new ArrayList<TB_RES_Bean>();
+
+    // protected void doGet(HttpServletRequest req, HttpServletResponse res)
+    //         throws ServletException, IOException {
+    //     // å‡ºåŠ›ã™ã‚‹å†…å®¹ã®ãƒ‡ãƒ¼ã‚¿ãƒ»ã‚¿ã‚¤ãƒ—ã¨æ–‡å­—ã‚³ãƒ¼ãƒ‰ã‚’æŒ‡å®šã™ã‚‹
+    //     res.setCharacterEncoding("Windows-31J");
+
+
+
+
+    // }
+    protected void doPost(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
-        // o—Í‚·‚é“à—e‚Ìƒf[ƒ^Eƒ^ƒCƒv‚Æ•¶šƒR[ƒh‚ğw’è‚·‚é
-        res.setContentType("text/html; charset=Windows-31J");
-        // HttpResponseƒCƒ“ƒ^[ƒtƒFƒCƒX‚ğÀ‘•‚·‚éƒNƒ‰ƒX‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚©‚ç
-        // PrintWriter‚ÌƒTƒuƒNƒ‰ƒX‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚·‚é
-        // PrintWriter out = res.getWriter();
-        // // ˆÈ‰º•¶š—ñ‚ğo—Í‚·‚é
-        // out.println("<html>");
-        // out.println("<head>");
-        // out.println("<title>–¼‚ÌŠm”F</title>");
-        // out.println("</head>");
-        // out.println("<body>");
-        // out.println("<p>–¼‚ÌŠm”F" + _userName + "</p>");
-        // out.println("</body>");
-        // out.println("</html>");
-    }
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
-        // ƒNƒ‰ƒCƒAƒ“ƒg‚©‚ç‚Ìrequest‚ÉŠÜ‚Ü‚ê‚Ä‚¢‚½ƒf[ƒ^‚Ì
-        // •¶šƒR[ƒh‚ğw’è‚·‚é
+        // ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‹ã‚‰ã®requestã«å«ã¾ã‚Œã¦ã„ãŸãƒ‡ãƒ¼ã‚¿ã®
+        // æ–‡å­—ã‚³ãƒ¼ãƒ‰ã‚’æŒ‡å®šã™ã‚‹
         req.setCharacterEncoding("Windows-31J");
-        // ƒNƒ‰ƒCƒAƒ“ƒg‚©‚ç‚Ìrequest‚ÌƒƒbƒZ[ƒWƒ{ƒfƒB‚É
-        // ŠÜ‚Ü‚ê‚Ä‚¢‚½ƒf[ƒ^‚ğæ‚èo‚·
-        // ƒGƒ“ƒR[ƒh‚³‚ê‚Ä‚¢‚½ƒf[ƒ^‚ÍA
-        // ‚±‚±‚ÅƒfƒR[ƒhi•œŒ³j‚³‚ê‚Äæ‚èo‚³‚ê‚éB
-        // String n = req.getParameter("txt");
-        // // ƒCƒ“ƒXƒ^ƒ“ƒX•Ï”‚ÉŠi”[‚·‚é
-        // _userName = n;
-        // String[] values = req.getParameterValues("chk");
-        // // o—Í‚·‚é“à—e‚Ìƒf[ƒ^Eƒ^ƒCƒv‚Æ•¶šƒR[ƒh‚ğw’è‚·‚é
-        // resp.setContentType("text/html; charset=Windows-31J");
-        // // HttpResponseƒCƒ“ƒ^[ƒtƒFƒCƒX‚ğÀ‘•‚·‚éƒNƒ‰ƒX‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚©‚ç
-        // // PrintWriter‚ÌƒTƒuƒNƒ‰ƒX‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚·‚é
-        // PrintWriter out = resp.getWriter();
-        // // ˆÈ‰º•¶š—ñ‚ğo—Í‚·‚é
-        // out.println("<html>");
-        // out.println("<head>");
-        // out.println("<title>–¼‚Æ‘I‘ğ‚³‚ê‚½ƒ\ƒtƒgƒEƒFƒA</title>");
-        // out.println("</head>");
-        // out.println("<body>");
-        // out.println("<p>–¼" + n + "</p>");
-        // for (int i = 0; i < values.length; i++) {
-        //     out.println("<p>ƒ`ƒFƒbƒN" + values[i] + "</p>");
-        // }
-        // out.println("</body>");
-        // out.println("</html>");
+
+        //POSTè¦æ±‚ã«ã‚ˆã£ã¦é€ä¿¡ã•ã‚ŒãŸãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹
+        String name = req.getParameter("name");
+        String content = req.getParameter("content");
+
+        //oracleæ¥ç¶šã‚¯ãƒ©ã‚¹ã‚’ã‚ˆã³ãƒ‡ãƒ¼ã‚¿ã‚’æŒ¿å…¥ã™ã‚‹
+        ResDataBase re_db = new ResDataBase();
+        
+        if(th_db.IsResInsert(name,content,tag)){
+            TB_RES_Bean resInfo = new TB_RES_Bean();
+            resInfo.setUser_name(name);
+            resInfo.setContent(content);
+
+            res.add(resInfo); //ArrayListã«Beanã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’æ¸¡ã™
+        }
+
+
+
+        // å¼è¨€èªã¨ã—ã¦ç™»éŒ²
+       req.setAttribute("res",res);
+
+        // RequestDispatcherã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã‚’å®Ÿè£…ã™ã‚‹ã‚¯ãƒ©ã‚¹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã™ã‚‹
+        // å¼•æ•°ã¯è»¢é€å…ˆã®URL
+        RequestDispatcher dispatcher =
+                req.getRequestDispatcher("index");
+
+        //è»¢é€å…ˆã«è¦æ±‚ã‚’è»¢é€ã™ã‚‹
+        dispatcher.forward(req, res);
     }
 }
-
-// javac -cp C:\tomcat8.5\lib\servlet-api.jar ShareServlet.java
