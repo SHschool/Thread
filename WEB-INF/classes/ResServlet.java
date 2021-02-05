@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import orcl.ResDB;
+import orcl.ResDataBase;
 import bean.TB_Res_Bean;
 
 public class ResServlet extends HttpServlet {
