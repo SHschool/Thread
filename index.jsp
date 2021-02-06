@@ -26,10 +26,10 @@
                         <!-- sidebar -->
                         <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 d-none d-md-block">
                             <div class="row d-flex flex-column align-items-center sticky-top">
-                                <a href="thread" style="color: cornflowerblue;"><i class="fab fa-twitter fa-fw fa-3x mt-4 my-3"></i></a>
-                                <a href="thread" style="color: cornflowerblue;"><i class="fas fa-home fa-fw fa-2x my-3"></i></a>
-                                <a href="         " style="color: black;"><i class="fas fa-hashtag fa-fw fa-2x my-3"></i></a>
-                                <a href="         " style="color: black;"><i class="far fa-bell fa-fw fa-2x my-3"></i></a>
+                                <a href="thread"     style="color: cornflowerblue;"><i class="fab fa-twitter fa-fw fa-3x mt-4 my-3"></i></a>
+                                <a href="thread"     style="color: cornflowerblue;"><i class="fas fa-home fa-fw fa-2x my-3"></i></a>
+                                <a href="         "  style="color: black;"><i class="fas fa-hashtag fa-fw fa-2x my-3"></i></a>
+                                <a href="         "  style="color: black;"><i class="far fa-bell fa-fw fa-2x my-3"></i></a>
                                 <a href="regist.jsp" style="color: black"><i class="far fa-user fa-fw fa-2x my-3"></i></a>
                                 <a href="" class="btn btn-primary rounded-circle my-3" role="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="color: white;"><i class="far fa-edit fa-fw py-2"></i></a>
                             </div>
@@ -91,8 +91,8 @@
                                                 <form method="POST" action="likes" class="form-row">
                                                     <div class="form-group row">
                                                         <!-- likes button -->
-                                                        <button type="submit" class="btn"><i class="far fa-heart fa-fw fa-lg "></i></button>
-                                                        <label for="input‚Ìid‚Ý‚½‚¢‚È‚â‚Â" class="col-form-label" style="font-size:22px">10</label>
+                                                        <button type="submit" class="btn btn-link"><i class="far fa-heart fa-fw fa-lg " style="color: red;"></i></button>
+                                                        <label for="input‚Ìid‚Ý‚½‚¢‚È‚â‚Â" class="col-form-label" style="font-size:23px">10</label>
                                                     </div>
                                                 </form>
                                             </div>
@@ -103,11 +103,13 @@
                             <!-- tweet -->
                         </div>
                         <!-- center‚±‚±‚Ü‚Å -->
-
+                        
                         <!-- ‰º•”ŒÅ’è‚É‚·‚é -->
-                        <div class="col-12 row d-flex  flex-column flex-row-reverse fixed-bottom  mb-5 mr-5">
-                            <a href="#menu2"><i class="far fa-arrow-alt-circle-down fa-fw fa-3x d-none d-md-block mr-5" style="color: black;"></i></a>
-                            <a href="#menu1"><i class="far fa-arrow-alt-circle-up   fa-fw fa-3x d-none d-md-block " style="color: black;"></i></a>
+                        <div class="col-12 d-flex flex-row-reverse fixed-bottom">
+                            <div class="row m-5 d-none d-md-block">
+                                <a href="#menu1" class="mx-5"><i class="far fa-arrow-alt-circle-up   fa-fw fa-3x" style="color: black;"></i></a>
+                                <a href="#menu2" class="mx-5"><i class="far fa-arrow-alt-circle-down fa-fw fa-3x" style="color: black;"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
