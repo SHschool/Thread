@@ -1,6 +1,5 @@
 <%@ page pageEncoding="Windows-31J" contentType="text/html;charset=Windows-31J" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
         <!DOCTYPE html>
 
         <html lang="ja">
@@ -46,17 +45,17 @@
 
                             <!-- 投稿 -->
                             <div class="collapse" id="collapseExample">
-                                <div class="row border border-top-0" >
+                                <div class="row border border-top-0">
                                     <!-- icon -->
                                     <div class="col-xl-1 col-lg-2 col-md-2 col-sm-2 col-3">
                                         <i class="far fa-user-circle fa-4x my-4"></i>
                                     </div>
                                     <!-- form -->
                                     <div class="col-xl-11 col-lg-10 col-md-10 col-sm-10 col-9">
-                                        <form method="POST" action="thread">
+                                        <form method="POST" action="thread" class="userInfo">
                                             <div class="form-group">
-                                                <input type="text" name="name" class="form-control form-control-lg mt-3" placeholder="名前" pattern="\S+" required>
-                                                <input type="text" name="tag" class="form-control form-control-lg mt-2" placeholder="タグを入力して下さい" pattern="\S+" required>
+                                                <input type="text" name="name" class="form-control form-control-lg mt-3" placeholder="名前" pattern="\S+" maxlength="40" required>
+                                                <input type="text" name="tag" class="form-control form-control-lg mt-2" placeholder="タグを入力して下さい" pattern="\S+" maxlength="120" required>
                                                 <div class="input-group input-group-lg mt-4">
                                                     <textarea name="content" id="textarea" class="form-control rounded" placeholder="いまどうしてる？" maxlength="280" style="border: none;" required></textarea>
                                                 </div>
@@ -66,6 +65,7 @@
                                             </div>
                                         </form>
                                     </div>
+                                    <!-- formここまで -->
                                 </div>
                             </div>
                             <!-- 投稿 -->
@@ -73,19 +73,28 @@
                             <!-- tweet -->
                             <c:forEach var="thread" items="${threads}">
                                 <div class="row border border-top-0">
-                                    <div class="col-xl-1 col-lg-2 col-md-2 col-sm-2 col-3 my-4">
+                                    <!-- face icon -->
+                                    <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-3 my-4">
                                         <i class="far fa-user-circle fa-4x"></i>
                                     </div>
-                                    <div class="col-xl-11 col-lg-10 col-md-10 col-sm-10 col-9 mt-4">
+                                    
+                                    <div class="col-xl-11 col-lg-11 col-md-10 col-sm-10 col-9 mt-4">
                                         <span class="h4"><c:out value="${thread.user_name}" /></span>
                                         <p class="h4 my-3" style="white-space: pre-wrap;"><c:out value="${thread.content}" /></p>
                                         <p class="h4 my-3"><c:out value="${thread.tag}" /></p>
                                         <div class="row">
                                             <div class="col-3">
-                                                <a href="reply.jsp" style="color:gray;"><i class="far fa-comment fa-fw fa-lg mt-2 mb-4"></i></a>
+                                                <!-- reply button -->
+                                                <a href="reply.jsp" style="color:gray;"><i class="far fa-comment fa-fw fa-lg mt-3"></i></a>
                                             </div>
                                             <div class="col-3">
-                                                <a href="" style="color:red;"><i class="far fa-heart fa-fw fa-lg mt-2 mb-4"><span class="ml-2" style="color: black;">10</span></i></a>
+                                                <form method="POST" action="likes" class="form-row">
+                                                    <div class="form-group row">
+                                                        <!-- likes button -->
+                                                        <button type="submit" class="btn"><i class="far fa-heart fa-fw fa-lg "></i></button>
+                                                        <label for="inputのidみたいなやつ" class="col-form-label" style="font-size:22px">10</label>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -93,18 +102,16 @@
                             </c:forEach>
                             <!-- tweet -->
                         </div>
+                        <!-- centerここまで -->
 
                         <!-- 下部固定にする -->
-                        <div class="col-1">
-                            <div class="row d-flex flex-column align-items-center sticky-top">
-                                <a href="#menu1"><i class="far fa-arrow-alt-circle-up fa-fw fa-2x my-3" style="color: black;"></i></a>
-                                <a href="#menu2"><i class="far fa-arrow-alt-circle-down fa-fw fa-2x my-3" style="color: black;"></i></a>
-                            </div>
+                        <div class="col-12 row d-flex  flex-column flex-row-reverse fixed-bottom  mb-5 mr-5">
+                            <a href="#menu2"><i class="far fa-arrow-alt-circle-down fa-fw fa-3x d-none d-md-block mr-5" style="color: black;"></i></a>
+                            <a href="#menu1"><i class="far fa-arrow-alt-circle-up   fa-fw fa-3x d-none d-md-block " style="color: black;"></i></a>
                         </div>
                     </div>
                 </div>
             </main>
-
             <footer id="menu2">
             </footer>
 
@@ -131,7 +138,7 @@
             </footer>
 
             <script>
-                $('form').on('submit', function (evt) {
+                $('.userInfo').on('submit', function (evt) {
                     if (!$('#textarea').val().match(/[^\s]+/)) {
                         evt.preventDefault();
                         evt.stopPropagation();
