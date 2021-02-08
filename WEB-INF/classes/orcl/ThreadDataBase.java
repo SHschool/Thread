@@ -77,12 +77,14 @@ public class ThreadDataBase{
                 String content = rs.getString(3); // 3列目のデータを取得
                 String tag = rs.getString(4); // 4列目のデータを取得
                 String date = rs.getString(5); // 5列目のデータを取得
+                String likes = rs.getString(6); // 6列目のデータを取得
                 
                 user.setThread_id(Integer.parseInt(id));
                 user.setUser_name(name);
                 user.setContent(content);
                 user.setTag(tag);
                 user.setDate(date);
+                user.setDate(likes);
 
                 _list.add(user);
             }
