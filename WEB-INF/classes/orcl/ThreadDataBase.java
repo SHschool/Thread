@@ -17,6 +17,7 @@ public class ThreadDataBase{
     // public static void main(String[] args){
     private boolean insertFlag = false;
     public ArrayList<TB_POST_Bean> _list = new ArrayList<TB_POST_Bean>();
+    private boolean addFlag = false;
 
     public boolean IsThreadInsert(String name, String content, String tag) {
         try {
@@ -99,5 +100,33 @@ public class ThreadDataBase{
         }
 
         return _list;
+    }
+
+    public boolean IsAddLikesNumber(int id) {
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+
+            // Oracleに接続する
+            Connection cn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "info", "pro");
+
+            String sql = "UPDATE tb_post SET likes = likes + 1 WHERE thread_id = ";
+
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql + id);
+
+            // Oracleから切断する
+            cn.close();
+
+            insertFlag = true;
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            System.out.println("クラスがないみたい。");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("SQL関連の例外みたい。");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return addFlag;
     }
 }
