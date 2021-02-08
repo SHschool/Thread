@@ -8,55 +8,53 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import orcl.ResDataBase;
-import bean.TB_Res_Bean;
+import bean.TB_RES_Bean;
 
 public class ResServlet extends HttpServlet {
-    
-    // ユーザー名の氏名を格納するインスタンス変数
-    private String _userName;
-    private ArrayList<TB_RES_Bean> res = new ArrayList<TB_RES_Bean>();
+    //beanのインスタンスを受け取るArrayList
+    private ArrayList<TB_RES_Bean> resThreads = new ArrayList<TB_RES_Bean>(); 
 
-    // protected void doGet(HttpServletRequest req, HttpServletResponse res)
-    //         throws ServletException, IOException {
-    //     // 出力する内容のデータ・タイプと文字コードを指定する
-    //     res.setCharacterEncoding("Windows-31J");
+    protected void doGet(HttpServletRequest req, HttpServletResponse res) 
+    throws ServletException, IOException { //URLをたたいた時スレッドの一覧を表示するメソッド
 
+        req.setCharacterEncoding("Windows-31J"); //エンコード指定
+        resThreads.clear(); //一度中身を空にする
 
+        //データベースに接続してinsertなどするメソッドがあるクラスをインスタンス化
+        ResDataBase res_db = new ResDataBase(); 
 
+        //urlパラメータからスレッドのID取得
+        String threadId = req.getParameter("threadid");
 
-    // }
-    protected void doPost(HttpServletRequest req, HttpServletResponse res)
-            throws ServletException, IOException {
+         //データベースの投稿記事データを取得(戻り値：beanのインスタンスを格納したArrayList)
+        ArrayList<TB_RES_Bean> res_data = res_db.SelectResInfo(Integer.parseInt(threadId));
+
+        req.setAttribute("resThreads", res_data); //JSPで使えるよう登録
+
+        RequestDispatcher dis = req.getRequestDispatcher("index.jsp"); //転送先指定
+        dis.forward(req, res); //転送
+    }
+
+    protected void doPost(HttpServletRequest req, HttpServletResponse res) 
+    throws ServletException, IOException { //新規作成のデータを登録して表示
+
         // クライアントからのrequestに含まれていたデータの
         // 文字コードを指定する
         req.setCharacterEncoding("Windows-31J");
+        resThreads.clear();
 
-        //POST要求によって送信されたパラメータを取得する
+        String threadId = req.getParameter("threadid");
+
+        // POST要求によって送信されたパラメータを取得する
         String name = req.getParameter("name");
         String content = req.getParameter("content");
+        int id = Integer.parseInt(threadId);
 
-        //oracle接続クラスをよびデータを挿入する
-        ResDataBase re_db = new ResDataBase();
-        
-        if(th_db.IsResInsert(name,content,tag)){
-            TB_RES_Bean resInfo = new TB_RES_Bean();
-            resInfo.setUser_name(name);
-            resInfo.setContent(content);
+        // oracle接続クラスをよびデータを挿入する
+        ResDataBase th_db = new ResDataBase();
 
-            res.add(resInfo); //ArrayListにBeanのインスタンスを渡す
+        if (th_db.IsResInsert(name, content, id)) { //データベースに投稿出来たらdoGetメソッドを呼んで再度一覧表示
+                doGet(req,res);
+            }
         }
-
-
-
-        // 式言語として登録
-       req.setAttribute("res",res);
-
-        // RequestDispatcherインターフェイスを実装するクラスのインスタンスを取得する
-        // 引数は転送先のURL
-        RequestDispatcher dispatcher =
-                req.getRequestDispatcher("index");
-
-        //転送先に要求を転送する
-        dispatcher.forward(req, res);
     }
-}
