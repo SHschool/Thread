@@ -39,7 +39,7 @@
                         <div class="col-xl-7 col-lg-9 col-md-9 col-sm-9 col-12">
                             <div class="row sticky-top" id="top">
                                 <div class="col-12 bg-white border border-top-0">
-                                    <p class="h3 my-3 ml-1 font-weight-bold" >ホーム</p>
+                                    <p class="h3 my-3 ml-1 font-weight-bold">ホーム</p>
                                 </div>
                             </div>
 
@@ -87,11 +87,11 @@
                                         <div class="row">
                                             <!-- reply button -->
                                             <div class="col-xl-3 col-4">
-                                                <a href="thread?threadid=${thread.thread_id}" style="color:gray;"><i class="far fa-comment fa-fw fa-lg mt-3 mb-4"></i></a>
+                                                <a href="reply.jsp?threadid=${thread.thread_id}" style="color:gray;"><i class="far fa-comment fa-fw fa-lg mt-3 mb-4"></i></a>
                                             </div>
                                             <!-- likes button -->
                                             <div class="col-xl-3 col-4">
-                                                <a href="thread?threadid=${thread.thread_id}" class="mt-2"><i class="far fa-heart fa-fw fa-lg mt-3 mb-4" style="color: red;"><span class="ml-2" style="color: black; font-size: 21px;">10</span></i></a>
+                                                <a href="thread?threadid=${thread.thread_id}" class="mt-2"><i class="far fa-heart fa-fw fa-lg mt-3 mb-4" style="color: red;"><span class="ml-2" style="color: black; font-size: 21px;">${thread.likes}</span></i></a>
                                                 <!-- <form method="POST" action="likes" class="form-row">
                                                     <div class="form-group row">
                                                         <button type="submit" class="btn btn-link"><i class="far fa-heart fa-fw fa-lg " style="color: red;"></i></button>
@@ -133,7 +133,7 @@
                     <div class="row">
                         <div class="col-12 d-flex flex-row">
                             <div class="col-3 my-3">
-                                <a href="thread" style="color: cornflowerblue;"><i class="fas fa-home fa-fw fa-lg"></i></a>
+                                <a href="thread" id="#top" style="color: cornflowerblue;"><i class="fas fa-home fa-fw fa-lg"></i></a>
                             </div>
                             <div class="col-3 my-3 mr-2">
                                 <a href="thread" style="color: gray"><i class="fas fa-search fa-fw fa-lg"></i></a>
@@ -150,7 +150,7 @@
             </footer>
 
             <script>
-                // テキストエリアで空白と改行だけで送信ブロック
+                // テキストエリアで空白と改行だけ送信をブロック
                 $('.userInfo').on('submit', function (evt) {
                     if (!$('#textarea').val().match(/[^\s]+/)) {
                         evt.preventDefault();
