@@ -10,30 +10,30 @@ import javax.servlet.http.HttpServletResponse;
 import orcl.ThreadDataBase;
 import bean.TB_POST_Bean;
 
-public class ThreadServlet extends HttpServlet {
-    //bean‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğó‚¯æ‚éArrayList
+public class LikeServlet extends HttpServlet {
+    //beanã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å—ã‘å–ã‚‹ArrayList
     private ArrayList<TB_POST_Bean> threads = new ArrayList<TB_POST_Bean>(); 
 
     protected void doGet(HttpServletRequest req, HttpServletResponse res) 
-    throws ServletException, IOException { //URL‚ğ‚½‚½‚¢‚½ƒXƒŒƒbƒh‚Ìˆê——‚ğ•\¦‚·‚éƒƒ\ƒbƒh
+    throws ServletException, IOException { //URLã‚’ãŸãŸã„ãŸæ™‚ã‚¹ãƒ¬ãƒƒãƒ‰ã®ä¸€è¦§ã‚’è¡¨ç¤ºã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
 
-        req.setCharacterEncoding("Windows-31J"); //ƒGƒ“ƒR[ƒhw’è
+        req.setCharacterEncoding("Windows-31J"); //ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰æŒ‡å®š
 
         String id = req.getParameter("threadid");
 
-        threads.clear(); //ˆê“x’†g‚ğ‹ó‚É‚·‚é
+        threads.clear(); //ä¸€åº¦ä¸­èº«ã‚’ç©ºã«ã™ã‚‹
 
-        //ƒf[ƒ^ƒx[ƒX‚ÉÚ‘±‚µ‚Äinsert‚È‚Ç‚·‚éƒƒ\ƒbƒh‚ª‚ ‚éƒNƒ‰ƒX‚ğƒCƒ“ƒXƒ^ƒ“ƒX‰»
+        //ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«æ¥ç¶šã—ã¦insertãªã©ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰ãŒã‚ã‚‹ã‚¯ãƒ©ã‚¹ã‚’ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–
         ThreadDataBase th_db = new ThreadDataBase(); 
 
         if(th_db.IsAddLikesNumber(Integer.parseInt(id))){
-            //ƒf[ƒ^ƒx[ƒX‚Ì“Še‹L–ƒf[ƒ^‚ğæ“¾(–ß‚è’lFbean‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğŠi”[‚µ‚½ArrayList)
+            //ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã®æŠ•ç¨¿è¨˜äº‹ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—(æˆ»ã‚Šå€¤ï¼šbeanã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’æ ¼ç´ã—ãŸArrayList)
             ArrayList<TB_POST_Bean> th_data = th_db.SelectThreadInfo();
         }
 
-        req.setAttribute("threads", th_data); //JSP‚Åg‚¦‚é‚æ‚¤“o˜^
+        req.setAttribute("threads", th_data); //JSPã§ä½¿ãˆã‚‹ã‚ˆã†ç™»éŒ²
 
-        RequestDispatcher dis = req.getRequestDispatcher("index.jsp"); //“]‘—æw’è
-        dis.forward(req, res); //“]‘—
+        RequestDispatcher dis = req.getRequestDispatcher("index.jsp"); //è»¢é€å…ˆæŒ‡å®š
+        dis.forward(req, res); //è»¢é€
     }
 }
