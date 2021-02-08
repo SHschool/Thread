@@ -8,7 +8,7 @@ public class TB_POST_Bean implements Serializable {
     private String content; // 本文
     private String tag; // タグ
     private String date; // 投稿日時
-    private int likes;  // いいね
+    private int likes; //いいね数
 
     public TB_POST_Bean(){}
 
@@ -41,6 +41,10 @@ public class TB_POST_Bean implements Serializable {
         this.likes = likes;
     }
 
+    public void setDate(String date){
+        this.date = date;
+    }
+
     public int getThread_id() {
         return thread_id;
     }
@@ -61,7 +65,7 @@ public class TB_POST_Bean implements Serializable {
         return date;
     }
 
-    public int getLikes() {
+    public int getLikes(){
         return likes;
     }
 }
