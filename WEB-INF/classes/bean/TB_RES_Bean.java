@@ -3,24 +3,43 @@ package bean;
 import java.io.Serializable;
 
 public class TB_RES_Bean implements Serializable {
-    private int thread_id; // ƒXƒŒƒbƒhID
-    private int res_id; // ƒŒƒXID
-    private int res_likes; // ‚¢‚¢‚Ë”
-    private int res_count; // •ÔM”
-    private String res_name; // ƒŒƒX‚Ì–¼‘O
-    private String res_content; // ƒŒƒX‚Ì–{•¶
-    private String res_date; // “Še“ú
+    private int res_id; // ãƒ¬ã‚¹ID
+    //private int res_likes; // ã„ã„ã­æ•°
+    //private int res_count; // è¿”ä¿¡æ•°
+    private String res_name; // ãƒ¬ã‚¹ã®åå‰
+    private String res_content; // ãƒ¬ã‚¹ã®æœ¬æ–‡
+    private String res_date; // æŠ•ç¨¿æ—¥æ™‚
+    private int thread_id; //ã‚¹ãƒ¬ãƒƒãƒ‰ID
 
     public TB_RES_Bean() {}
 
-    public TB_RES_Bean(int res_id, String res_name, String res_content, int res_likes, String res_date, int res_count,
-            int thread_id) {
+    public TB_RES_Bean(int res_id, String res_name, String res_content,String res_date,int thread_id) {
         this.res_id = res_id;
         this.res_name = res_name;
         this.res_content = res_content;
-        this.res_likes = res_likes;
+        //this.res_likes = res_likes;
         this.res_date = res_date;
-        this.res_count = res_count;
+        //his.res_count = res_count;
+        this.thread_id = thread_id;
+    }
+
+    public void setRes_id(int res_id){
+        this.res_id = res_id;
+    }
+
+    public void setRes_name(String res_name){
+        this.res_name = res_name;
+    }
+
+    public void setRes_content(String content){
+        this.res_content = res_content;
+    }
+
+    public void setRes_date(String res_date){
+        this.res_date = res_date;
+    }
+    
+    public void setThread_id(int thread_id){
         this.thread_id = thread_id;
     }
 
@@ -36,17 +55,17 @@ public class TB_RES_Bean implements Serializable {
         return res_content;
     }
 
-    public int getRes_likes() {
-        return res_likes;
-    }
+    // public int getRes_likes() {
+    //     return res_likes;
+    // }
 
     public String getRes_date() {
         return res_date;
     }
 
-    public int getRes_count() {
-        return res_count;
-    }
+    // public int getRes_count() {
+    //     return res_count;
+    // }
 
     public int getThread_id() {
         return thread_id;
