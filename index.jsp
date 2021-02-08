@@ -24,22 +24,22 @@
                         <!-- 右寄せ用 -->
                         <div class="col-1"></div>
                         <!-- sidebar -->
-                        <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 d-none d-md-block">
+                        <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 d-none d-md-block" id="top">
                             <div class="row d-flex flex-column align-items-center sticky-top">
-                                <a href="thread"     style="color: cornflowerblue;"><i class="fab fa-twitter fa-fw fa-3x mt-4 my-3"></i></a>
+                                <a href="thread"     style="color: cornflowerblue;"><i class="fab fa-twitter fa-fw fa-3x mt-3 my-3"></i></a>
                                 <a href="thread"     style="color: cornflowerblue;"><i class="fas fa-home fa-fw fa-2x my-3"></i></a>
                                 <a href="         "  style="color: black;"><i class="fas fa-hashtag fa-fw fa-2x my-3"></i></a>
                                 <a href="         "  style="color: black;"><i class="far fa-bell fa-fw fa-2x my-3"></i></a>
                                 <a href="regist.jsp" style="color: black"><i class="far fa-user fa-fw fa-2x my-3"></i></a>
-                                <a href="" class="btn btn-primary rounded-circle my-3" role="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="color: white;"><i class="far fa-edit fa-fw py-2"></i></a>
+                                <a href="" class="btn btn-primary rounded-circle shadow my-3" role="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="color: white;"><i class="far fa-edit fa-fw py-2"></i></a>
                             </div>
                         </div>
 
                         <!-- center -->
                         <div class="col-xl-7 col-lg-9 col-md-9 col-sm-9 col-12">
-                            <div class="row">
-                                <div class="col-12 bg-white border border-top-0 " id="menu1">
-                                    <p class="h2 my-3 ml-1">ホーム</p>
+                            <div class="row sticky-top" id="top">
+                                <div class="col-12 bg-white border border-top-0">
+                                    <p class="h3 my-3 ml-1 font-weight-bold" >ホーム</p>
                                 </div>
                             </div>
 
@@ -80,21 +80,24 @@
                                     
                                     <div class="col-xl-11 col-lg-11 col-md-10 col-sm-10 col-9 mt-4">
                                         <span class="h4"><c:out value="${thread.user_name}" /></span>
+                                        <span class="h6 ml-3" style="color: gray;"><c:out value="${thread.date}" /></span>
                                         <p class="h4 my-3" style="white-space: pre-wrap;"><c:out value="${thread.content}" /></p>
                                         <p class="h4 my-3"><c:out value="${thread.tag}" /></p>
+                                        <!--  -->
                                         <div class="row">
-                                            <div class="col-3">
-                                                <!-- reply button -->
-                                                <a href="reply.jsp" style="color:gray;"><i class="far fa-comment fa-fw fa-lg mt-3"></i></a>
+                                            <!-- reply button -->
+                                            <div class="col-xl-3 col-4">
+                                                <a href="thread?threadid=${thread.thread_id}" style="color:gray;"><i class="far fa-comment fa-fw fa-lg mt-3 mb-4"></i></a>
                                             </div>
-                                            <div class="col-3">
-                                                <form method="POST" action="likes" class="form-row">
+                                            <!-- likes button -->
+                                            <div class="col-xl-3 col-4">
+                                                <a href="thread?threadid=${thread.thread_id}" class="mt-2"><i class="far fa-heart fa-fw fa-lg mt-3 mb-4" style="color: red;"><span class="ml-2" style="color: black; font-size: 21px;">10</span></i></a>
+                                                <!-- <form method="POST" action="likes" class="form-row">
                                                     <div class="form-group row">
-                                                        <!-- likes button -->
                                                         <button type="submit" class="btn btn-link"><i class="far fa-heart fa-fw fa-lg " style="color: red;"></i></button>
-                                                        <label for="inputのidみたいなやつ" class="col-form-label" style="font-size:23px">10</label>
+                                                        <label for="" class="col-form-label" style="font-size:21px">10</label>
                                                     </div>
-                                                </form>
+                                                </form> -->
                                             </div>
                                         </div>
                                     </div>
@@ -102,37 +105,44 @@
                             </c:forEach>
                             <!-- tweet -->
                         </div>
-                        <!-- centerここまで -->
                         
-                        <!-- 下部固定にする -->
+                        <!-- centerここまで -->
+                        <!-- <div class="col-3"></div> -->
+
                         <div class="col-12 d-flex flex-row-reverse fixed-bottom">
                             <div class="row m-5 d-none d-md-block">
-                                <a href="#menu1" class="mx-5"><i class="far fa-arrow-alt-circle-up   fa-fw fa-3x" style="color: black;"></i></a>
-                                <a href="#menu2" class="mx-5"><i class="far fa-arrow-alt-circle-down fa-fw fa-3x" style="color: black;"></i></a>
+                                <a href="#top"    class="mx-"><i class="far fa-arrow-alt-circle-up   fa-fw fa-3x" style="color: black;"></i></a>
+                                <a href="#bottom" class="mx-"><i class="far fa-arrow-alt-circle-down fa-fw fa-3x" style="color: black;"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
             </main>
-            <footer id="menu2">
+
+            <footer id="bottom">
             </footer>
 
-            <!-- スマホ用icon -->
-            <footer class="border-top fixed-bottom bg-white">
-                <div class="container d-block d-sm-none ">
+            <!-- スマホ用 -->
+            <footer class="fixed-bottom d-block d-sm-none">
+                <div class="col-12">
+                    <div class="row flex-row-reverse" style="margin-right: 18px;">
+                        <a href="" class="btn btn-primary btn-lg rounded-circle shadow mb-3" role="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="color: white;">+</a>
+                    </div>
+                </div>
+                <div class="container border-top bg-white">
                     <div class="row">
-                        <div class="col-12 d-flex flex-row ">
-                            <div class="col-3 mt-3 ml-2">
+                        <div class="col-12 d-flex flex-row">
+                            <div class="col-3 my-3">
                                 <a href="thread" style="color: cornflowerblue;"><i class="fas fa-home fa-fw fa-lg"></i></a>
                             </div>
-                            <div class="col-3 mt-3 ">
+                            <div class="col-3 my-3 mr-2">
                                 <a href="thread" style="color: gray"><i class="fas fa-search fa-fw fa-lg"></i></a>
                             </div>
-                            <div class="col-3 mt-3 ">
+                            <div class="col-3 my-3 mr-2">
                                 <a href="regist.jsp" style="color: gray"><i class="far far fa-user fa-fw fa-lg"></i></a>
                             </div>
-                            <div class="col-3 my-2">
-                                <a href="#menu1" class="btn btn-primary rounded-circle mt-1" role="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="color: white;"><span class="">+</span></a>
+                            <div class="col-3 my-3 mr-2">
+                                <a href="regist.jsp" style="color: gray"><i class="far far fa-envelope fa-fw fa-lg"></i></a>
                             </div>
                         </div>
                     </div>
@@ -140,6 +150,7 @@
             </footer>
 
             <script>
+                // テキストエリアで空白と改行だけで送信ブロック
                 $('.userInfo').on('submit', function (evt) {
                     if (!$('#textarea').val().match(/[^\s]+/)) {
                         evt.preventDefault();
@@ -151,6 +162,7 @@
                     $(e.target).height(0).innerHeight(e.target.scrollHeight);
                 });
 
+                // スクロール用
                 const smoothScrollTrigger = document.querySelectorAll('a[href^="#"]');
                 for (let i = 0; i < smoothScrollTrigger.length; i++) {
                     smoothScrollTrigger[i].addEventListener('click', (e) => {
