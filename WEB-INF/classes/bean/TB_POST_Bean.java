@@ -3,12 +3,12 @@ package bean;
 import java.io.Serializable;
 
 public class TB_POST_Bean implements Serializable {
-    private int thread_id; // ã‚¹ãƒ¬ãƒƒãƒ‰ID
-    private String user_name; //ãƒ¦ãƒ¼ã‚¶å
-    private String content; // æœ¬æ–‡
-    private String tag; // ã‚¿ã‚°
-    private String date; // æŠ•ç¨¿æ—¥æ™‚
-    private int likes; //ã„ã„ã­æ•°
+    private int thread_id; // ƒXƒŒƒbƒhID
+    private String user_name; //ƒ†[ƒU–¼
+    private String content; // –{•¶
+    private String tag; // ƒ^ƒO
+    private String date; // “Še“ú
+    private int likes;  // ‚¢‚¢‚Ë
 
     public TB_POST_Bean(){}
 
@@ -37,12 +37,12 @@ public class TB_POST_Bean implements Serializable {
         this.tag = tag;
     }
 
-    public void setLikes(int likes){
-        this.likes = likes;
-    }
-
     public void setDate(String date){
         this.date = date;
+    }
+
+    public void setLikes(int likes){
+        this.likes = likes;
     }
 
     public int getThread_id() {
@@ -65,7 +65,7 @@ public class TB_POST_Bean implements Serializable {
         return date;
     }
 
-    public int getLikes(){
+    public int getLikes() {
         return likes;
     }
 }
