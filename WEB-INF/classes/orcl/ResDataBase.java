@@ -1,3 +1,5 @@
+package orcl;
+
 import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -8,12 +10,13 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import bean.TB_RES_Bean;
 
 public class ResDataBase{
-    private ArrayList<String> _list = new ArrayList<String>();
+    private ArrayList<TB_RES_Bean> _list = new ArrayList<TB_RES_Bean>();
     private boolean insertFlag = false; //insertの判定フラグ
      
-    public boolean IsResInsert(int id,String name,String content,int likes,String date,int count,int thread_id){ //返信情報をoracleにinsertするメソッド
+    public boolean IsResInsert(String name,String content,int thread_id){ //返信情報をoracleにinsertするメソッド
         try{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
@@ -22,13 +25,13 @@ public class ResDataBase{
 				DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl",
 				"info","pro");
 
-			String sql="INSERT INTO TB_RES(res_id,res_name,res_content,res_likes,res_date,res_count,thread_id) VALUES(";
+			String sql="INSERT INTO TB_RES(res_id,res_name,res_content,res_date,thread_id) VALUES(resId.NEXTVAL";
 			String sql2=")";
 			name = ",'" + name + "'";
             content = ",'" + content + "'";
 
 			Statement st=cn.createStatement();
-			ResultSet rs=st.executeQuery(sql+ id + name + content + "," + likes + ",sysdate," + count + "," + thread_id);
+			ResultSet rs=st.executeQuery(sql + name + content + ",sysdate," + thread_id);
 			
 			//Oracleから切断する
 			cn.close();
@@ -46,7 +49,7 @@ public class ResDataBase{
 		return insertFlag;
     }
 
-    public ArrayList SelectResInfo(){ //返信情報を取得してArrayListで返す
+    public ArrayList<TB_RES_Bean> SelectResInfo(int threadId){ //返信情報を取得してArrayListで返す
 		try{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
@@ -56,7 +59,7 @@ public class ResDataBase{
                 "info","pro");
 			
 			//select文
-			String sql=" SELECT * FROM tb_res";
+			String sql=" SELECT * FROM tb_res Where thread_Id = ";
 
 			//Statementインターフェイスを実装するクラスをインスタンス化する
 			Statement st=cn.createStatement();
@@ -64,28 +67,30 @@ public class ResDataBase{
 			//select文を実行し
 			//ResultSetインターフェイスを実装したクラスの
 			//インスタンスが返る
-			ResultSet rs=st.executeQuery(sql);
+			ResultSet rs=st.executeQuery(sql + threadId);
             //カーソルを一行だけスクロールし、データをフェッチする
-            rs.next(); 
-            String id=rs.getString(1);	//1列目のデータを取得
-            String name=rs.getString(2);	//2列目のデータを取得
-            String content=rs.getString (3);	//3列目のデータを取得
-            String likes=rs.getString(4);	//4列目のデータを取得
-            String date=rs.getString (5);	//5列目のデータを取得
-            String count=rs.getString(6);	//6列目のデータを取得
-            String thread_id=rs.getString(7);	//7列目のデータを取得
+            while(rs.next()){
+                TB_RES_Bean resInfo = new TB_RES_Bean(); //beanのインスタンス生成
 
-            _list.add(id);
-            _list.add(name);
-            _list.add(content);
-            _list.add(likes);
-            _list.add(date);
-            _list.add(count);
-            _list.add(thread_id);
+                String id=rs.getString(1);	//1列目のデータを取得
+                String name=rs.getString(2);	//2列目のデータを取得
+                String content=rs.getString (3);	//3列目のデータを取得
+                String date=rs.getString (5);	//4列目のデータを取得
+                String thread_id=rs.getString(7);	//5列目のデータを取得
+
+                resInfo.setRes_id(Integer.parseInt(id));
+                resInfo.setRes_name(name);
+                resInfo.setRes_content(content);
+                resInfo.setRes_date(date);
+                resInfo.setThread_id(Integer.parseInt(thread_id));
+
+                _list.add(resInfo);
+            }
 
 
             //Oracleから切断する
             cn.close();
+        }
         
         catch(ClassNotFoundException e){
             e.printStackTrace();
@@ -96,9 +101,8 @@ public class ResDataBase{
             }catch(Exception e){
             e.printStackTrace();
             }
+            
+            return _list;
+
         }
-        return _list;
     }
-    
-   
-}
