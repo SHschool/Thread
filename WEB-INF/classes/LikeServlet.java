@@ -28,10 +28,10 @@ public class LikeServlet extends HttpServlet {
 
         if(th_db.IsAddLikesNumber(Integer.parseInt(id))){
             //データベースの投稿記事データを取得(戻り値：beanのインスタンスを格納したArrayList)
-            ArrayList<TB_POST_Bean> th_data = th_db.SelectThreadInfo();
+            threads = th_db.SelectThreadInfo();
         }
 
-        req.setAttribute("threads", th_data); //JSPで使えるよう登録
+        req.setAttribute("threads", threads); //JSPで使えるよう登録
 
         RequestDispatcher dis = req.getRequestDispatcher("index.jsp"); //転送先指定
         dis.forward(req, res); //転送
