@@ -59,7 +59,7 @@ public class ThreadDataBase{
             Connection cn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "info", "pro");
 
             // select文
-            String sql = " SELECT * FROM tb_post ORDER BY thread_date DESC";
+            String sql = " SELECT thread_id,user_name,content,tag,to_char(thread_date,'HH24:mi yyyy/mm/dd'),likes FROM tb_post ORDER BY thread_date DESC";
 
             // Statementインターフェイスを実装するクラスをインスタンス化する
             Statement st = cn.createStatement();
