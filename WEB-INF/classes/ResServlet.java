@@ -33,7 +33,7 @@ public class ResServlet extends HttpServlet {
         
         RequestDispatcher dis = req.getRequestDispatcher("reply"); //転送先指定
         dis.forward(req, res); //転送
-    }
+    } 
 
     protected void doPost(HttpServletRequest req, HttpServletResponse res) 
     throws ServletException, IOException { //新規作成のデータを登録して表示
@@ -54,6 +54,8 @@ public class ResServlet extends HttpServlet {
 
         if (th_db.IsResInsert(name, content, th_id)){ //データベースに投稿出来たらdoGetメソッドを呼んで再度一覧表示
             ArrayList<TB_RES_Bean> res_data = displayList(th_id);
+            TB_POST_Bean targetThread = displayResTarget(th_id);
+            req.setAttribute("targetThreads",targetThread); // 返信対象データ
             req.setAttribute("resThreads", res_data); //JSPで使えるよう登録
         }
 
