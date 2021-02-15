@@ -23,7 +23,7 @@ public class TB_RES_Bean implements Serializable {
         this.thread_id = thread_id;
     }
 
-    public void setRes_id(int res_id){
+    public void setRes_id(int res_id){ 
         this.res_id = res_id;
     }
 
@@ -31,7 +31,7 @@ public class TB_RES_Bean implements Serializable {
         this.res_name = res_name;
     }
 
-    public void setRes_content(String content){
+    public void setRes_content(String res_content){
         this.res_content = res_content;
     }
 
@@ -43,7 +43,7 @@ public class TB_RES_Bean implements Serializable {
         this.thread_id = thread_id;
     }
 
-    public int getRes_id() {
+    public int getRes_id() { 
         return res_id;
     }
 
