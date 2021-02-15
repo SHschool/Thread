@@ -23,4 +23,33 @@
 		<url-pattern>/res</url-pattern>
 	</servlet-mapping>
 
-</web-app>
+	<servlet>
+		<servlet-name>like</servlet-name>
+		<servlet-class>LikeServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>like</servlet-name>
+		<url-pattern>/like</url-pattern>
+	</servlet-mapping>
+
+	<servlet> 
+		<servlet-name>index</servlet-name>
+		<jsp-file>/index.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>index</servlet-name>
+		<url-pattern>/index</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>reply</servlet-name>
+		<jsp-file>/reply.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>reply</servlet-name>
+		<url-pattern>/reply</url-pattern>
+	</servlet-mapping>
+</web-app> 
