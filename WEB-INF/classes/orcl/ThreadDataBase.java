@@ -84,7 +84,7 @@ public class ThreadDataBase{
                 user.setContent(content);
                 user.setTag(tag);
                 user.setDate(date);
-                user.setDate(Integer.parseInt(likes));
+                user.setLikes(Integer.parseInt(likes));
 
                 _list.add(user);
             }
