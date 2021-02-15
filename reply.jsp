@@ -5,20 +5,20 @@
         <html lang="ja">
 
         <head>
-            <meta charset="SJIS">
+            <meta charset="Shift-jis">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
             <link rel="stylesheet" href="css/style.css">
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-            <title>Document</title>
+            <title>Ëøî‰ø°</title>
         </head>
 
         <body>
             <main>
                 <div class="container-fluid">
                     <div class="row">
-                        <!-- âEäÒÇπóp -->
+                        <!-- Âè≥ÂØÑ„ÅõÁî® -->
                         <div class="col-1"></div>
                         <!-- sidebar -->
                         <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 d-none d-md-block" id="top">
@@ -34,35 +34,35 @@
 
                         <!-- center -->
                         <div class="col-xl-7 col-lg-9 col-md-9 col-sm-9 col-12">
-                            <!-- ÉXÉ}ÉzÇÃÇ›ï\é¶ -->
+                            <!-- „Çπ„Éû„Éõ„ÅÆ„ÅøË°®Á§∫ -->
                             <div class="d-block d-sm-none">
                                 <div class="row border-bottom justify-content-end mt-1">
-                                    <div class="col-12">
+                                    <div class="col-12"> 
                                         <a href="thread"><i class="fas fa-long-arrow-alt-left fa-fw fa-lg mx-2 my-3"></i></a>
                                     </div>
                                 </div>
                             </div>
-                            <!-- ÉXÉ}Ézà»è„Ç≈ï\é¶ -->
+                            <!-- „Çπ„Éû„Éõ‰ª•‰∏ä„ÅßË°®Á§∫ -->
                             <div class="row sticky-top d-none d-sm-block" id="top">
                                 <div class="col-12 bg-white border border-top">
-                                    <p class="h3 my-3 ml-1 font-weight-bold">ï‘êM</p>
+                                    <p class="h3 my-3 ml-1 font-weight-bold">Ëøî‰ø°</p>
                                 </div>
                             </div>
 
-                            <!-- ï‘êMå≥tweet -->
+                            <!-- Ëøî‰ø°ÂÖÉtweet -->
                             <div class="row border border-top-0">
                                 <div class="col-xl-1 col-lg-2 col-md-2 col-sm-2 col-2 my-4">
                                     <i class="far fa-user-circle fa-3x"></i>
                                 </div>
                                 <div class="col-xl-11 col-lg-10 col-md-10 col-sm-10 col-10 mt-4 mb-2">
-                                    <span class="h4"><c:out value="${thread.user_name}" /></span>
-                                    <span class="h5 ml-2 text-muted"><c:out value="${thread.date}" /></span>
-                                    <p class="h4 mt-2"><c:out value="${thread.content}" /></p>
+                                    <span class="h4"><c:out value="${targetThreads.user_name}" /></span>
+                                    <span class="h5 ml-2 text-muted"><c:out value="${targetThreads.date}" /></span>
+                                    <p class="h4 mt-2"><c:out value="${targetThreads.content}" /></p>
                                 </div>
                             </div>
-                            <!-- ï‘êMå≥tweetÇ±Ç±Ç‹Ç≈ -->
+                            <!-- Ëøî‰ø°ÂÖÉtweet„Åì„Åì„Åæ„Åß -->
 
-                            <!-- ï‘êMÉcÉCÅ[ÉgàÍóó -->
+                            <!-- Ëøî‰ø°„ÉÑ„Ç§„Éº„Éà‰∏ÄË¶ß -->
                             <c:forEach var="resThread" items="${resThreads}">
                                 <div class="row border border-top-0">
                                     <!-- face icon -->
@@ -77,9 +77,9 @@
                                     </div>
                                 </div>
                             </c:forEach>
-                            <!-- ï‘êMÉcÉCÅ[ÉgàÍóóÇ±Ç±Ç‹Ç≈ -->
+                            <!-- Ëøî‰ø°„ÉÑ„Ç§„Éº„Éà‰∏ÄË¶ß„Åì„Åì„Åæ„Åß -->
 
-                            <!-- ìäçeÉtÉHÅ[ÉÄ -->
+                            <!-- ÊäïÁ®ø„Éï„Ç©„Éº„É† -->
                             <div class="row border border-top-0">
                                 <!-- icon -->
                                 <div class="col-xl-1 col-lg-2 col-md-2 col-sm-2 col-2">
@@ -87,29 +87,29 @@
                                 </div>
                                 <div class="col-xl-11 col-lg-10 col-md-10 col-sm-10 col-10">
                                     <!-- form -->
-                                    <form method="POST" action="res?threadid=595" class="userInfo">
+                                    <form method="POST" action="res" class="userInfo">
                                         <div class="form-group">
                                             <div class="input-group input-group-lg mt-4">
-                                                <input type="text" name="name" class="form-control form-control-lg mt-3" placeholder="ñºëO" pattern="\S+" maxlength="40" required>
+                                                <input type="text" name="name" class="form-control form-control-lg mt-3" placeholder="ÂêçÂâç" pattern="\S+" maxlength="40" required>
                                                 <div class="input-group input-group-lg mt-4">
-                                                    <textarea name="content" id="textarea" class="form-control rounded" placeholder="Ç¢Ç‹Ç«Ç§ÇµÇƒÇÈÅH" maxlength="280" style="border: none;" required></textarea>
+                                                    <textarea name="content" id="textarea" class="form-control rounded" placeholder="„ÅÑ„Åæ„Å©„ÅÜ„Åó„Å¶„ÇãÔºü" maxlength="280" style="border: none;" required></textarea>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="text-right">
-                                            <button type="submit" class="btn btn-outline-primary btn-lg my-3 rounded-pill"><span>ï‘êM</span></button>
+                                            <button type="submit" class="btn btn-outline-primary btn-lg my-3 rounded-pill"><span>Ëøî‰ø°</span></button>
                                         </div>
                                     </form>
                                 </div>
                             </div>
-                            <!-- ìäçeÉtÉHÅ[ÉÄÇ±Ç±Ç‹Ç≈ -->
+                            <!-- ÊäïÁ®ø„Éï„Ç©„Éº„É†„Åì„Åì„Åæ„Åß -->
                         </div>
                     </div>
                 </div>
             </main>
 
-            <!-- ÉXÉ}ÉzÇÃÇ›ï\é¶ -->
-            <footer class="border-top fixed-bottom bg-white">
+            <!-- „Çπ„Éû„Éõ„ÅÆ„ÅøË°®Á§∫ -->
+            <footer class="border-top fixed-bottom bg-white"> 
                 <div class="container d-block d-sm-none">
                     <div class="row">
                         <div class="col-12 d-flex flex-row ">
@@ -129,7 +129,7 @@
                     </div>
                 </div>
             </footer>
-            <!-- ÉXÉ}ÉzÇÃÇ›ï\é¶Ç±Ç±Ç‹Ç≈ -->
+            <!-- „Çπ„Éû„Éõ„ÅÆ„ÅøË°®Á§∫„Åì„Åì„Åæ„Åß -->
 
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
             <script>
@@ -141,7 +141,7 @@
                     form.classList.add('was-validated');
                 });
 
-                // ÉeÉLÉXÉgÉGÉäÉAÇÃçÇÇ≥é©ìÆí≤êÆ
+                // „ÉÜ„Ç≠„Çπ„Éà„Ç®„É™„Ç¢„ÅÆÈ´ò„ÅïËá™ÂãïË™øÊï¥
                 $("textarea").attr("rows", 2).on("input", e => {
                     $(e.target).height(0).innerHeight(e.target.scrollHeight);
                 });
@@ -151,9 +151,9 @@
 
         </html>
         <!--
-        xl 1200pxà»è„
-        lg 992pxà»è„
-        md 768pxà»è„
-        sm 576pxà»è„
-        (xs)Å@576pxñ¢ñû
+        xl 1200px‰ª•‰∏ä
+        lg 992px‰ª•‰∏ä
+        md 768px‰ª•‰∏ä
+        sm 576px‰ª•‰∏ä
+        (xs)„ÄÄ576pxÊú™Ê∫Ä
     -->
