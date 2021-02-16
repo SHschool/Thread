@@ -26,19 +26,19 @@
                         <!-- sidebar -->
                         <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 d-none d-md-block" id="top">
                             <div class="row d-flex flex-column align-items-center sticky-top">
-                                <a href="thread"     style="color: cornflowerblue;"><i class="fab fa-twitter fa-fw fa-3x mt-3 my-3"></i></a>
-                                <a href="thread"     style="color: cornflowerblue;"><i class="fas fa-home fa-fw fa-2x my-3"></i></a>
-                                <a href="         "  style="color: black;"><i class="fas fa-hashtag fa-fw fa-2x my-3"></i></a>
-                                <a href="         "  style="color: black;"><i class="far fa-bell fa-fw fa-2x my-3"></i></a>
+                                <a href="thread" style="color: cornflowerblue;"><i class="fab fa-twitter fa-fw fa-3x mt-3 my-3"></i></a>
+                                <a href="thread" style="color: cornflowerblue;"><i class="fas fa-home fa-fw fa-2x my-3"></i></a>
+                                <a href="         " style="color: black;"><i class="fas fa-hashtag fa-fw fa-2x my-3"></i></a>
+                                <a href="         " style="color: black;"><i class="far fa-bell fa-fw fa-2x my-3"></i></a>
                                 <a href="regist.jsp" style="color: black"><i class="far fa-user fa-fw fa-2x my-3"></i></a>
                                 <a href="" class="btn btn-primary rounded-circle shadow my-3" role="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="color: white;"><i class="far fa-edit fa-fw py-2"></i></a>
-                                <a href="#top"    class="my-2"><i class="far fa-arrow-alt-circle-up   fa-fw fa-3x" style="color: black;"></i></a>
+                                <a href="#top" class="my-2"><i class="far fa-arrow-alt-circle-up   fa-fw fa-3x" style="color: black;"></i></a>
                                 <a href="#bottom" class="my-2"><i class="far fa-arrow-alt-circle-down fa-fw fa-3x" style="color: black;"></i></a>
                             </div>
                         </div>
 
                         <!-- center -->
-                        <div class="col-xl-7 col-lg-9 col-md-9 col-sm-9 col-12">
+                        <div class="col-xl-6 col-lg-9 col-md-9 col-sm-9 col-12">
                             <div class="row sticky-top" id="top">
                                 <div class="col-12 bg-white border border-top-0">
                                     <p class="h3 my-3 ml-1 font-weight-bold">ホーム</p>
@@ -74,12 +74,12 @@
 
                             <!-- tweet -->
                             <c:forEach var="thread" items="${threads}">
-                                <div class="row border border-top-0"> 
+                                <div class="row border border-top-0">
                                     <!-- face icon -->
                                     <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-3 my-4">
                                         <i class="far fa-user-circle fa-4x"></i>
                                     </div>
-                                    
+
                                     <div class="col-xl-11 col-lg-11 col-md-10 col-sm-10 col-9 mt-4">
                                         <span class="h4"><c:out value="${thread.user_name}" /></span>
                                         <span class="h6 ml-3" style="color: gray;"><c:out value="${thread.date}" /></span>
@@ -107,9 +107,30 @@
                             </c:forEach>
                             <!-- tweet -->
                         </div>
-                        
+
                         <!-- centerここまで -->
-                        <!-- <div class="col-3"></div> -->
+
+                        <!-- 検索フォーム -->
+                        <div class="col-4">
+                            <div class="row sticky-top">
+                                <form method="POST" action="search">
+                                    <!-- <div class="input-group ml-4 mt-2 " style="border-radius: 100px;">
+                                        <div class="input-group-prepend">
+                                            <input type="submit" class="btn"><i class="fas fa-search fa-fw fa-2x" style="color: gray;"></i></input>
+                                        </div>
+                                        <input type="search" name="tag" class="form-control form-control-lg" placeholder="キーワード検索" aria-label="" aria-describedby="basic-addon1" style="border-radius: 100px; background-color:whitesmoke;">
+                                    </div> -->
+                                    <div class="input-group mt-3 ml-4 ">
+                                        <div class="input-group-prepend">
+                                            <button class="btn btn-outline-secondary" type="submit" id="button-addon1"><i class="fas fa-search fa-fw fa-1x" style="color: gray;"></i></button>
+                                        </div>
+                                        <input type="search" name="tag" class="form-control form-control-lg" placeholder="キーワード検索" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- 検索フォーム -->
+                        <!-- <div class="col-1"></div> -->
                     </div>
                 </div>
             </main>
