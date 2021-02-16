@@ -8,7 +8,6 @@
             <meta charset="SJIS">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-            <link rel="stylesheet" href="css/style.css">
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
             <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -46,7 +45,7 @@
                                                 <div class="col-xl-12 col-lg-10 col-md-10 col-sm-9 col-12">
                                                     <input type="text" name="name" class="form-control form-control-lg mt-2" placeholder="名前を入力してください" pattern="\S+" required>
                                                     <!-- formが空だった時に表示される文章 -->
-                                                    <div class="invalid-feedback"> 名前が入力されていません</div>
+                                                    <div class="invalid-feedback ml-2"> 名前が入力されていません</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -56,7 +55,7 @@
                                             <div class="col-xl-12 col-lg-10 col-md-10 col-sm-9 col-12">
                                                 <input type="password" name="pass" class="form-control form-control-lg mt-2" placeholder="パスワードを入力して下さい" pattern="\S+" required>
                                                 <!-- formが空だった時に表示される文章 -->
-                                                <div class="invalid-feedback">パスワードが入力されていません</div>
+                                                <div class="invalid-feedback ml-2">パスワードが入力されていません</div>
                                             </div>
                                         </div>
                                         <!-- button -->

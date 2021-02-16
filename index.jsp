@@ -111,23 +111,15 @@
                         <!-- centerここまで -->
 
                         <!-- 検索フォーム -->
-                        <div class="col-4">
-                            <div class="row sticky-top">
-                                <form method="POST" action="search">
-                                    <!-- <div class="input-group ml-4 mt-2 " style="border-radius: 100px;">
-                                        <div class="input-group-prepend">
-                                            <input type="submit" class="btn"><i class="fas fa-search fa-fw fa-2x" style="color: gray;"></i></input>
-                                        </div>
-                                        <input type="search" name="tag" class="form-control form-control-lg" placeholder="キーワード検索" aria-label="" aria-describedby="basic-addon1" style="border-radius: 100px; background-color:whitesmoke;">
-                                    </div> -->
-                                    <div class="input-group mt-3 ml-4 ">
-                                        <div class="input-group-prepend">
-                                            <button class="btn btn-outline-secondary" type="submit" id="button-addon1"><i class="fas fa-search fa-fw fa-1x" style="color: gray;"></i></button>
-                                        </div>
-                                        <input type="search" name="tag" class="form-control form-control-lg" placeholder="キーワード検索" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                        <div class="col-3 sticky-top">
+                            <form method="POST" action="search" id="search-form" name="search-form" class="mt-2 ml-4">
+                                <div class="form-group row">
+                                    <div class="input-group-prepend">
+                                        <button class="btn btn-secondary bg-white mr-1" type="submit" id="button-addon1" style="border: none;"><i class="fas fa-search fa-fw fa-1x" style="color: gray;"></i></button>
                                     </div>
-                                </form>
-                            </div>
+                                    <input type="search" name="tag" style="border-radius: 100px;" class="form-control form-control-lg col-10" placeholder="キーワード検索" aria-label="Example text with button addon" aria-describedby="button-addon1" required>
+                                </div>
+                            </form>
                         </div>
                         <!-- 検索フォーム -->
                         <!-- <div class="col-1"></div> -->
@@ -173,6 +165,14 @@
                         evt.stopPropagation();
                     }
                 });
+                function check(){
+                    var a=document.search_form.q.value;
+                    if(a==""){
+                        return false;
+                    }else if(!a.match(/\S/g)){
+                        return false;
+                    }
+                }
                 // テキストエリアの高さ自動調整
                 $("textarea").attr("rows", 2).on("input", e => {
                     $(e.target).height(0).innerHeight(e.target.scrollHeight);

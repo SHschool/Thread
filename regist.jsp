@@ -11,16 +11,16 @@
             <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-            <title>Êñ∞Ë¶è‰ºöÂì°ÁôªÈå≤</title>
+            <title>Document</title>
         </head>
 
         <body>
             <main>
                 <div class="container-fluid">
                     <div class="row">
-                        <!-- ‰∏≠Â§ÆÂØÑ„ÅõÁî® -->
+                        <!-- íÜâõäÒÇπóp -->
                         <div class="col-xl-3"></div>
-                        <!-- ‰∏≠Â§ÆÂØÑ„ÅõÁî® -->
+                        <!-- íÜâõäÒÇπóp -->
 
                         <!-- center -->
                         <div class="col-xl-6 col-12">
@@ -29,7 +29,7 @@
                                 <i class="fab fa-twitter fa-fw fa-3x mt-4 my-3" style="color: cornflowerblue;"></i>
                             </div>
 
-                            <p class="h3 my-2 text-center font-weight-bold">„Ç¢„Ç´„Ç¶„É≥„Éà„Çí‰ΩúÊàê</p>
+                            <p class="h3 my-2 text-center font-weight-bold">ÉAÉJÉEÉìÉgÇçÏê¨</p>
 
                             <!-- regist form -->
                             <div class="row">
@@ -39,23 +39,23 @@
                                         <div class="row form-group mt-2 mb-4">
                                             <div class="input-group input-group-lg my-4">
                                                 <div class="col-xl-12 col-lg-10 col-md-10 col-sm-9 col-12">
-                                                    <input type="text" name="name" class="form-control form-control-lg mt-2" placeholder="ÂêçÂâç„ÇíÂÖ•Âäõ„Åó„Å¶„Åè„Å†„Åï„ÅÑ" pattern="\S+" required>
-                                                    <!-- form„ÅåÁ©∫„Å†„Å£„ÅüÊôÇ„Å´Ë°®Á§∫„Åï„Çå„ÇãÊñáÁ´† -->
-                                                    <div class="invalid-feedback"> ÂêçÂâç„ÅåÂÖ•Âäõ„Åï„Çå„Å¶„ÅÑ„Åæ„Åõ„Çì</div>
+                                                    <input type="text" name="name" class="form-control form-control-lg mt-2" placeholder="ñºëOÇì¸óÕÇµÇƒÇ≠ÇæÇ≥Ç¢" pattern="\S+" required>
+                                                    <!-- formÇ™ãÛÇæÇ¡ÇΩéûÇ…ï\é¶Ç≥ÇÍÇÈï∂èÕ -->
+                                                    <div class="invalid-feedback ml-2"> ñºëOÇ™ì¸óÕÇ≥ÇÍÇƒÇ¢Ç‹ÇπÇÒ</div>
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- password row -->
                                         <div class="row form-group my-4">
                                             <div class="col-xl-12 col-lg-10 col-md-10 col-sm-9 col-12">
-                                                <input type="password" name="pass" class="form-control form-control-lg mt-2" placeholder="„Éë„Çπ„ÉØ„Éº„Éâ„ÇíÂÖ•Âäõ„Åó„Å¶‰∏ã„Åï„ÅÑ" pattern="\S+" required>
-                                                <!-- form„ÅåÁ©∫„Å†„Å£„ÅüÊôÇ„Å´Ë°®Á§∫„Åï„Çå„ÇãÊñáÁ´† -->
-                                                <div class="invalid-feedback">„Éë„Çπ„ÉØ„Éº„Éâ„ÅåÂÖ•Âäõ„Åï„Çå„Å¶„ÅÑ„Åæ„Åõ„Çì</div>
+                                                <input type="password" name="pass" class="form-control form-control-lg mt-2" placeholder="ÉpÉXÉèÅ[ÉhÇì¸óÕÇµÇƒâ∫Ç≥Ç¢" pattern="\S+" required>
+                                                <!-- formÇ™ãÛÇæÇ¡ÇΩéûÇ…ï\é¶Ç≥ÇÍÇÈï∂èÕ -->
+                                                <div class="invalid-feedback ml-2">ÉpÉXÉèÅ[ÉhÇ™ì¸óÕÇ≥ÇÍÇƒÇ¢Ç‹ÇπÇÒ</div>
                                             </div>
                                         </div>
                                         <!-- button -->
                                         <div class="text-right mt-4">
-                                            <button class="btn btn-outline-primary btn-lg btn-block mt-5 mb-4 rounded-pill" type="submit"><span>ÁôªÈå≤„Åô„Çã</span></button>
+                                            <button class="btn btn-outline-primary btn-lg btn-block mt-5 mb-4 rounded-pill" type="submit"><span>ìoò^Ç∑ÇÈ</span></button>
                                         </div>
                                     </form>
                                 </div>
@@ -63,14 +63,14 @@
                             <!-- regist form -->
                         </div>
 
-                        <!-- ‰∏≠Â§ÆÂØÑ„ÅõÁî® -->
+                        <!-- íÜâõäÒÇπóp -->
                         <div class="col-xl-3"></div>
-                        <!-- ‰∏≠Â§ÆÂØÑ„ÅõÁî® -->
+                        <!-- íÜâõäÒÇπóp -->
                     </div>
                 </div>
             </main>
-            
-            <!-- ÊñáÂ≠ó„ÅåÊâì„Å°Ëæº„Åæ„Çå„Å¶„ÅÑ„Å™„ÅÑ„Å®„Åç„Å´‰Ωø„Çè„Çå„Çã„ÇÑ„Å§ -->
+
+            <!-- ï∂éöÇ™ë≈ÇøçûÇ‹ÇÍÇƒÇ¢Ç»Ç¢Ç∆Ç´Ç…égÇÌÇÍÇÈÇ‚Ç¬ -->
             <script>
                 (function () {
                     window.addEventListener('load', function () {
