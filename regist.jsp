@@ -6,7 +6,7 @@
         <html lang="ja">
 
         <head>
-            <meta charset="UTF-8">
+            <meta charset="SJIS">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -18,87 +18,76 @@
             <main>
                 <div class="container-fluid">
                     <div class="row">
-                        <!-- Âè≥ÂØÑ„ÅõÁî® -->
-                        <div class="col-1"></div>
-                        <!-- „Ç¢„Ç§„Ç≥„É≥Áæ§ -->
-                        <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 d-none d-md-block">
-                            <div class="row d-flex flex-column align-items-center">
-                                <a href="index.jsp" style="color: cornflowerblue;"><i class="fab fa-twitter fa-fw fa-3x my-4"></i></a>
-                                <a href="index.jsp" style="color: black;"><i class="fas fa-home fa-fw fa-2x my-3"></i></a>
-                                <a href="         " style="color: black;"><i class="fas fa-hashtag fa-fw fa-2x my-3"></i></a>
-                                <a href="         " style="color: black;"><i class="far fa-bell fa-fw fa-2x my-3"></i></a>
-                                <a href="         " style="color: black;"><i class="far fa-envelope fa-fw fa-2x my-3"></i></a>
-                                <a href="regist.jsp" style="color: cornflowerblue;"><i class="far fa-user fa-fw fa-2x my-3"></i></a>
+                        <div class="col-xl-3"></div>
+                        <div class="col-xl-6 col-12">
+                            <div class="text-center">
+                                <i class="fab fa-twitter fa-fw fa-3x mt-4 my-3" style="color: cornflowerblue;"></i>
                             </div>
-                        </div>
-
-                        <!-- center -->
-                        <div class="col-xl-7 col-lg-9 col-md-9 col-sm-9 col-12">
+                            <p class="h3 mt-3 text-center font-weight-bold">ÉAÉJÉEÉìÉgÇçÏê¨</p>
                             <div class="row">
-                                <div class="col-12 bg-white border border-top-0">
-                                    <p class="h2 my-3 ml-1">ÁôªÈå≤ÁîªÈù¢</p>
-                                </div>
-                            </div>
-                            <!-- ÊäïÁ®øÈÉ®ÂàÜ -->
-                            <div class="row border border-top-0">
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                     <!-- form -->
                                     <form method="POST" action="regist" class="needs-validation" novalidate>
-                                        <!-- ID row -->
+                                        <!-- name row -->
                                         <div class="row form-group my-4">
                                             <div class="input-group input-group-lg my-4">
-                                                <p class="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-12 h4 my-3 text-center ">ID</p>
-                                                <div class="col-xl-10 col-lg-10 col-md-10 col-sm-9 col-12">
-                                                    <input type="text" name="name" class="form-control form-control-lg mt-2" placeholder="ID„ÇíÂÖ•Âäõ„Åó„Å¶„Åè„Å†„Åï„ÅÑ" pattern="\S+" required>
-                                                    <!-- form„ÅåÁ©∫„Å†„Å£„ÅüÊôÇ„Å´Ë°®Á§∫„Åï„Çå„ÇãÊñáÁ´† -->
-                                                    <div class="invalid-feedback"> ID„ÅåÂÖ•Âäõ„Åï„Çå„Å¶„ÅÑ„Åæ„Åõ„Çì</div>
+                                                <!-- <p class="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-12 h4 my-3 text-center ">ID</p> -->
+                                                <div class="col-xl-12 col-lg-10 col-md-10 col-sm-9 col-12">
+                                                    <input type="text" name="name" class="form-control form-control-lg mt-2" placeholder="ñºëOÇì¸óÕÇµÇƒÇ≠ÇæÇ≥Ç¢" pattern="\S+" required>
+                                                    <!-- formÇ™ãÛÇæÇ¡ÇΩéûÇ…ï\é¶Ç≥ÇÍÇÈï∂èÕ -->
+                                                    <div class="invalid-feedback"> ñºëOÇ™ì¸óÕÇ≥ÇÍÇƒÇ¢Ç‹ÇπÇÒ</div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- NAME row -->
+                                        <!-- password row -->
                                         <div class="row form-group my-4">
-                                            <p class="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-12 h4 my-3 text-center">NAME</p>
-                                            <div class="col-xl-10 col-lg-10 col-md-10 col-sm-9 col-12">
-                                                <input type="text" name="id" class="form-control form-control-lg mt-2" placeholder="ÂêçÂâç„ÇíÂÖ•Âäõ„Åó„Å¶‰∏ã„Åï„ÅÑ" pattern="\S+" required>
-                                                <!-- form„ÅåÁ©∫„Å†„Å£„ÅüÊôÇ„Å´Ë°®Á§∫„Åï„Çå„ÇãÊñáÁ´† -->
-                                                <div class="invalid-feedback">ÂêçÂâç„ÅåÂÖ•Âäõ„Åï„Çå„Å¶„ÅÑ„Åæ„Åõ„Çì</div>
+                                            <!-- <p class="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-12 h4 my-3 text-center">PASSWORD</p> -->
+                                            <div class="col-xl-12 col-lg-10 col-md-10 col-sm-9 col-12">
+                                                <input type="password" name="pass" class="form-control form-control-lg mt-2" placeholder="ÉpÉXÉèÅ[ÉhÇì¸óÕÇµÇƒâ∫Ç≥Ç¢" pattern="\S+" required>
+                                                <!-- formÇ™ãÛÇæÇ¡ÇΩéûÇ…ï\é¶Ç≥ÇÍÇÈï∂èÕ -->
+                                                <div class="invalid-feedback">ÉpÉXÉèÅ[ÉhÇ™ì¸óÕÇ≥ÇÍÇƒÇ¢Ç‹ÇπÇÒ</div>
                                             </div>
                                         </div>
                                         <!-- button -->
                                         <div class="text-right mt-4">
-                                            <button class="btn btn-outline-primary btn-lg  my-4 rounded-pill" type="submit"><span>ÁôªÈå≤„Åô„Çã</span></button>
+                                            <button class="btn btn-outline-primary btn-lg btn-block mt-5 mb-4 rounded-pill" type="submit"><span>ìoò^Ç∑ÇÈ</span></button>
                                         </div>
                                     </form>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-xl-3"></div>
                     </div>
                 </div>
             </main>
 
-            <footer class="border-top fixed-bottom bg-white">
-                <!-- „Çπ„Éû„ÉõÁî®icon -->
-                <div class="container d-block d-sm-none ">
+            <footer class="fixed-bottom d-block d-sm-none">
+                <div class="col-12">
+                    <div class="row flex-row-reverse" style="margin-right: 18px;">
+                        <a href="" class="btn btn-primary btn-lg rounded-circle shadow mb-3" role="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="color: white;">+</a>
+                    </div>
+                </div>
+                <div class="container border-top bg-white">
                     <div class="row">
-                        <div class="col-12 d-flex flex-row ">
-                            <div class="col-3 my-3 ml-2">
-                                <a href="index.jsp" style="color: gray;"><i class="fas fa-home fa-fw fa-lg"></i></a>
+                        <div class="col-12 d-flex flex-row">
+                            <div class="col-3 my-3">
+                                <a href="thread" id="#top" style="color: cornflowerblue;"><i class="fas fa-home fa-fw fa-lg"></i></a>
                             </div>
-                            <div class="col-3 my-3 ml-2">
-                                <a href="index.jsp" style="color: gray"><i class="fas fa-search fa-fw fa-lg"></i></a>
+                            <div class="col-3 my-3 mr-2">
+                                <a href="thread" style="color: gray"><i class="fas fa-search fa-fw fa-lg"></i></a>
                             </div>
-                            <div class="col-3 my-3 ml-2">
-                                <a href="regist.jsp" style="color: cornflowerblue"><i class="far fa-user fa-fw fa-lg"></i></a>
+                            <div class="col-3 my-3 mr-2">
+                                <a href="regist.jsp" style="color: gray"><i class="far far fa-user fa-fw fa-lg"></i></a>
                             </div>
-                            <div class="col-3 my-3 ml-2">
-                                <a href="index.jsp" style="color: gray"><i class="far fa-envelope fa-fw fa-lg"></i></a>
+                            <div class="col-3 my-3 mr-2">
+                                <a href="regist.jsp" style="color: gray"><i class="far far fa-envelope fa-fw fa-lg"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
             </footer>
 
-            <!-- ÊñáÂ≠ó„ÅåÊâì„Å°Ëæº„Åæ„Çå„Å¶„ÅÑ„Å™„ÅÑ„Å®„Åç„Å´‰Ωø„Çè„Çå„Çã„ÇÑ„Å§ -->
+            <!-- ï∂éöÇ™ë≈ÇøçûÇ‹ÇÍÇƒÇ¢Ç»Ç¢Ç∆Ç´Ç…égÇÌÇÍÇÈÇ‚Ç¬ -->
             <script>
                 (function () {
                     window.addEventListener('load', function () {
