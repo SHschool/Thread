@@ -11,14 +11,14 @@
             <link rel="stylesheet" href="css/style.css">
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-            <title>Ëøî‰ø°</title>
+            <title>ï‘êM</title>
         </head>
 
         <body>
             <main>
                 <div class="container-fluid">
                     <div class="row">
-                        <!-- Âè≥ÂØÑ„ÅõÁî® -->
+                        <!-- âEäÒÇπóp -->
                         <div class="col-1"></div>
                         <!-- sidebar -->
                         <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 d-none d-md-block" id="top">
@@ -28,13 +28,15 @@
                                 <a href="         " style="color: black;"><i class="fas fa-hashtag fa-fw fa-2x my-3"></i></a>
                                 <a href="         " style="color: black;"><i class="far fa-bell fa-fw fa-2x my-3"></i></a>
                                 <a href="regist.jsp" style="color: black"><i class="far fa-user fa-fw fa-2x my-3"></i></a>
-                                <a href="" class="btn btn-primary rounded-circle shadow my-3" role="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="color: white;"><i class="far fa-edit fa-fw py-2"></i></a>
+                                <!-- <a href="" class="btn btn-primary rounded-circle shadow my-3" role="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="color: white;"><i class="far fa-edit fa-fw py-2"></i></a> -->
+                                <a href="#top"    class="my-2"><i class="far fa-arrow-alt-circle-up   fa-fw fa-3x" style="color: black;"></i></a>
+                                <a href="#bottom" class="my-2"><i class="far fa-arrow-alt-circle-down fa-fw fa-3x" style="color: black;"></i></a>
                             </div>
                         </div>
 
                         <!-- center -->
                         <div class="col-xl-7 col-lg-9 col-md-9 col-sm-9 col-12">
-                            <!-- „Çπ„Éû„Éõ„ÅÆ„ÅøË°®Á§∫ -->
+                            <!-- ÉXÉ}ÉzÇÃÇ›ï\é¶ -->
                             <div class="d-block d-sm-none">
                                 <div class="row border-bottom justify-content-end mt-1">
                                     <div class="col-12"> 
@@ -42,27 +44,37 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- „Çπ„Éû„Éõ‰ª•‰∏ä„ÅßË°®Á§∫ -->
+                            <!-- ÉXÉ}Ézà»è„Ç≈ï\é¶ -->
                             <div class="row sticky-top d-none d-sm-block" id="top">
                                 <div class="col-12 bg-white border border-top">
-                                    <p class="h3 my-3 ml-1 font-weight-bold">Ëøî‰ø°</p>
+                                    <p class="h3 my-3 ml-1 font-weight-bold">ï‘êM</p>
                                 </div>
                             </div>
 
-                            <!-- Ëøî‰ø°ÂÖÉtweet -->
-                            <div class="row border border-top-0">
+                            <!-- ï‘êMå≥tweet -->
+                            <div class="row border border-top-0" style="border-width: 10px;">
                                 <div class="col-xl-1 col-lg-2 col-md-2 col-sm-2 col-2 my-4">
-                                    <i class="far fa-user-circle fa-3x"></i>
+                                    <i class="far fa-user-circle fa-4x"></i>
                                 </div>
                                 <div class="col-xl-11 col-lg-10 col-md-10 col-sm-10 col-10 mt-4 mb-2">
                                     <span class="h4"><c:out value="${targetThreads.user_name}" /></span>
-                                    <span class="h5 ml-2 text-muted"><c:out value="${targetThreads.date}" /></span>
-                                    <p class="h4 mt-2"><c:out value="${targetThreads.content}" /></p>
+                                    <p class="h4 my-3"><c:out value="${targetThreads.content}" /></p>
+                                    <p class="h5 text-muted mb-3"><c:out value="${targetThreads.date}" /></p>
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <a href="like?threadid=${thread.thread_id}" class="mt-2"><i class="far fa-heart fa-fw fa-lg mt-3 mb-4" style="color: red;"><span class="ml-2" style="color: black; font-size: 21px;">${thread.likes}</span></i></a>
+                                        </div>
+                                        <div class="col-3">
+                                            <a href="delete?threadid=${thread.thread_id}" class="mt-2"><i class="far fa-trash-alt fa-fw fa-lg mt-3 mb-4" style="color: gray;"></i></a>
+                                        </div>
+                                        <div class="col-3"></div>
+                                        <div class="col-3"></div>
+                                    </div>
                                 </div>
                             </div>
-                            <!-- Ëøî‰ø°ÂÖÉtweet„Åì„Åì„Åæ„Åß -->
+                            <!-- ï‘êMå≥tweetÇ±Ç±Ç‹Ç≈ -->
 
-                            <!-- Ëøî‰ø°„ÉÑ„Ç§„Éº„Éà‰∏ÄË¶ß -->
+                            <!-- ï‘êMÉcÉCÅ[ÉgàÍóó -->
                             <c:forEach var="resThread" items="${resThreads}">
                                 <div class="row border border-top-0">
                                     <!-- face icon -->
@@ -77,38 +89,38 @@
                                     </div>
                                 </div>
                             </c:forEach>
-                            <!-- Ëøî‰ø°„ÉÑ„Ç§„Éº„Éà‰∏ÄË¶ß„Åì„Åì„Åæ„Åß -->
+                            <!-- ï‘êMÉcÉCÅ[ÉgàÍóóÇ±Ç±Ç‹Ç≈ -->
 
-                            <!-- ÊäïÁ®ø„Éï„Ç©„Éº„É† -->
-                            <div class="row border border-top-0">
+                            <!-- ìäçeÉtÉHÅ[ÉÄ -->
+                            <div class="row border border-top-0" >
                                 <!-- icon -->
                                 <div class="col-xl-1 col-lg-2 col-md-2 col-sm-2 col-2">
-                                    <i class="far fa-user-circle fa-3x my-4"></i>
+                                    <i class="far fa-user-circle fa-4x my-4"></i>
                                 </div>
                                 <div class="col-xl-11 col-lg-10 col-md-10 col-sm-10 col-10">
                                     <!-- form -->
                                     <form method="POST" action="res" class="userInfo">
                                         <div class="form-group">
                                             <div class="input-group input-group-lg mt-4">
-                                                <input type="text" name="name" class="form-control form-control-lg mt-3" placeholder="ÂêçÂâç" pattern="\S+" maxlength="40" required>
+                                                <input type="text" name="name" class="form-control form-control-lg rounded mt-3" placeholder="ñºëO" pattern="\S+" maxlength="40" required>
                                                 <div class="input-group input-group-lg mt-4">
-                                                    <textarea name="content" id="textarea" class="form-control rounded" placeholder="„ÅÑ„Åæ„Å©„ÅÜ„Åó„Å¶„ÇãÔºü" maxlength="280" style="border: none;" required></textarea>
+                                                    <textarea name="content" id="textarea" class="form-control rounded" placeholder="Ç¢Ç‹Ç«Ç§ÇµÇƒÇÈÅH" maxlength="280" style="border: none;" required></textarea>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="text-right">
-                                            <button type="submit" class="btn btn-outline-primary btn-lg my-3 rounded-pill"><span>Ëøî‰ø°</span></button>
+                                            <button type="submit" class="btn btn-outline-primary btn-lg my-3 rounded-pill px-5"><span>ï‘êM</span></button>
                                         </div>
                                     </form>
                                 </div>
                             </div>
-                            <!-- ÊäïÁ®ø„Éï„Ç©„Éº„É†„Åì„Åì„Åæ„Åß -->
+                            <!-- ìäçeÉtÉHÅ[ÉÄÇ±Ç±Ç‹Ç≈ -->
                         </div>
                     </div>
                 </div>
             </main>
 
-            <!-- „Çπ„Éû„Éõ„ÅÆ„ÅøË°®Á§∫ -->
+            <!-- ÉXÉ}ÉzÇÃÇ›ï\é¶ -->
             <footer class="border-top fixed-bottom bg-white"> 
                 <div class="container d-block d-sm-none">
                     <div class="row">
@@ -129,7 +141,7 @@
                     </div>
                 </div>
             </footer>
-            <!-- „Çπ„Éû„Éõ„ÅÆ„ÅøË°®Á§∫„Åì„Åì„Åæ„Åß -->
+            <!-- ÉXÉ}ÉzÇÃÇ›ï\é¶Ç±Ç±Ç‹Ç≈ -->
 
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
             <script>
@@ -140,8 +152,7 @@
                     }
                     form.classList.add('was-validated');
                 });
-
-                // „ÉÜ„Ç≠„Çπ„Éà„Ç®„É™„Ç¢„ÅÆÈ´ò„ÅïËá™ÂãïË™øÊï¥
+                // ÉeÉLÉXÉgÉGÉäÉAÇÃçÇÇ≥é©ìÆí≤êÆ
                 $("textarea").attr("rows", 2).on("input", e => {
                     $(e.target).height(0).innerHeight(e.target.scrollHeight);
                 });
@@ -151,9 +162,9 @@
 
         </html>
         <!--
-        xl 1200px‰ª•‰∏ä
-        lg 992px‰ª•‰∏ä
-        md 768px‰ª•‰∏ä
-        sm 576px‰ª•‰∏ä
-        (xs)„ÄÄ576pxÊú™Ê∫Ä
+        xl 1200pxà»è„
+        lg 992pxà»è„
+        md 768pxà»è„
+        sm 576pxà»è„
+        (xs)Å@576pxñ¢ñû
     -->

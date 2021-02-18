@@ -94,12 +94,6 @@
                                             <!-- likes button -->
                                             <div class="col-xl-3 col-3">
                                                 <a href="like?threadid=${thread.thread_id}" class="mt-2"><i class="far fa-heart fa-fw fa-lg mt-3 mb-4" style="color: red;"><span class="ml-2" style="color: black; font-size: 21px;">${thread.likes}</span></i></a>
-                                                <!--<form method="GET" action="likes" class="form-row">
-                                                    <div class="form-group row">
-                                                        <button type="submit" class="btn btn-link"><i class="far fa-heart fa-fw fa-lg " style="color: red;"></i></button>
-                                                        <label for="" class="col-form-label" style="font-size:21px">10</label>
-                                                    </div>
-                                                </form>-->
                                             </div>
                                             <!-- delete button -->
                                             <div class="col-xl-3 col-2">
@@ -126,7 +120,6 @@
                                     </div>
                                 </form>
                             </div>
-                            
                         </div>
                         <!-- 検索フォーム -->
                         <!-- <div class="col-1"></div> -->
@@ -172,6 +165,8 @@
                         evt.stopPropagation();
                     }
                 });
+
+                // 検索用
                 function check(){
                     var a=document.search_form.q.value;
                     if(a==""){
@@ -180,6 +175,7 @@
                         return false;
                     }
                 }
+
                 // テキストエリアの高さ自動調整
                 $("textarea").attr("rows", 2).on("input", e => {
                     $(e.target).height(0).innerHeight(e.target.scrollHeight);
@@ -201,6 +197,17 @@
                         });
                     });
                 }
+
+                // いいねしたときに位置を保持するやつ
+                $(window).scroll(function() {
+                        sessionStorage.scrollTop = $(this).scrollTop();
+                });
+
+                $(document).ready(function() {
+                    if (sessionStorage.scrollTop != "undefined") {
+                    $(window).scrollTop(sessionStorage.scrollTop);
+                    }
+                });
             </script>
         </body>
 
