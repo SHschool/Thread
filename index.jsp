@@ -101,10 +101,9 @@
                                                     </div>
                                                 </form>-->
                                             </div>
+                                            <!-- delete button -->
                                             <div class="col-xl-3 col-2">
-                                                <!-- <form method="" action="likes"> -->
-                                                    <a href="like?threadid=${thread.thread_id}" class="mt-2"><i class="far fa-trash-alt fa-fw fa-lg mt-2" style="color: gray;"></i></a>
-                                                <!-- </form> -->
+                                                <a href="delete?threadid=${thread.thread_id}" class="mt-2"><i class="far fa-trash-alt fa-fw fa-lg mt-3 mb-4" style="color: gray;"></i></a>
                                             </div>
                                         </div>
                                     </div>
