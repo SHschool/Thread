@@ -63,7 +63,7 @@
                                                 </div>
                                             </div>
                                             <div class="text-right">
-                                                <button type="submit" class="btn btn-primary btn-lg my-3 mb-5 rounded-pill"><span>ツイートする</span></button>
+                                                <button type="submit" class="btn btn-primary btn-lg my-3 mb-2 rounded-pill font-weight-bold"><span>ツイートする</span></button>
                                             </div>
                                         </form>
                                     </div>
@@ -88,11 +88,11 @@
                                         <!--  -->
                                         <div class="row">
                                             <!-- reply button -->
-                                            <div class="col-xl-3 col-4">
+                                            <div class="col-xl-3 col-2">
                                                 <a href="res?threadid=${thread.thread_id}" style="color:gray;"><i class="far fa-comment fa-fw fa-lg mt-3 mb-4"></i></a>
                                             </div>
                                             <!-- likes button -->
-                                            <div class="col-xl-3 col-4">
+                                            <div class="col-xl-3 col-3">
                                                 <a href="like?threadid=${thread.thread_id}" class="mt-2"><i class="far fa-heart fa-fw fa-lg mt-3 mb-4" style="color: red;"><span class="ml-2" style="color: black; font-size: 21px;">${thread.likes}</span></i></a>
                                                 <!--<form method="GET" action="likes" class="form-row">
                                                     <div class="form-group row">
@@ -100,6 +100,11 @@
                                                         <label for="" class="col-form-label" style="font-size:21px">10</label>
                                                     </div>
                                                 </form>-->
+                                            </div>
+                                            <div class="col-xl-3 col-2">
+                                                <!-- <form method="" action="likes"> -->
+                                                    <a href="like?threadid=${thread.thread_id}" class="mt-2"><i class="far fa-trash-alt fa-fw fa-lg mt-2" style="color: gray;"></i></a>
+                                                <!-- </form> -->
                                             </div>
                                         </div>
                                     </div>
@@ -111,15 +116,18 @@
                         <!-- centerここまで -->
 
                         <!-- 検索フォーム -->
-                        <div class="col-3 sticky-top">
-                            <form method="POST" action="search" id="search-form" name="search-form" class="mt-2 ml-4">
-                                <div class="form-group row">
-                                    <div class="input-group-prepend">
-                                        <button class="btn btn-secondary bg-white mr-1" type="submit" id="button-addon1" style="border: none;"><i class="fas fa-search fa-fw fa-1x" style="color: gray;"></i></button>
+                        <div class="col-3">
+                            <div class="row sticky-top">
+                                <form method="POST" action="search" id="search-form" name="search-form" class="ml-5 mt-2 w-100">
+                                    <div class="form-group row">
+                                        <div class="input-group-prepend">
+                                            <button class="btn btn-secondary bg-white mr-1" type="submit" id="button-addon1" style="border: none;"><i class="fas fa-search fa-fw fa-1x" style="color: cornflowerblue;"></i></button>
+                                        </div>
+                                        <input type="search" name="tag" style="border-radius: 100px;" class="form-control form-control-lg col-10" placeholder="キーワード検索" aria-label="Example text with button addon" aria-describedby="button-addon1" required>
                                     </div>
-                                    <input type="search" name="tag" style="border-radius: 100px;" class="form-control form-control-lg col-10" placeholder="キーワード検索" aria-label="Example text with button addon" aria-describedby="button-addon1" required>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
+                            
                         </div>
                         <!-- 検索フォーム -->
                         <!-- <div class="col-1"></div> -->
@@ -127,8 +135,8 @@
                 </div>
             </main>
 
-            <footer id="bottom">
-            </footer>
+            <!-- 下に移動用 -->
+            <footer id="bottom"></footer>
 
             <!-- スマホ用 -->
             <footer class="fixed-bottom d-block d-sm-none">
