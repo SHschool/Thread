@@ -18,6 +18,7 @@ public class ThreadDataBase{
     private boolean insertFlag = false;
     public ArrayList<TB_POST_Bean> _list = new ArrayList<TB_POST_Bean>();
     private boolean addFlag = false;
+    private boolean deleteFlag = false;
 
     public boolean IsThreadInsert(String name, String content, String tag) {
         try {
@@ -130,6 +131,34 @@ public class ThreadDataBase{
             e.printStackTrace();
         }
         return addFlag;
+    }
+
+    public boolean IsDeletePost(int id) {
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+
+            // Oracleに接続する
+            Connection cn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "info", "pro");
+
+            String sql = "DELETE FROM tb_post WHERE thread_id = " + id;
+
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+
+            // Oracleから切断する
+            cn.close();
+
+            deleteFlag = true;
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            System.out.println("クラスがないみたい。");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("SQL関連の例外みたい。");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return deleteFlag;
     }
 
     public ArrayList<TB_POST_Bean> wordSearch(String word) {
