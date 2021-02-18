@@ -56,11 +56,11 @@
                                     <div class="col-xl-11 col-lg-10 col-md-10 col-sm-10 col-9">
                                         <form method="POST" action="thread" class="userInfo">
                                             <div class="form-group">
-                                                <input type="text" name="name" class="form-control form-control-lg mt-3" placeholder="名前" pattern="\S+" maxlength="40" required>
-                                                <input type="text" name="tag" class="form-control form-control-lg mt-2" placeholder="タグを入力して下さい" pattern="\S+" maxlength="120" required>
+                                                <input type="text" name="name" class="form-control form-control-lg mt-3" placeholder="名前" pattern="\S+" maxlength="40" required hidden>
                                                 <div class="input-group input-group-lg mt-4">
-                                                    <textarea name="content" id="textarea" class="form-control rounded" placeholder="いまどうしてる？" maxlength="280" style="border: none;" required></textarea>
+                                                    <textarea name="content" id="textarea" class="form-control rounded" placeholder="いまどうしてる？" maxlength="280" style="border: ;" required></textarea>
                                                 </div>
+                                                <input type="text" value="${user.userName}" name="tag" class="form-control form-control-lg mt-3" placeholder="タグを入力して下さい" pattern="\S+" maxlength="120" required>
                                             </div>
                                             <div class="text-right">
                                                 <button type="submit" class="btn btn-primary btn-lg my-3 mb-2 rounded-pill font-weight-bold"><span>ツイートする</span></button>
