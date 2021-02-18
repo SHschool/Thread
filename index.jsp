@@ -21,7 +21,7 @@
             <main>
                 <div class="container-fluid">
                     <div class="row">
-                        <!-- âEäÒÇπóp -->
+                        <!-- Âè≥ÂØÑ„ÅõÁî® -->
                         <div class="col-1"></div>
                         <!-- sidebar -->
                         <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 d-none d-md-block" id="top">
@@ -41,11 +41,11 @@
                         <div class="col-xl-6 col-lg-9 col-md-9 col-sm-9 col-12">
                             <div class="row sticky-top" id="top">
                                 <div class="col-12 bg-white border border-top-0">
-                                    <p class="h3 my-3 ml-1 font-weight-bold">ÉzÅ[ÉÄ</p>
+                                    <p class="h3 my-3 ml-1 font-weight-bold">„Éõ„Éº„É†</p>
                                 </div>
                             </div>
 
-                            <!-- ìäçe -->
+                            <!-- ÊäïÁ®ø -->
                             <div class="collapse" id="collapseExample">
                                 <div class="row border border-top-0">
                                     <!-- icon -->
@@ -56,21 +56,21 @@
                                     <div class="col-xl-11 col-lg-10 col-md-10 col-sm-10 col-9">
                                         <form method="POST" action="thread" class="userInfo">
                                             <div class="form-group">
-                                                <input type="text" name="name" class="form-control form-control-lg mt-3" placeholder="ñºëO" pattern="\S+" maxlength="40" required hidden>
+                                                <input type="text" name="name"  value="${targetName.userName}"  class="form-control form-control-lg mt-3" placeholder="ÂêçÂâç" pattern="\S+" maxlength="40" required hidden>
                                                 <div class="input-group input-group-lg mt-4">
-                                                    <textarea name="content" id="textarea" class="form-control rounded" placeholder="Ç¢Ç‹Ç«Ç§ÇµÇƒÇÈÅH" maxlength="280" style="border: ;" required></textarea>
+                                                    <textarea name="content" id="textarea" class="form-control rounded" placeholder="„ÅÑ„Åæ„Å©„ÅÜ„Åó„Å¶„ÇãÔºü" maxlength="280" style="border: ;" required></textarea>
                                                 </div>
-                                                <input type="text" value="${user.userName}" name="tag" class="form-control form-control-lg mt-3" placeholder="É^ÉOÇì¸óÕÇµÇƒâ∫Ç≥Ç¢" pattern="\S+" maxlength="120" required>
+                                                <input type="text" name="tag" class="form-control form-control-lg mt-3" placeholder="„Çø„Ç∞„ÇíÂÖ•Âäõ„Åó„Å¶‰∏ã„Åï„ÅÑ" pattern="\S+" maxlength="120" required>
                                             </div>
                                             <div class="text-right">
-                                                <button type="submit" class="btn btn-primary btn-lg my-3 mb-2 rounded-pill font-weight-bold"><span>ÉcÉCÅ[ÉgÇ∑ÇÈ</span></button>
+                                                <button type="submit" class="btn btn-primary btn-lg my-3 mb-2 rounded-pill font-weight-bold"><span>„ÉÑ„Ç§„Éº„Éà„Åô„Çã</span></button>
                                             </div>
                                         </form>
                                     </div>
-                                    <!-- formÇ±Ç±Ç‹Ç≈ -->
+                                    <!-- form„Åì„Åì„Åæ„Åß -->
                                 </div>
                             </div>
-                            <!-- ìäçe -->
+                            <!-- ÊäïÁ®ø -->
 
                             <!-- tweet -->
                             <c:forEach var="thread" items="${threads}">
@@ -106,9 +106,9 @@
                             <!-- tweet -->
                         </div>
 
-                        <!-- centerÇ±Ç±Ç‹Ç≈ -->
+                        <!-- center„Åì„Åì„Åæ„Åß -->
 
-                        <!-- åüçıÉtÉHÅ[ÉÄ -->
+                        <!-- Ê§úÁ¥¢„Éï„Ç©„Éº„É† -->
                         <div class="col-3">
                             <div class="row sticky-top">
                                 <form method="POST" action="search" id="search-form" name="search-form" class="ml-5 mt-2 w-100">
@@ -116,21 +116,21 @@
                                         <div class="input-group-prepend">
                                             <button class="btn btn-secondary bg-white mr-1" type="submit" id="button-addon1" style="border: none;"><i class="fas fa-search fa-fw fa-1x" style="color: cornflowerblue;"></i></button>
                                         </div>
-                                        <input type="search" name="tag" style="border-radius: 100px;" class="form-control form-control-lg col-10" placeholder="ÉLÅ[ÉèÅ[Éhåüçı" aria-label="Example text with button addon" aria-describedby="button-addon1" required>
+                                        <input type="search" name="tag" style="border-radius: 100px;" class="form-control form-control-lg col-10" placeholder="„Ç≠„Éº„ÉØ„Éº„ÉâÊ§úÁ¥¢" aria-label="Example text with button addon" aria-describedby="button-addon1" required>
                                     </div>
                                 </form>
                             </div>
                         </div>
-                        <!-- åüçıÉtÉHÅ[ÉÄ -->
+                        <!-- Ê§úÁ¥¢„Éï„Ç©„Éº„É† -->
                         <!-- <div class="col-1"></div> -->
                     </div>
                 </div>
             </main>
 
-            <!-- â∫Ç…à⁄ìÆóp -->
+            <!-- ‰∏ã„Å´ÁßªÂãïÁî® -->
             <footer id="bottom"></footer>
 
-            <!-- ÉXÉ}Ézóp -->
+            <!-- „Çπ„Éû„ÉõÁî® -->
             <footer class="fixed-bottom d-block d-sm-none">
                 <div class="col-12">
                     <div class="row flex-row-reverse" style="margin-right: 18px;">
@@ -158,7 +158,7 @@
             </footer>
 
             <script>
-                // ÉeÉLÉXÉgÉGÉäÉAÇ≈ãÛîíÇ∆â¸çsÇæÇØëóêMÇÉuÉçÉbÉN
+                // „ÉÜ„Ç≠„Çπ„Éà„Ç®„É™„Ç¢„ÅßÁ©∫ÁôΩ„Å®ÊîπË°å„Å†„ÅëÈÄÅ‰ø°„Çí„Éñ„É≠„ÉÉ„ÇØ
                 $('.userInfo').on('submit', function (evt) {
                     if (!$('#textarea').val().match(/[^\s]+/)) {
                         evt.preventDefault();
@@ -166,7 +166,7 @@
                     }
                 });
 
-                // åüçıóp
+                // Ê§úÁ¥¢Áî®
                 function check(){
                     var a=document.search_form.q.value;
                     if(a==""){
@@ -176,11 +176,11 @@
                     }
                 }
 
-                // ÉeÉLÉXÉgÉGÉäÉAÇÃçÇÇ≥é©ìÆí≤êÆ
+                // „ÉÜ„Ç≠„Çπ„Éà„Ç®„É™„Ç¢„ÅÆÈ´ò„ÅïËá™ÂãïË™øÊï¥
                 $("textarea").attr("rows", 2).on("input", e => {
                     $(e.target).height(0).innerHeight(e.target.scrollHeight);
                 });
-                // ÉXÉNÉçÅ[Éãóp
+                // „Çπ„ÇØ„É≠„Éº„É´Áî®
                 const smoothScrollTrigger = document.querySelectorAll('a[href^="#"]');
                 for (let i = 0; i < smoothScrollTrigger.length; i++) {
                     smoothScrollTrigger[i].addEventListener('click', (e) => {
@@ -198,7 +198,7 @@
                     });
                 }
 
-                // Ç¢Ç¢ÇÀÇµÇΩÇ∆Ç´Ç…à íuÇï€éùÇ∑ÇÈÇ‚Ç¬
+                // „ÅÑ„ÅÑ„Å≠„Åó„Åü„Å®„Åç„Å´‰ΩçÁΩÆ„Çí‰øùÊåÅ„Åô„Çã„ÇÑ„Å§
                 $(window).scroll(function() {
                         sessionStorage.scrollTop = $(this).scrollTop();
                 });
