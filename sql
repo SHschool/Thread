@@ -18,6 +18,11 @@ CREATE TABLE TB_RES(
     ,CONSTRAINT     fk_threadid FOREIGN KEY(thread_id) REFERENCES TB_POST(thread_id)
 );
 
+create sequence threadId
+start with 1
+increment by 1
+nocycle;
+
 create sequence resId
 start with 1
 increment by 1
@@ -30,3 +35,14 @@ pass varchar2(10) not null constraint uq_pass unique
 );
 
 create sequence seq_userId start with 1 increment by 1; 
+
+create table userInfo(
+    userId number(8) constraint pk_user_Id primary key,
+    name varchar2(20) not null,
+    pass varchar2(10) not null constraint uq_pass unique
+);
+
+create sequence seq_userId
+    start with 1
+    increment by 1
+    nocycle;
