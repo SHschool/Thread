@@ -1,13 +1,7 @@
 package orcl;
 
-import java.io.IOException;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import bean.TB_RES_Bean;
@@ -15,70 +9,56 @@ import bean.TB_POST_Bean;
 
 public class ResDataBase{
     private ArrayList<TB_RES_Bean> _list = new ArrayList<TB_RES_Bean>();
-    private boolean insertFlag = false; //insertã®åˆ¤å®šãƒ•ãƒ©ã‚°
+    private boolean insertFlag = false; //insert‚Ì”»’èƒtƒ‰ƒO
      
-    public boolean IsResInsert(String name,String content,int thread_id){ //è¿”ä¿¡æƒ…å ±ã‚’oracleã«insertã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
+    public boolean IsResInsert(String name,String content,int thread_id){ //•ÔMî•ñ‚ğoracle‚Éinsert‚·‚éƒƒ\ƒbƒh
         try{
-            Class.forName("oracle.jdbc.driver.OracleDriver");
+            String sql=
+                "INSERT INTO TB_RES(res_id,res_name,res_content,res_date,thread_id) VALUES(resId.NEXTVAL,'" 
+                + name + "','" 
+                + content + "'," 
+                + "sysdate," 
+                + thread_id + ")";
 
-            //Oracleã«æ¥ç¶šã™ã‚‹
-            Connection cn=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl",
-            "info","pro");
-
-            String sql="INSERT INTO TB_RES(res_id,res_name,res_content,res_date,thread_id) VALUES(resId.NEXTVAL";
-            String sql2=")";
-            name = ",'" + name + "'";
-            content = ",'" + content + "'";
-
-            Statement st=cn.createStatement();
-            ResultSet rs=st.executeQuery(sql + name + content + ",sysdate," + thread_id + sql2); 
+            ResultSet rs = sqlNecessary.execute(sql);
             
-            //Oracleã‹ã‚‰åˆ‡æ–­ã™ã‚‹
-            cn.close();
+            //Oracle‚©‚çØ’f‚·‚é
+            sqlNecessary.closeDB();
 
             insertFlag = true;
         }
         catch(ClassNotFoundException e){
             e.printStackTrace();
-            System.out.println("ã‚¯ãƒ©ã‚¹ãŒãªã„ã¿ãŸã„ã€‚");
+            System.out.println("ƒNƒ‰ƒX‚ª‚È‚¢‚İ‚½‚¢B");
         }catch(SQLException e){
             e.printStackTrace();
-            System.out.println("SQLé–¢é€£ã®ä¾‹å¤–ã¿ãŸã„ã€‚");
+            System.out.println("SQLŠÖ˜A‚Ì—áŠO‚İ‚½‚¢B");
         }catch(Exception e){
             e.printStackTrace();
         }
         return insertFlag;
     }
 
-public ArrayList<TB_RES_Bean> SelectResInfo(int threadId){ //è¿”ä¿¡æƒ…å ±ã‚’å–å¾—ã—ã¦ArrayListã§è¿”ã™
+public ArrayList<TB_RES_Bean> SelectResInfo(int threadId){ //•ÔMî•ñ‚ğæ“¾‚µ‚ÄArrayList‚Å•Ô‚·
     try{
-        Class.forName("oracle.jdbc.driver.OracleDriver");
+        //select•¶
+        String sql=
+            "SELECT res_id,res_name,res_content,to_char(res_date,'HH24:mi yyyy/mm/dd'),thread_id" 
+            + "FROM tb_res WHERE thread_id = " 
+            + threadId 
+            + "ORDER BY res_date DESC";
 
-        //Oracleã«æ¥ç¶šã™ã‚‹
-        Connection cn=
-            DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl",
-            "info","pro");
-        
-        //selectæ–‡
-        String sql="SELECT res_id,res_name,res_content,to_char(res_date,'HH24:mi yyyy/mm/dd'),thread_id FROM tb_res WHERE thread_id = ";
-        String sql2 = "ORDER BY res_date DESC";
+        ResultSet rs = sqlNecessary.execute(sql);
 
-        //Statementã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã‚’å®Ÿè£…ã™ã‚‹ã‚¯ãƒ©ã‚¹ã‚’ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã™ã‚‹
-        Statement st=cn.createStatement();
-
-        //selectæ–‡ã‚’å®Ÿè¡Œã—
-        //ResultSetã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã‚’å®Ÿè£…ã—ãŸã‚¯ãƒ©ã‚¹ã®
-        //ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãŒè¿”ã‚‹
-        ResultSet rs=st.executeQuery(sql + threadId + sql2);
-        //ã‚«ãƒ¼ã‚½ãƒ«ã‚’ä¸€è¡Œã ã‘ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã—ã€ãƒ‡ãƒ¼ã‚¿ã‚’ãƒ•ã‚§ãƒƒãƒã™ã‚‹
+        //ƒJ[ƒ\ƒ‹‚ğˆês‚¾‚¯ƒXƒNƒ[ƒ‹‚µAƒf[ƒ^‚ğƒtƒFƒbƒ`‚·‚é
         while(rs.next()){
-            TB_RES_Bean resInfo = new TB_RES_Bean(); //beanã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ç”Ÿæˆ
+            TB_RES_Bean resInfo = new TB_RES_Bean(); //bean‚ÌƒCƒ“ƒXƒ^ƒ“ƒX¶¬
 
-            String id=rs.getString(1);	//1åˆ—ç›®ã®ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—
-            String name=rs.getString(2);	//2åˆ—ç›®ã®ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—
-            String content=rs.getString (3);	//3åˆ—ç›®ã®ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—
-            String date=rs.getString (4);	//4åˆ—ç›®ã®ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—
-            String thread_id=rs.getString(5);	//5åˆ—ç›®ã®ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—
+            String id=rs.getString(1);	//1—ñ–Ú‚Ìƒf[ƒ^‚ğæ“¾
+            String name=rs.getString(2);	//2—ñ–Ú‚Ìƒf[ƒ^‚ğæ“¾
+            String content=rs.getString (3);	//3—ñ–Ú‚Ìƒf[ƒ^‚ğæ“¾
+            String date=rs.getString (4);	//4—ñ–Ú‚Ìƒf[ƒ^‚ğæ“¾
+            String thread_id=rs.getString(5);	//5—ñ–Ú‚Ìƒf[ƒ^‚ğæ“¾
 
             resInfo.setRes_id(Integer.parseInt(id));
             resInfo.setRes_name(name);
@@ -90,16 +70,16 @@ public ArrayList<TB_RES_Bean> SelectResInfo(int threadId){ //è¿”ä¿¡æƒ…å ±ã‚’å–å
         }
 
 
-        //Oracleã‹ã‚‰åˆ‡æ–­ã™ã‚‹
-        cn.close();
+        //Oracle‚©‚çØ’f‚·‚é
+        sqlNecessary.closeDB();
     }
     
     catch(ClassNotFoundException e){
         e.printStackTrace();
-        System.out.println("ã‚¯ãƒ©ã‚¹ãŒãªã„ã¿ãŸã„ã€‚");
+        System.out.println("ƒNƒ‰ƒX‚ª‚È‚¢‚İ‚½‚¢B");
         }catch(SQLException e){
         e.printStackTrace();
-        System.out.println("SQLé–¢é€£ã®ä¾‹å¤–ã¿ãŸã„ã€‚");
+        System.out.println("SQLŠÖ˜A‚Ì—áŠO‚İ‚½‚¢B");
         }catch(Exception e){
         e.printStackTrace();
         }
@@ -112,32 +92,22 @@ public ArrayList<TB_RES_Bean> SelectResInfo(int threadId){ //è¿”ä¿¡æƒ…å ±ã‚’å–å
         TB_POST_Bean targetThread = new TB_POST_Bean();
 
         try{
-            Class.forName("oracle.jdbc.driver.OracleDriver");
+            //select•¶
+            String sql=
+                "SELECT thread_id,user_name,content,tag,to_char(thread_date,'HH24:mi yyyy/mm/dd'),likes"
+                + "FROM tb_post WHERE thread_id = "
+                + threadId;
 
-            //Oracleã«æ¥ç¶šã™ã‚‹
-            Connection cn=
-                DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl",
-                "info","pro");
-            
-            //selectæ–‡
-            String sql="SELECT thread_id,user_name,content,tag,to_char(thread_date,'HH24:mi yyyy/mm/dd'),likes FROM tb_post WHERE thread_id = ";
-
-            //Statementã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã‚’å®Ÿè£…ã™ã‚‹ã‚¯ãƒ©ã‚¹ã‚’ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã™ã‚‹
-            Statement st=cn.createStatement();
-
-            //selectæ–‡ã‚’å®Ÿè¡Œã—
-            //ResultSetã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã‚’å®Ÿè£…ã—ãŸã‚¯ãƒ©ã‚¹ã®
-            //ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãŒè¿”ã‚‹
-            ResultSet rs=st.executeQuery(sql + threadId);
+            ResultSet rs = sqlNecessary.execute(sql);
 
             while(rs.next())
             {
-                String id = rs.getString(1); // 1åˆ—ç›®ã®ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—
-                String name = rs.getString(2); // 2åˆ—ç›®ã®ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—
-                String content = rs.getString(3); // 3åˆ—ç›®ã®ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—
-                String tag = rs.getString(4); // 4åˆ—ç›®ã®ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—
-                String date = rs.getString(5); // 5åˆ—ç›®ã®ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—
-                String likes = rs.getString(6); // 6åˆ—ç›®ã®ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—
+                String id = rs.getString(1); // 1—ñ–Ú‚Ìƒf[ƒ^‚ğæ“¾
+                String name = rs.getString(2); // 2—ñ–Ú‚Ìƒf[ƒ^‚ğæ“¾
+                String content = rs.getString(3); // 3—ñ–Ú‚Ìƒf[ƒ^‚ğæ“¾
+                String tag = rs.getString(4); // 4—ñ–Ú‚Ìƒf[ƒ^‚ğæ“¾
+                String date = rs.getString(5); // 5—ñ–Ú‚Ìƒf[ƒ^‚ğæ“¾
+                String likes = rs.getString(6); // 6—ñ–Ú‚Ìƒf[ƒ^‚ğæ“¾
                 
                 targetThread.setThread_id(Integer.parseInt(id));
                 targetThread.setUser_name(name);
@@ -148,21 +118,21 @@ public ArrayList<TB_RES_Bean> SelectResInfo(int threadId){ //è¿”ä¿¡æƒ…å ±ã‚’å–å
             }
 
 
-            //Oracleã‹ã‚‰åˆ‡æ–­ã™ã‚‹
-            cn.close();
+            //Oracle‚©‚çØ’f‚·‚é
+            sqlNecessary.closeDB();
         }
         
         catch(ClassNotFoundException e){
             e.printStackTrace();
-            System.out.println("ã‚¯ãƒ©ã‚¹ãŒãªã„ã¿ãŸã„ã€‚");
+            System.out.println("ƒNƒ‰ƒX‚ª‚È‚¢‚İ‚½‚¢B");
             }catch(SQLException e){
             e.printStackTrace();
-            System.out.println("SQLé–¢é€£ã®ä¾‹å¤–ã¿ãŸã„ã€‚");
+            System.out.println("SQLŠÖ˜A‚Ì—áŠO‚İ‚½‚¢B");
             }catch(Exception e){
             e.printStackTrace();
             }
         
-        //beanã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’è¿”ã™ã€‚
+        //bean‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ•Ô‚·B
         return targetThread;
     }
 }

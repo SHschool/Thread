@@ -1,46 +1,30 @@
 package orcl;
 
-import java.io.IOException;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.math.BigDecimal;
-import bean.UserInfoBean;
 
 public class UserInfoDataBase{
     private boolean insertFlag = false; // 登録判定フラグ
     private boolean selectFlag = false; // ログインフラグ
-    private UserInfoBean user = new UserInfoBean(); //bean
 
-    public boolean insertUserInfo(String name,String pass){ // 新規会員登録情報を挿入
+    public boolean insertUserInfo(String name,String pass) throws SQLException{ // 新規会員登録情報を挿入
         try{
-            Class.forName("oracle.jdbc.driver.OracleDriver");
+            String sql =
+                "INSERT INTO userInfo(userId,name,pass) VALUES(seq_userId.NEXTVAL,'" 
+                + name + "','" 
+                + pass + "')";
 
-            // Oracleに接続する
-            Connection cn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "info", "pro");
-
-            String sql = "INSERT INTO userInfo(userId,name,pass) VALUES(seq_userId.NEXTVAL,'" + name + "','" + pass + "')";
-
-            Statement st = cn.createStatement();
-            ResultSet rs = st.executeQuery(sql);
+            ResultSet rs = sqlNecessary.execute(sql);
 
             // Oracleから切断する
-            cn.close();
+            sqlNecessary.closeDB();
 
             insertFlag = true;
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
             System.out.println("クラスがないみたい。");
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.out.println("SQL関連の例外みたい。");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        } 
         return insertFlag;
     }
 
@@ -49,15 +33,9 @@ public class UserInfoDataBase{
 
             int count = 0; // データの取得数
 
-            Class.forName("oracle.jdbc.driver.OracleDriver");
+            String sql = "select userId,name,pass from userInfo where name = '" + name + "' AND pass = '" + pass + "'";
 
-            // Oracleに接続する
-            Connection cn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "info", "pro");
-
-            String sql = "select userId,name,pass from userInfo where pass = '" + pass + "'";
-
-            Statement st = cn.createStatement();
-            ResultSet rs = st.executeQuery(sql);
+            ResultSet rs = sqlNecessary.execute(sql);
 
             while(rs.next()){
                 int userId = rs.getInt(1);
@@ -72,7 +50,7 @@ public class UserInfoDataBase{
             }
 
             // Oracleから切断する
-            cn.close();
+            sqlNecessary.closeDB();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
             System.out.println("クラスがないみたい。");
@@ -85,26 +63,19 @@ public class UserInfoDataBase{
         return selectFlag;
     }
 
-    public UserInfoBean selectUserName(String pass){
+    public String selectUserName(String pass){
+        String userName = "";
         try{
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-
-            // Oracleに接続する
-            Connection cn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "info", "pro");
-
             String sql = "select name from userInfo Where pass = '" + pass + "'";
 
-            Statement st = cn.createStatement();
-            ResultSet rs = st.executeQuery(sql);
+            ResultSet rs = sqlNecessary.execute(sql);
 
             while(rs.next()){
-                String name = rs.getString(1);
-
-                user.setUserName(name);
+                userName = rs.getString(1);
             }
 
             // Oracleから切断する
-            cn.close();
+            sqlNecessary.closeDB();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
             System.out.println("クラスがないみたい。");
@@ -114,6 +85,7 @@ public class UserInfoDataBase{
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return user; 
+        return userName; 
     }
+
 }

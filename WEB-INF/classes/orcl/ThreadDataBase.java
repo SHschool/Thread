@@ -1,20 +1,12 @@
 package orcl;
 
-import java.io.IOException;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import bean.TB_POST_Bean;
 
 public class ThreadDataBase{
-
-    // public static void main(String[] args){
     private boolean insertFlag = false;
     public ArrayList<TB_POST_Bean> _list = new ArrayList<TB_POST_Bean>();
     private boolean addFlag = false;
@@ -22,22 +14,17 @@ public class ThreadDataBase{
 
     public boolean IsThreadInsert(String name, String content, String tag) {
         try {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
+            String sql = 
+                "INSERT INTO tb_post(thread_id,user_name,content,tag,thread_date)VALUES(threadId.NEXTVAL,'" 
+                + name + "','" 
+                + content + "','" 
+                + tag 
+                + "',SYSDATE)";
 
-            // Oracleに接続する
-            Connection cn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "info", "pro");
-
-            String sql = "INSERT INTO tb_post(thread_id,user_name,content,tag,thread_date) VALUES(threadId.NEXTVAL";
-            String sql2 = ",SYSDATE)";
-            name = ",'" + name + "'";
-            content = ",'" + content + "'";
-            tag = ",'" + tag + "'";
-
-            Statement st = cn.createStatement();
-            ResultSet rs = st.executeQuery(sql + name + content + tag + sql2);
+            ResultSet rs = sqlNecessary.execute(sql);
 
             // Oracleから切断する
-            cn.close();
+            sqlNecessary.closeDB();
 
             insertFlag = true;
         } catch (ClassNotFoundException e) {
@@ -54,21 +41,13 @@ public class ThreadDataBase{
 
     public ArrayList<TB_POST_Bean> SelectThreadInfo() { // 返信情報を取得してArrayListで返す
         try {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-
-            // Oracleに接続する
-            Connection cn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "info", "pro");
-
             // select文
-            String sql = " SELECT thread_id,user_name,content,tag,to_char(thread_date,'HH24:mi yyyy/mm/dd'),likes FROM tb_post ORDER BY thread_date DESC";
+            String sql =
+                " SELECT thread_id,user_name,content,tag,to_char(thread_date,'HH24:mi yyyy/mm/dd'),"
+                + "likes FROM tb_post ORDER BY thread_date DESC";
 
-            // Statementインターフェイスを実装するクラスをインスタンス化する
-            Statement st = cn.createStatement();
+            ResultSet rs = sqlNecessary.execute(sql);
 
-            // select文を実行し
-            // ResultSetインターフェイスを実装したクラスの
-            // インスタンスが返る
-            ResultSet rs = st.executeQuery(sql);
             // カーソルを一行だけスクロールし、データをフェッチする
             while (rs.next()) {
                 TB_POST_Bean user = new TB_POST_Bean();
@@ -91,7 +70,7 @@ public class ThreadDataBase{
             }
 
             // Oracleから切断する
-            cn.close();
+            sqlNecessary.closeDB();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
             System.out.println("クラスがないみたい。");
@@ -107,18 +86,12 @@ public class ThreadDataBase{
 
     public boolean IsAddLikesNumber(int id) {
         try {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
+            String sql = "UPDATE tb_post SET likes = likes + 1 WHERE thread_id = " + id;
 
-            // Oracleに接続する
-            Connection cn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "info", "pro");
-
-            String sql = "UPDATE tb_post SET likes = likes + 1 WHERE thread_id = ";
-
-            Statement st = cn.createStatement();
-            ResultSet rs = st.executeQuery(sql + id);
+            ResultSet rs = sqlNecessary.execute(sql);
 
             // Oracleから切断する
-            cn.close();
+            sqlNecessary.closeDB();
 
             addFlag = true;
         } catch (ClassNotFoundException e) {
@@ -135,18 +108,12 @@ public class ThreadDataBase{
 
     public boolean IsDeletePost(int id) {
         try {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-
-            // Oracleに接続する
-            Connection cn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "info", "pro");
-
             String sql = "DELETE FROM tb_post WHERE thread_id = " + id;
 
-            Statement st = cn.createStatement();
-            ResultSet rs = st.executeQuery(sql);
+            ResultSet rs = sqlNecessary.execute(sql);
 
             // Oracleから切断する
-            cn.close();
+            sqlNecessary.closeDB();
 
             deleteFlag = true;
         } catch (ClassNotFoundException e) {
@@ -163,20 +130,12 @@ public class ThreadDataBase{
 
     public ArrayList<TB_POST_Bean> wordSearch(String word) {
         try {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
+            String sql = 
+                "SELECT thread_id,user_name,content,tag,to_char(thread_date,'HH24:mi yyyy/mm/dd'),"
+                + "likes FROM tb_post WHERE tag LIKE '%" + word + "%' ORDER BY thread_date DESC";
 
-            // Oracleに接続する
-            Connection cn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "info", "pro");
+            ResultSet rs = sqlNecessary.execute(sql);
 
-            String sql = " SELECT thread_id,user_name,content,tag,to_char(thread_date,'HH24:mi yyyy/mm/dd'),likes FROM tb_post WHERE tag LIKE '%" + word + "%' ORDER BY thread_date DESC";
-
-            // Statementインターフェイスを実装するクラスをインスタンス化する
-            Statement st = cn.createStatement();
-
-            // select文を実行し
-            // ResultSetインターフェイスを実装したクラスの
-            // インスタンスが返る
-            ResultSet rs = st.executeQuery(sql);
             // カーソルを一行だけスクロールし、データをフェッチする
             while (rs.next()) {
                 TB_POST_Bean user = new TB_POST_Bean();
@@ -199,7 +158,7 @@ public class ThreadDataBase{
             }
 
             // Oracleから切断する
-            cn.close();
+            sqlNecessary.closeDB();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
             System.out.println("クラスがないみたい。");
