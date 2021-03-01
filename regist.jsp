@@ -11,7 +11,7 @@
             <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-            <title>Document</title>
+            <title>新規会員登録</title>
         </head>
 
         <body>
@@ -39,18 +39,18 @@
                                         <div class="row form-group mt-2 mb-4">
                                             <div class="input-group input-group-lg my-4">
                                                 <div class="col-xl-12 col-lg-10 col-md-10 col-sm-9 col-12">
-                                                    <input type="text" name="name" class="form-control form-control-lg mt-2" placeholder="名前を入力してください" pattern="\S+" required>
+                                                    <input type="text" name="userName" class="form-control form-control-lg mt-2" placeholder="名前を入力してください" pattern="\S+" required>
                                                     <!-- formが空だった時に表示される文章 -->
-                                                    <div class="invalid-feedback ml-2"> 名前が入力されていません</div>
+                                                    <div class="invalid-feedback"> 名前が入力されていません</div>
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- password row -->
                                         <div class="row form-group my-4">
                                             <div class="col-xl-12 col-lg-10 col-md-10 col-sm-9 col-12">
-                                                <input type="password" name="pass" class="form-control form-control-lg mt-2" placeholder="パスワードを入力して下さい" pattern="\S+" required>
+                                                <input type="password" name="password" class="form-control form-control-lg mt-2" placeholder="パスワードを入力して下さい" pattern="\S+" required>
                                                 <!-- formが空だった時に表示される文章 -->
-                                                <div class="invalid-feedback ml-2">パスワードが入力されていません</div>
+                                                <div class="invalid-feedback">パスワードが入力されていません</div>
                                             </div>
                                         </div>
                                         <!-- button -->
@@ -69,7 +69,7 @@
                     </div>
                 </div>
             </main>
-
+            
             <!-- 文字が打ち込まれていないときに使われるやつ -->
             <script>
                 (function () {
