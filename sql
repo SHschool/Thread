@@ -28,3 +28,5 @@ userId number(8) not null constraint pk_user_id primary key,
 name varchar2(20) not null,
 pass varchar2(10) not null constraint uq_pass unique
 );
+
+create sequence seq_userId start with 1 increment by 1; 
