@@ -1,4 +1,4 @@
-<%@ page pageEncoding="Windows-31J" contentType="text/html;charset=Windows-31J" isErrorPage="true"%>
+<%@ page pageEncoding="Windows-31J" contentType="text/html;charset=Windows-31J" isErrorPage="true" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
         <!DOCTYPE html>
@@ -24,27 +24,27 @@
 
                         <!-- center -->
                         <div class="col-xl-6 col-12">
-                        <!-- twitter icon -->
-                        <div class="text-center">
-                            <i class="fab fa-twitter fa-fw fa-3x mt-4 my-3" style="color: cornflowerblue;"></i>
-                        </div>
+                            <!-- twitter icon -->
+                            <div class="text-center">
+                                <i class="fab fa-twitter fa-fw fa-3x mt-4 my-3" style="color: cornflowerblue;"></i>
+                            </div>
 
-                        <p class="h3 my-2 text-center font-weight-bold">登録完了しました。</p>
-                        <p class="h3 my-2 text-center font-weight-bold">再度ログインをしてください。</p>
+                            <p class="h3 my-2 text-center font-weight-bold">登録完了しました。</p>
+                            <p class="h3 my-2 text-center font-weight-bold">再度ログインをしてください。</p>
 
-                        <!-- button -->
-                        <div class="text-right mt-4 text-center">
-                            <a href="log">ログイン画面へ戻る</a>
+                            <!-- button -->
+                            <div class="text-right mt-4 text-center">
+                                <a href="log">ログイン画面へ戻る</a>
+                            </div>
                         </div>
                     </div>
+                    <!-- regist form -->
                 </div>
-                            <!-- regist form -->
-                        </div>
 
-                        <!-- 中央寄せ用 -->
-                        <div class="col-xl-3"></div>
-                        <!-- 中央寄せ用 -->
-                    </div>
+                <!-- 中央寄せ用 -->
+                <div class="col-xl-3"></div>
+                <!-- 中央寄せ用 -->
+                </div>
                 </div>
             </main>
         </body>

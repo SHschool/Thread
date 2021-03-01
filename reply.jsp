@@ -5,13 +5,16 @@
         <html lang="ja">
 
         <head>
-            <meta charset="Shift-jis">
+            <meta charset="SJIS">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
             <link rel="stylesheet" href="css/style.css">
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-            <title>返信</title>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+            <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+            <title>返信 / Twitter</title>
         </head>
 
         <body>
@@ -23,10 +26,10 @@
                         <!-- sidebar -->
                         <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 d-none d-md-block" id="top">
                             <div class="row d-flex flex-column align-items-center sticky-top">
-                                <a href="thread" style="color: cornflowerblue;"><i class="fab fa-twitter fa-fw fa-3x mt-3 my-3"></i></a>
-                                <a href="thread" style="color: cornflowerblue;"><i class="fas fa-home fa-fw fa-2x my-3"></i></a>
-                                <a href="regist.jsp" style="color: black"><i class="far fa-user fa-fw fa-2x my-3"></i></a>
-                                <a href="#top"    class="my-2"><i class="far fa-arrow-alt-circle-up   fa-fw fa-3x" style="color: black;"></i></a>
+                                <a href="thread#top" style="color: cornflowerblue;"><i class="fab fa-twitter fa-fw fa-3x mt-3 my-3"></i></a>
+                                <a href="thread#top" data-toggle="tooltip" data-placement="left" title="ホームに戻る" style="color: black;"><i class="fas fa-home fa-fw fa-2x my-3"></i></a>
+                                <a href="logout" data-toggle="tooltip" data-placement="left" title="ログアウト" style="color: black;"><i class="fas fa-sign-out-alt fa-fw fa-2x my-3"></i></a>
+                                <a href="#top" class="my-2"><i class="far fa-arrow-alt-circle-up   fa-fw fa-3x" style="color: black;"></i></a>
                                 <a href="#bottom" class="my-2"><i class="far fa-arrow-alt-circle-down fa-fw fa-3x" style="color: black;"></i></a>
                             </div>
                         </div>
@@ -42,16 +45,23 @@
                                 </div>
                             </div>
                             <!-- スマホ以上で表示 -->
-                            <div class="row sticky-top d-none d-sm-block" id="top">
-                                <div class="col-12 bg-white border border-top">
-                                    <p class="h3 my-3 ml-1 font-weight-bold">返信</p>
+                            <div class="sticky-top d-none d-sm-block" id="top">
+                                <div class="row bg-white border border-top">
+                                    <!-- arrow icon -->
+                                    <div class="col-1">
+                                        <a href="thread"><i class="fas fa-long-arrow-alt-left fa-fw fa-2x my-3 ml-2" style="color: cornflowerblue"></i></a>
+                                    </div>
+                                    <div class="col-11">
+                                        <p class="h3 my-3 font-weight-bold">返信</p>
+                                    </div>
                                 </div>
                             </div>
 
                             <!-- 返信元tweet -->
                             <div class="row" id="tweet" style="border:3px solid; border-color: red;">
                                 <div class="col-xl-1 col-lg-2 col-md-2 col-sm-2 col-2 my-4">
-                                    <i class="fab fa-font-awesome-flag fa-2x "></i>                                </div>
+                                    <i class="fab fa-font-awesome-flag fa-2x "></i>   
+                                </div>
                                 <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10 mt-4 mb-2">
                                     <span class="h4"><c:out value="${targetThreads.user_name}" /></span>
                                     <p class="h4 my-3"><c:out value="${targetThreads.content}" /></p>
@@ -79,7 +89,7 @@
                             <!-- 返信ツイート一覧ここまで -->
 
                             <!-- 投稿フォーム -->
-                            <div class="row border border-top-0" >
+                            <div class="row border border-top-0">
                                 <!-- icon -->
                                 <div class="col-xl-1 col-lg-2 col-md-2 col-sm-2 col-2">
                                 </div>
@@ -100,6 +110,8 @@
                                     </form>
                                 </div>
                             </div>
+
+                            <div class="my-3"></div>
                             <!-- 投稿フォームここまで -->
                         </div>
                     </div>
@@ -128,20 +140,19 @@
                 </div>
             </footer>
             <!-- スマホのみ表示ここまで -->
-
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
             <script>
-                $('form').on('submit', function (evt) {
+                $('.userInfo').on('submit', function (evt) {
                     if (!$('#textarea').val().match(/[^\s]+/)) {
                         evt.preventDefault();
                         evt.stopPropagation();
                     }
-                    form.classList.add('was-validated');
                 });
                 // テキストエリアの高さ自動調整
                 $("textarea").attr("rows", 2).on("input", e => {
                     $(e.target).height(0).innerHeight(e.target.scrollHeight);
                 });
+
+                $('[data-toggle="tooltip"]').tooltip();
             </script>
 
         </body>

@@ -14,7 +14,7 @@
             <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
             <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-            <title>top</title>
+            <title>ホーム / Twitter</title>
         </head>
 
         <body>
@@ -26,8 +26,8 @@
                         <!-- sidebar -->
                         <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 d-none d-md-block" id="top">
                             <div class="row d-flex flex-column align-items-center sticky-top">
-                                <a href="thread" style="color: cornflowerblue;"><i class="fab fa-twitter fa-fw fa-3x mt-3 my-3"></i></a>
-                                <a href="thread" data-toggle="tooltip" data-placement="left" title="ホームに戻る" style="color: cornflowerblue;"><i class="fas fa-home fa-fw fa-2x my-3"></i></a>
+                                <a href="thread#top" style="color: cornflowerblue;"><i class="fab fa-twitter fa-fw fa-3x mt-3 my-3"></i></a>
+                                <a href="thread#top" data-toggle="tooltip" data-placement="left" title="ホームに戻る" style="color: cornflowerblue;"><i class="fas fa-home fa-fw fa-2x my-3"></i></a>
                                 <a href="logout" data-toggle="tooltip" data-placement="left" title="ログアウト" style="color: black;"><i class="fas fa-sign-out-alt fa-fw fa-2x my-3"></i></a>
                                 <a href="" class="btn btn-primary rounded-circle shadow my-3" role="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="color: white;"><i class="far fa-edit fa-fw py-2"></i></a>
                                 <a href="#top" class="my-2"><i class="far fa-arrow-alt-circle-up   fa-fw fa-3x" style="color: black;"></i></a>
@@ -58,7 +58,7 @@
                                                 <div class="input-group input-group-lg mt-4">
                                                     <textarea name="content" id="textarea" class="form-control rounded" placeholder="いまどうしてる？" maxlength="280" required></textarea>
                                                 </div>
-                                                <input type="text" name="tag" class="form-control form-control-lg mt-3" placeholder="タグを入力して下さい" pattern="\S+" maxlength="120" required>
+                                                <input type="text" name="tag" class="form-control form-control-lg mt-3" placeholder="タグを入力して下さい" pattern="\S+" maxlength="120">
                                             </div>
                                             <div class="text-right">
                                                 <button type="submit" class="btn btn-primary btn-lg my-3 mb-2 rounded-pill font-weight-bold"><span>ツイートする</span></button>
@@ -83,7 +83,7 @@
                                         <span class="h6 ml-3" style="color: gray;"><c:out value="${thread.date}" /></span>
                                         <p class="h4 my-3" style="white-space: pre-wrap;"><c:out value="${thread.content}" /></p>
                                         <p class="h4 my-3"><c:out value="${thread.tag}" /></p>
-                                        <!--  -->
+                                        <!-- icons -->
                                         <div class="row">
                                             <!-- reply button -->
                                             <div class="col-xl-3 col-2">
@@ -114,11 +114,12 @@
                                         <div class="input-group-prepend">
                                             <button class="btn btn-secondary bg-white mr-1" type="submit" id="button-addon1" style="border: none;"><i class="fas fa-search fa-fw fa-1x" style="color: cornflowerblue;"></i></button>
                                         </div>
-                                        <input type="search" name="tag" style="border-radius: 100px;" class="form-control form-control-lg col-10" placeholder="キーワード検索" aria-label="Example text with button addon" aria-describedby="button-addon1" required>
+                                        <input type="search" name="tag" class="form-control form-control-lg col-10 py-4" placeholder="タグ検索" aria-label="text with button addon" aria-describedby="button-addon1"  style="border-radius: 100px; background-color: #EBEEF0;"  required>
                                     </div>
                                 </form>
                             </div>
                         </div>
+
                         <!-- 検索フォーム -->
                         <!-- <div class="col-1"></div> -->
                     </div>
@@ -202,6 +203,7 @@
                         $(window).scrollTop(sessionStorage.scrollTop);
                     }
                 });
+                // ツールチップ用
                 $('[data-toggle="tooltip"]').tooltip();
             </script>
         </body>

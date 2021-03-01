@@ -14,22 +14,18 @@
             <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
             <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-            <title>ログイン画面</title>
+            <title>Twitterにログイン / Twitter</title>
         </head>
 
         <body>
             <main>
-                <div class="container-fluid">
+                <div class="container">
                     <div class="row">
-                        <!-- 中央寄せ用 -->
-                        <div class="col-xl-3"></div>
-                        <!-- 中央寄せ用 -->
-
                         <!-- center -->
-                        <div class="col-xl-6 col-12">
+                        <div class="col-xl-8 col-12 mx-auto">
                             <!-- twitter icon -->
                             <div class="text-center">
-                                <i class="fab fa-twitter fa-fw fa-3x mt-4 my-3" style="color: cornflowerblue;"></i>
+                                <i class="fab fa-twitter fa-fw fa-3x mt-4 my-4" style="color: cornflowerblue;"></i>
                             </div>
 
                             <p class="h3 my-2 text-center font-weight-bold">Twitterにログイン</p>
@@ -42,21 +38,19 @@
                                         <!-- name row -->
                                         <div class="row form-group mt-2 mb-4">
                                             <div class="input-group input-group-lg my-4">
-                                                <!-- <p class="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-12 h4 my-3 text-center ">ID</p> -->
-                                                <div class="col-xl-12 col-lg-10 col-md-10 col-sm-9 col-12">
+                                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                                     <input type="text" name="userName" class="form-control form-control-lg mt-2" placeholder="名前を入力してください" pattern="\S+" required>
                                                     <!-- formが空だった時に表示される文章 -->
-                                                    <div class="invalid-feedback"> 名前が入力されていません</div>
+                                                    <div class="invalid-feedback ml-3"> 名前が入力されていません</div>
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- password row -->
                                         <div class="row form-group my-4">
-                                            <!-- <p class="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-12 h4 my-3 text-center">PASSWORD</p> -->
-                                            <div class="col-xl-12 col-lg-10 col-md-10 col-sm-9 col-12">
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                                 <input type="password" name="password" class="form-control form-control-lg mt-2" placeholder="パスワードを入力して下さい" pattern="\S+" required>
                                                 <!-- formが空だった時に表示される文章 -->
-                                                <div class="invalid-feedback">パスワードが入力されていません</div>
+                                                <div class="invalid-feedback ml-3">パスワードが入力されていません</div>
                                             </div>
                                         </div>
                                         <!-- button -->
@@ -69,18 +63,15 @@
 
                                 <!-- account link -->
                                 <div class="col-12 text-center">
-                                    <a href="regi" class="mt-5">アカウント作成</a>
+                                    <a href="regi" class="mt-5 h5">アカウント作成</a>
                                 </div>
                             </div>
-                                <div>
-                                    <p class="col-12 text-center" style="color:red; font-size:25px;">${errorMess}</p>
-                                </div>
+
+                            <div>
+                                <p class="col-12 text-center mt-3" style="color:red; font-size:25px;">${errorMess}</p>
+                            </div>
                         </div>
                         <!-- center -->
-
-                        <!-- 中央寄せ用 -->
-                        <div class="col-xl-3"></div>
-                        <!-- 中央寄せ用 -->
                     </div>
                 </div>
             </main>
