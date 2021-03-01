@@ -27,10 +27,8 @@
                         <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 d-none d-md-block" id="top">
                             <div class="row d-flex flex-column align-items-center sticky-top">
                                 <a href="thread" style="color: cornflowerblue;"><i class="fab fa-twitter fa-fw fa-3x mt-3 my-3"></i></a>
-                                <a href="thread" style="color: cornflowerblue;"><i class="fas fa-home fa-fw fa-2x my-3"></i></a>
-                                <a href="         " style="color: black;"><i class="fas fa-hashtag fa-fw fa-2x my-3"></i></a>
-                                <a href="         " style="color: black;"><i class="far fa-bell fa-fw fa-2x my-3"></i></a>
-                                <a href="regist.jsp" style="color: black"><i class="far fa-user fa-fw fa-2x my-3"></i></a>
+                                <a href="thread" data-toggle="tooltip" data-placement="left" title="ホームに戻る" style="color: cornflowerblue;"><i class="fas fa-home fa-fw fa-2x my-3"></i></a>
+                                <a href="logout" data-toggle="tooltip" data-placement="left" title="ログアウト" style="color: black;"><i class="fas fa-sign-out-alt fa-fw fa-2x my-3"></i></a>
                                 <a href="" class="btn btn-primary rounded-circle shadow my-3" role="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="color: white;"><i class="far fa-edit fa-fw py-2"></i></a>
                                 <a href="#top" class="my-2"><i class="far fa-arrow-alt-circle-up   fa-fw fa-3x" style="color: black;"></i></a>
                                 <a href="#bottom" class="my-2"><i class="far fa-arrow-alt-circle-down fa-fw fa-3x" style="color: black;"></i></a>
@@ -45,12 +43,6 @@
                                 </div>
                             </div>
 
-
-
-                            <!--ログアウトボタン（仮）-->
-                            <div><a href="logout">ログアウト</a></div>
-
-
                             <!-- 投稿 -->
                             <div class="collapse" id="collapseExample">
                                 <div class="row border border-top-0">
@@ -62,9 +54,9 @@
                                     <div class="col-xl-11 col-lg-10 col-md-10 col-sm-10 col-9">
                                         <form method="POST" action="thread" class="userInfo">
                                             <div class="form-group">
-                                                <input type="text" name="name"  value="${targetName}"  class="form-control form-control-lg mt-3" placeholder="名前" pattern="\S+" maxlength="40" required hidden>
+                                                <input type="text" name="name" value="${targetName}" class="form-control form-control-lg mt-3" placeholder="名前" pattern="\S+" maxlength="40" required hidden>
                                                 <div class="input-group input-group-lg mt-4">
-                                                    <textarea name="content" id="textarea" class="form-control rounded" placeholder="いまどうしてる？" maxlength="280" style="border: ;" required></textarea>
+                                                    <textarea name="content" id="textarea" class="form-control rounded" placeholder="いまどうしてる？" maxlength="280" required></textarea>
                                                 </div>
                                                 <input type="text" name="tag" class="form-control form-control-lg mt-3" placeholder="タグを入力して下さい" pattern="\S+" maxlength="120" required>
                                             </div>
@@ -171,17 +163,15 @@
                         evt.stopPropagation();
                     }
                 });
-
                 // 検索用
-                function check(){
-                    var a=document.search_form.q.value;
-                    if(a==""){
+                function check() {
+                    var a = document.search_form.q.value;
+                    if (a == "") {
                         return false;
-                    }else if(!a.match(/\S/g)){
+                    } else if (!a.match(/\S/g)) {
                         return false;
                     }
                 }
-
                 // テキストエリアの高さ自動調整
                 $("textarea").attr("rows", 2).on("input", e => {
                     $(e.target).height(0).innerHeight(e.target.scrollHeight);
@@ -203,17 +193,16 @@
                         });
                     });
                 }
-
                 // いいねしたときに位置を保持するやつ
-                $(window).scroll(function() {
-                        sessionStorage.scrollTop = $(this).scrollTop();
+                $(window).scroll(function () {
+                    sessionStorage.scrollTop = $(this).scrollTop();
                 });
-
-                $(document).ready(function() {
+                $(document).ready(function () {
                     if (sessionStorage.scrollTop != "undefined") {
-                    $(window).scrollTop(sessionStorage.scrollTop);
+                        $(window).scrollTop(sessionStorage.scrollTop);
                     }
                 });
+                $('[data-toggle="tooltip"]').tooltip();
             </script>
         </body>
 

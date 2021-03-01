@@ -25,10 +25,7 @@
                             <div class="row d-flex flex-column align-items-center sticky-top">
                                 <a href="thread" style="color: cornflowerblue;"><i class="fab fa-twitter fa-fw fa-3x mt-3 my-3"></i></a>
                                 <a href="thread" style="color: cornflowerblue;"><i class="fas fa-home fa-fw fa-2x my-3"></i></a>
-                                <a href="         " style="color: black;"><i class="fas fa-hashtag fa-fw fa-2x my-3"></i></a>
-                                <a href="         " style="color: black;"><i class="far fa-bell fa-fw fa-2x my-3"></i></a>
                                 <a href="regist.jsp" style="color: black"><i class="far fa-user fa-fw fa-2x my-3"></i></a>
-                                <!-- <a href="" class="btn btn-primary rounded-circle shadow my-3" role="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="color: white;"><i class="far fa-edit fa-fw py-2"></i></a> -->
                                 <a href="#top"    class="my-2"><i class="far fa-arrow-alt-circle-up   fa-fw fa-3x" style="color: black;"></i></a>
                                 <a href="#bottom" class="my-2"><i class="far fa-arrow-alt-circle-down fa-fw fa-3x" style="color: black;"></i></a>
                             </div>
@@ -52,25 +49,15 @@
                             </div>
 
                             <!-- 返信元tweet -->
-                            <div class="row border border-top-0" style="border-width: 10px;">
+                            <div class="row" id="tweet" style="border:3px solid; border-color: red;">
                                 <div class="col-xl-1 col-lg-2 col-md-2 col-sm-2 col-2 my-4">
-                                    <i class="far fa-user-circle fa-4x"></i>
-                                </div>
-                                <div class="col-xl-11 col-lg-10 col-md-10 col-sm-10 col-10 mt-4 mb-2">
+                                    <i class="fab fa-font-awesome-flag fa-2x "></i>                                </div>
+                                <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10 mt-4 mb-2">
                                     <span class="h4"><c:out value="${targetThreads.user_name}" /></span>
                                     <p class="h4 my-3"><c:out value="${targetThreads.content}" /></p>
                                     <p class="h5 text-muted mb-3"><c:out value="${targetThreads.date}" /></p>
-                                    <div class="row">
-                                        <div class="col-3">
-                                            <a href="like?threadid=${thread.thread_id}" class="mt-2"><i class="far fa-heart fa-fw fa-lg mt-3 mb-4" style="color: red;"><span class="ml-2" style="color: black; font-size: 21px;">${thread.likes}</span></i></a>
-                                        </div>
-                                        <div class="col-3">
-                                            <a href="delete?threadid=${thread.thread_id}" class="mt-2"><i class="far fa-trash-alt fa-fw fa-lg mt-3 mb-4" style="color: gray;"></i></a>
-                                        </div>
-                                        <div class="col-3"></div>
-                                        <div class="col-3"></div>
-                                    </div>
                                 </div>
+                                <div class="col-xl-1"></div>
                             </div>
                             <!-- 返信元tweetここまで -->
 
@@ -79,10 +66,10 @@
                                 <div class="row border border-top-0">
                                     <!-- face icon -->
                                     <div class="col-xl-1 col-lg-1 col-md-2 col-sm-2 col-3 my-4">
-                                        <i class="far fa-user-circle fa-4x"></i>
+                                        <i class="fab fa-font-awesome-flag fa-2x"></i>
                                     </div>
 
-                                    <div class="col-xl-11 col-lg-11 col-md-10 col-sm-10 col-9 mt-4">
+                                    <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-9 mt-4">
                                         <span class="h4"><c:out value="${resThread.res_name}" /></span>
                                         <span class="h6 ml-3" style="color: gray;"><c:out value="${resThread.res_date}" /></span>
                                         <p class="h4 my-3" style="white-space: pre-wrap;"><c:out value="${resThread.res_content}" /></p>
@@ -95,14 +82,13 @@
                             <div class="row border border-top-0" >
                                 <!-- icon -->
                                 <div class="col-xl-1 col-lg-2 col-md-2 col-sm-2 col-2">
-                                    <i class="far fa-user-circle fa-4x my-4"></i>
                                 </div>
                                 <div class="col-xl-11 col-lg-10 col-md-10 col-sm-10 col-10">
                                     <!-- form -->
                                     <form method="POST" action="res" class="userInfo">
                                         <div class="form-group">
                                             <div class="input-group input-group-lg mt-4">
-                                                <input type="text" name="name" class="form-control form-control-lg rounded mt-3" placeholder="名前" pattern="\S+" maxlength="40" required>
+                                                <input type="text" name="name" value="${targetName}" class="form-control form-control-lg rounded mt-3" placeholder="名前" pattern="\S+" maxlength="40" required hidden>
                                                 <div class="input-group input-group-lg mt-4">
                                                     <textarea name="content" id="textarea" class="form-control rounded" placeholder="いまどうしてる？" maxlength="280" style="border: none;" required></textarea>
                                                 </div>
