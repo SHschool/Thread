@@ -7,48 +7,59 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import javax.servlet.http.HttpSession;
+
 import orcl.ThreadDataBase;
 import bean.TB_POST_Bean;
 
 public class ThreadServlet extends HttpServlet {
-    //beanã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å—ã‘å–ã‚‹ArrayList
-    private ArrayList<TB_POST_Bean> threads = new ArrayList<TB_POST_Bean>(); 
 
     protected void doGet(HttpServletRequest req, HttpServletResponse res) 
-    throws ServletException, IOException { //URLã‚’ãŸãŸã„ãŸæ™‚ã‚¹ãƒ¬ãƒƒãƒ‰ã®ä¸€è¦§ã‚’è¡¨ç¤ºã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
+    throws ServletException, IOException { //URL‚ğ‚½‚½‚¢‚½ƒXƒŒƒbƒh‚Ìˆê——‚ğ•\¦‚·‚éƒƒ\ƒbƒh
+        req.setCharacterEncoding("Windows-31J"); //ƒGƒ“ƒR[ƒhw’è
 
-        req.setCharacterEncoding("Windows-31J"); //ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰æŒ‡å®š
-        threads.clear(); //ä¸€åº¦ä¸­èº«ã‚’ç©ºã«ã™ã‚‹
+        HttpSession session = req.getSession(false); //sessionƒIƒuƒWƒFƒNƒg‚Æ‚µ‚Ä“o˜^‚³‚ê‚½uloginSessionv‚ğæ“¾
+        String userName = (String)session.getAttribute("loginSession");
 
-        //ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«æ¥ç¶šã—ã¦insertãªã©ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰ãŒã‚ã‚‹ã‚¯ãƒ©ã‚¹ã‚’ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–
+        //ƒƒOƒCƒ“‚µ‚Ä‚È‚¢‚È‚çˆê——‚ªŒ©‚ê‚¸ƒƒOƒCƒ“‰æ–Ê‚Ö
+        if(userName == null){
+            RequestDispatcher dis = req.getRequestDispatcher("log");
+            dis.forward(req,res);
+        }
+
+        //ƒf[ƒ^ƒx[ƒX‚ÉÚ‘±‚µ‚Äinsert‚È‚Ç‚·‚éƒƒ\ƒbƒh‚ª‚ ‚éƒNƒ‰ƒX‚ğƒCƒ“ƒXƒ^ƒ“ƒX‰»
         ThreadDataBase th_db = new ThreadDataBase(); 
 
-         //ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã®æŠ•ç¨¿è¨˜äº‹ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—(æˆ»ã‚Šå€¤ï¼šbeanã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’æ ¼ç´ã—ãŸArrayList)
+         //ƒf[ƒ^ƒx[ƒX‚Ì“Še‹L–ƒf[ƒ^‚ğæ“¾(–ß‚è’lFbean‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğŠi”[‚µ‚½ArrayList)
         ArrayList<TB_POST_Bean> th_data = th_db.SelectThreadInfo();
+        req.setAttribute("targetName",userName);
+        req.setAttribute("threads", th_data); //JSP‚Åg‚¦‚é‚æ‚¤“o˜^ 
 
-        req.setAttribute("threads", th_data); //JSPã§ä½¿ãˆã‚‹ã‚ˆã†ç™»éŒ²
-
-        RequestDispatcher dis = req.getRequestDispatcher("index.jsp"); //è»¢é€å…ˆæŒ‡å®š
-        dis.forward(req, res); //è»¢é€
+        RequestDispatcher dis = req.getRequestDispatcher("index");
+        dis.forward(req,res);
     }
 
     protected void doPost(HttpServletRequest req, HttpServletResponse res) 
-    throws ServletException, IOException { //æ–°è¦ä½œæˆã®ãƒ‡ãƒ¼ã‚¿ã‚’ç™»éŒ²ã—ã¦è¡¨ç¤º
+    throws ServletException, IOException { //V‹Kì¬‚Ìƒf[ƒ^‚ğ“o˜^‚µ‚Ä•\¦
 
-        // ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‹ã‚‰ã®requestã«å«ã¾ã‚Œã¦ã„ãŸãƒ‡ãƒ¼ã‚¿ã®
-        // æ–‡å­—ã‚³ãƒ¼ãƒ‰ã‚’æŒ‡å®šã™ã‚‹
+        // ƒNƒ‰ƒCƒAƒ“ƒg‚©‚ç‚Ìrequest‚ÉŠÜ‚Ü‚ê‚Ä‚¢‚½ƒf[ƒ^‚Ì
+        // •¶šƒR[ƒh‚ğw’è‚·‚é
         req.setCharacterEncoding("Windows-31J");
-        threads.clear();
 
-        // POSTè¦æ±‚ã«ã‚ˆã£ã¦é€ä¿¡ã•ã‚ŒãŸãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹
+        // POST—v‹‚É‚æ‚Á‚Ä‘—M‚³‚ê‚½ƒpƒ‰ƒ[ƒ^‚ğæ“¾‚·‚é
         String name = req.getParameter("name");
         String content = req.getParameter("content");
         String tag = req.getParameter("tag");
 
-        // oracleæ¥ç¶šã‚¯ãƒ©ã‚¹ã‚’ã‚ˆã³ãƒ‡ãƒ¼ã‚¿ã‚’æŒ¿å…¥ã™ã‚‹
+        if(content == null){ // ƒpƒ‰ƒ[ƒ^[‚ª‚È‚¢‚Æ‚«‚ÍƒCƒ“ƒT[ƒg‚¹‚¸‚Éˆê——•\¦
+            doGet(req,res);
+            return; // ˆ—”²‚¯
+        }
+
+        // oracleÚ‘±ƒNƒ‰ƒX‚ğ‚æ‚Ñƒf[ƒ^‚ğ‘}“ü‚·‚é
         ThreadDataBase th_db = new ThreadDataBase();
 
-        if (th_db.IsThreadInsert(name, content, tag)) { //ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«æŠ•ç¨¿å‡ºæ¥ãŸã‚‰doGetãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã‚“ã§å†åº¦ä¸€è¦§è¡¨ç¤º
+        if (th_db.IsThreadInsert(name, content, tag)) { //ƒf[ƒ^ƒx[ƒX‚É“Šeo—ˆ‚½‚çdoGetƒƒ\ƒbƒh‚ğŒÄ‚ñ‚ÅÄ“xˆê——•\¦
                 doGet(req,res);
             }
         }

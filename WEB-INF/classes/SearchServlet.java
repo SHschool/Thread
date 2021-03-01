@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import orcl.ThreadDataBase;
-import bean.TB_POST_Bean;
+import bean.TB_POST_Bean; 
 
 public class SearchServlet extends HttpServlet {
     //beanのインスタンスを受け取るArrayList

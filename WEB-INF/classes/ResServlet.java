@@ -6,77 +6,83 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import orcl.ResDataBase;
 import bean.TB_RES_Bean;
 import bean.TB_POST_Bean;
 
 public class ResServlet extends HttpServlet {
-    //beanã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å—ã‘å–ã‚‹ArrayList
+    //bean‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğó‚¯æ‚éArrayList
     private ArrayList<TB_RES_Bean> resThreads = new ArrayList<TB_RES_Bean>();
-    private int th_id; //è¿”ä¿¡ã«å¯¾å¿œã™ã‚‹IDã‚’æ ¼ç´ã™ã‚‹
+    private int th_id; //•ÔM‚É‘Î‰‚·‚éID‚ğŠi”[‚·‚é
 
     protected void doGet(HttpServletRequest req, HttpServletResponse res) 
-    throws ServletException, IOException { //URLã‚’ãŸãŸã„ãŸæ™‚ã‚¹ãƒ¬ãƒƒãƒ‰ã®ä¸€è¦§ã‚’è¡¨ç¤ºã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
-        req.setCharacterEncoding("Windows-31J"); //ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰æŒ‡å®š
-        resThreads.clear(); //ä¸€åº¦ä¸­èº«ã‚’ç©ºã«ã™ã‚‹
+    throws ServletException, IOException { //URL‚ğ‚½‚½‚¢‚½ƒXƒŒƒbƒh‚Ìˆê——‚ğ•\¦‚·‚éƒƒ\ƒbƒh
+        req.setCharacterEncoding("Windows-31J"); //ƒGƒ“ƒR[ƒhw’è
+        resThreads.clear(); //ˆê“x’†g‚ğ‹ó‚É‚·‚é
 
-        //urlãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‹ã‚‰ã‚¹ãƒ¬ãƒƒãƒ‰ã®IDå–å¾—
+        HttpSession session = req.getSession(false);
+        String userName = (String)session.getAttribute("loginSession");
+
+        //urlƒpƒ‰ƒ[ƒ^‚©‚çƒXƒŒƒbƒh‚ÌIDæ“¾
         String threadId = req.getParameter("threadid");
         th_id = Integer.parseInt(threadId);
 
         ArrayList<TB_RES_Bean> res_data = displayList(th_id);        
-        req.setAttribute("resThreads", res_data); //JSPã§ä½¿ãˆã‚‹ã‚ˆã†ç™»éŒ²
+        req.setAttribute("resThreads", res_data); //JSP‚Åg‚¦‚é‚æ‚¤“o˜^
 
         TB_POST_Bean targetThread = displayResTarget(th_id);
-        req.setAttribute("targetThreads",targetThread); // è¿”ä¿¡å¯¾è±¡ãƒ‡ãƒ¼ã‚¿
+        req.setAttribute("targetThreads",targetThread); // •ÔM‘ÎÛƒf[ƒ^
+
+        req.setAttribute("targetName",userName); // •ÔMÒ–¼
         
-        RequestDispatcher dis = req.getRequestDispatcher("reply"); //è»¢é€å…ˆæŒ‡å®š
-        dis.forward(req, res); //è»¢é€
-    } 
+        RequestDispatcher dis = req.getRequestDispatcher("reply"); //“]‘—æw’è
+        dis.forward(req, res); //“]‘—
+    }  
 
     protected void doPost(HttpServletRequest req, HttpServletResponse res) 
-    throws ServletException, IOException { //æ–°è¦ä½œæˆã®ãƒ‡ãƒ¼ã‚¿ã‚’ç™»éŒ²ã—ã¦è¡¨ç¤º
+    throws ServletException, IOException { //V‹Kì¬‚Ìƒf[ƒ^‚ğ“o˜^‚µ‚Ä•\¦
 
-        // ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‹ã‚‰ã®requestã«å«ã¾ã‚Œã¦ã„ãŸãƒ‡ãƒ¼ã‚¿ã®
-        // æ–‡å­—ã‚³ãƒ¼ãƒ‰ã‚’æŒ‡å®šã™ã‚‹
+        // ƒNƒ‰ƒCƒAƒ“ƒg‚©‚ç‚Ìrequest‚ÉŠÜ‚Ü‚ê‚Ä‚¢‚½ƒf[ƒ^‚Ì
+        // •¶šƒR[ƒh‚ğw’è‚·‚é
         req.setCharacterEncoding("Windows-31J");
         resThreads.clear();
 
         String threadId = req.getParameter("threadid");
 
-        // POSTè¦æ±‚ã«ã‚ˆã£ã¦é€ä¿¡ã•ã‚ŒãŸãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹
+        // POST—v‹‚É‚æ‚Á‚Ä‘—M‚³‚ê‚½ƒpƒ‰ƒ[ƒ^‚ğæ“¾‚·‚é
         String name = req.getParameter("name");
         String content = req.getParameter("content");
 
-        // oracleæ¥ç¶šã‚¯ãƒ©ã‚¹ã‚’ã‚ˆã³ãƒ‡ãƒ¼ã‚¿ã‚’æŒ¿å…¥ã™ã‚‹
+        // oracleÚ‘±ƒNƒ‰ƒX‚ğ‚æ‚Ñƒf[ƒ^‚ğ‘}“ü‚·‚é
         ResDataBase th_db = new ResDataBase();
 
-        if (th_db.IsResInsert(name, content, th_id)){ //ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«æŠ•ç¨¿å‡ºæ¥ãŸã‚‰doGetãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã‚“ã§å†åº¦ä¸€è¦§è¡¨ç¤º
+        if (th_db.IsResInsert(name, content, th_id)){ //ƒf[ƒ^ƒx[ƒX‚É“Šeo—ˆ‚½‚çdoGetƒƒ\ƒbƒh‚ğŒÄ‚ñ‚ÅÄ“xˆê——•\¦
             ArrayList<TB_RES_Bean> res_data = displayList(th_id);
             TB_POST_Bean targetThread = displayResTarget(th_id);
-            req.setAttribute("targetThreads",targetThread); // è¿”ä¿¡å¯¾è±¡ãƒ‡ãƒ¼ã‚¿
-            req.setAttribute("resThreads", res_data); //JSPã§ä½¿ãˆã‚‹ã‚ˆã†ç™»éŒ²
+            req.setAttribute("targetThreads",targetThread); // •ÔM‘ÎÛƒf[ƒ^
+            req.setAttribute("resThreads", res_data); //JSP‚Åg‚¦‚é‚æ‚¤“o˜^
         }
 
-        RequestDispatcher dis = req.getRequestDispatcher("reply"); //è»¢é€å…ˆæŒ‡å®š
-        dis.forward(req, res); //è»¢é€
+        RequestDispatcher dis = req.getRequestDispatcher("reply"); //“]‘—æw’è
+        dis.forward(req, res); //“]‘—
     }
 
-        //è¿”ä¿¡ä¸€è¦§ãƒ‡ãƒ¼ã‚¿å–å¾—ãƒ¡ã‚½ãƒƒãƒ‰
-        public ArrayList<TB_RES_Bean> displayList(int id){
-            //ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«æ¥ç¶šã—ã¦insertãªã©ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰ãŒã‚ã‚‹ã‚¯ãƒ©ã‚¹ã‚’ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–
-            ResDataBase res_db = new ResDataBase();
-            //ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã®æŠ•ç¨¿è¨˜äº‹ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—(æˆ»ã‚Šå€¤ï¼šbeanã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’æ ¼ç´ã—ãŸArrayList)
-            ArrayList<TB_RES_Bean> res_data = res_db.SelectResInfo(id);
-            return res_data;
-        }
-
-        //è¿”ä¿¡å¯¾è±¡æŠ•ç¨¿ãƒ‡ãƒ¼ã‚¿å–å¾—ãƒ¡ã‚½ãƒƒãƒ‰
-        public TB_POST_Bean displayResTarget(int id){
-            ResDataBase res_db = new ResDataBase();
-            TB_POST_Bean targetThread = res_db.selectResTargetThread(id);
-
-            return targetThread;
-        } 
+    //•ÔMˆê——ƒf[ƒ^æ“¾ƒƒ\ƒbƒh
+    public ArrayList<TB_RES_Bean> displayList(int id){
+        //ƒf[ƒ^ƒx[ƒX‚ÉÚ‘±‚µ‚Äinsert‚È‚Ç‚·‚éƒƒ\ƒbƒh‚ª‚ ‚éƒNƒ‰ƒX‚ğƒCƒ“ƒXƒ^ƒ“ƒX‰»
+        ResDataBase res_db = new ResDataBase();
+        //ƒf[ƒ^ƒx[ƒX‚Ì“Še‹L–ƒf[ƒ^‚ğæ“¾(–ß‚è’lFbean‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğŠi”[‚µ‚½ArrayList)
+        ArrayList<TB_RES_Bean> res_data = res_db.SelectResInfo(id);
+        return res_data;
     }
+
+    //•ÔM‘ÎÛ“Šeƒf[ƒ^æ“¾ƒƒ\ƒbƒh
+    public TB_POST_Bean displayResTarget(int id){
+        ResDataBase res_db = new ResDataBase();
+        TB_POST_Bean targetThread = res_db.selectResTargetThread(id);
+
+        return targetThread;
+    } 
+}
