@@ -29,7 +29,7 @@
                                 <a href="thread#top" style="color: cornflowerblue;"><i class="fab fa-twitter fa-fw fa-3x mt-3 my-3"></i></a>
                                 <a href="thread#top" data-toggle="tooltip" data-placement="left" title="ホームに戻る" style="color: cornflowerblue;"><i class="fas fa-home fa-fw fa-2x my-3"></i></a>
                                 <a href="logout" data-toggle="tooltip" data-placement="left" title="ログアウト" style="color: black;"><i class="fas fa-sign-out-alt fa-fw fa-2x my-3"></i></a>
-                                <a href="" class="btn btn-primary rounded-circle shadow my-3" role="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="color: white;"><i class="far fa-edit fa-fw py-2"></i></a>
+                                <a href="" class="btn btn-primary rounded-circle shadow my-3" role="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="color: white;"><i class="far fa-edit fa-fw py-2" data-toggle="tooltip" data-placement="left" title="ツイートする"></i></a>
                                 <a href="#top" class="my-2"><i class="far fa-arrow-alt-circle-up   fa-fw fa-3x" style="color: black;"></i></a>
                                 <a href="#bottom" class="my-2"><i class="far fa-arrow-alt-circle-down fa-fw fa-3x" style="color: black;"></i></a>
                             </div>
@@ -39,7 +39,7 @@
                         <div class="col-xl-6 col-lg-9 col-md-9 col-sm-9 col-12">
                             <div class="row sticky-top" id="top">
                                 <div class="col-12 bg-white border border-top-0">
-                                    <p class="h3 my-3 ml-1 font-weight-bold">ホーム</p>
+                                    <p class="h3 my-3 ml-1 font-weight-bold"><a href="thread#top" style="text-decoration: none; color: black;">ホーム</a> </p>
                                 </div>
                             </div>
 
@@ -54,9 +54,9 @@
                                     <div class="col-xl-11 col-lg-10 col-md-10 col-sm-10 col-9">
                                         <form method="POST" action="thread" class="userInfo">
                                             <div class="form-group">
-                                                <input type="text" name="name" value="${targetName}" class="form-control form-control-lg mt-3" placeholder="名前" pattern="\S+" maxlength="40" required hidden>
+                                                <input type="text" name="name" value="${targetName}" class="form-control form-control-lg mt-3" placeholder="名前" pattern="\S+" maxlength="20" required hidden>
                                                 <div class="input-group input-group-lg mt-4">
-                                                    <textarea name="content" id="textarea" class="form-control rounded" placeholder="いまどうしてる？" maxlength="280" required></textarea>
+                                                    <textarea name="content" id="textarea" class="form-control form-control-lg " placeholder="いまどうしてる？" maxlength="280" required></textarea>
                                                 </div>
                                                 <input type="text" name="tag" class="form-control form-control-lg mt-3" placeholder="タグを入力して下さい" pattern="\S+" maxlength="120">
                                             </div>
@@ -87,15 +87,15 @@
                                         <div class="row">
                                             <!-- reply button -->
                                             <div class="col-xl-3 col-2">
-                                                <a href="res?threadid=${thread.thread_id}" style="color:gray;"><i class="far fa-comment fa-fw fa-lg mt-3 mb-4"></i></a>
+                                                <a href="res?threadid=${thread.thread_id}" data-toggle="tooltip" data-placement="left" title="返信" style="color:gray;" ><i class="far fa-comment fa-fw fa-lg mt-3 mb-4"></i></a>
                                             </div>
                                             <!-- likes button -->
-                                            <div class="col-xl-3 col-3">
-                                                <a href="like?threadid=${thread.thread_id}" class="mt-2"><i class="far fa-heart fa-fw fa-lg mt-3 mb-4" style="color: red;"><span class="ml-2" style="color: black; font-size: 21px;">${thread.likes}</span></i></a>
+                                            <div class="col-xl-3 col-2">
+                                                <a href="like?threadid=${thread.thread_id}" class="mt-2" data-toggle="tooltip" data-placement="top" title="いいね"><i class="far fa-heart fa-fw fa-lg mt-3 mb-4" style="color: red;"><span class="ml-2" style="color: black; font-size: 21px;">${thread.likes}</span></i></a>
                                             </div>
                                             <!-- delete button -->
                                             <div class="col-xl-3 col-2">
-                                                <a href="delete?threadid=${thread.thread_id}" class="mt-2"><i class="far fa-trash-alt fa-fw fa-lg mt-3 mb-4" style="color: gray;"></i></a>
+                                                <a href="delete?threadid=${thread.thread_id}" class="mt-2" data-toggle="tooltip" data-placement="right" title="ツイートを削除"><i class="far fa-trash-alt fa-fw fa-lg mt-3 mb-4" style="color: gray;"></i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -114,14 +114,12 @@
                                         <div class="input-group-prepend">
                                             <button class="btn btn-secondary bg-white mr-1" type="submit" id="button-addon1" style="border: none;"><i class="fas fa-search fa-fw fa-1x" style="color: cornflowerblue;"></i></button>
                                         </div>
-                                        <input type="search" name="tag" class="form-control form-control-lg col-10 py-4" placeholder="タグ検索" aria-label="text with button addon" aria-describedby="button-addon1"  style="border-radius: 100px; background-color: #EBEEF0;"  required>
+                                        <input type="text" name="tag" class="form-control form-control-lg col-10 py-4" placeholder="タグ検索" aria-label="text with button addon" aria-describedby="button-addon1" pattern="\S+"  style="border-radius: 100px; background-color: #EBEEF0;"  required>
                                     </div>
                                 </form>
                             </div>
                         </div>
-
                         <!-- 検索フォーム -->
-                        <!-- <div class="col-1"></div> -->
                     </div>
                 </div>
             </main>

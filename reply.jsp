@@ -39,7 +39,10 @@
                             <!-- スマホのみ表示 -->
                             <div class="d-block d-sm-none">
                                 <div class="row border-bottom justify-content-end mt-1">
-                                    <div class="col-12"> 
+                                    <div class="col-xl-1 col-lg-2 col-md-2 col-sm-2 col-3">
+                                        <i class="far fa-user-circle fa-4x my-4"></i>
+                                    </div>
+                                    <div class="col-11"> 
                                         <a href="thread"><i class="fas fa-long-arrow-alt-left fa-fw fa-lg mx-2 my-3"></i></a>
                                     </div>
                                 </div>
@@ -59,8 +62,8 @@
 
                             <!-- 返信元tweet -->
                             <div class="row" id="tweet" style="border:3px solid; border-color: red;">
-                                <div class="col-xl-1 col-lg-2 col-md-2 col-sm-2 col-2 my-4">
-                                    <i class="fab fa-font-awesome-flag fa-2x "></i>   
+                                <div class="col-xl-1 col-lg-2 col-md-2 col-sm-2 col-3">
+                                    <i class="far fa-user-circle fa-4x my-4"></i>
                                 </div>
                                 <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10 mt-4 mb-2">
                                     <span class="h4"><c:out value="${targetThreads.user_name}" /></span>
@@ -110,8 +113,6 @@
                                     </form>
                                 </div>
                             </div>
-
-                            <div class="my-3"></div>
                             <!-- 投稿フォームここまで -->
                         </div>
                     </div>
