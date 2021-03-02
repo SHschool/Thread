@@ -5,7 +5,9 @@ CREATE TABLE TB_POST(
     ,tag        VARCHAR2(60)
     ,thread_date       DATE
     ,likes      NUMBER(8)       DEFAULT 0
+    ,postedById number(8)       NOT NULL
     ,CONSTRAINT pk_threadid   PRIMARY KEY(thread_id)
+    ,constraint fk_user_id foreign key(postedById) references userInfo(userId)
 );
 
 CREATE TABLE TB_RES(
