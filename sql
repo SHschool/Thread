@@ -46,3 +46,9 @@ create sequence seq_userId
     start with 1
     increment by 1
     nocycle;
+
+alter table tb_post 
+add(postedById number(8) not null 
+constraint fk_postedById references userInfo(userId));
+
+alter table tb_post drop column user_name;
