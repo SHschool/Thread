@@ -1,4 +1,4 @@
-<%@ page pageEncoding="Windows-31J" contentType="text/html;charset=Windows-31J" %>
+<%@ page pageEncoding="SJIS" contentType="text/html;charset=SJIS" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <!DOCTYPE html>
 
@@ -54,7 +54,6 @@
                                     <div class="col-xl-11 col-lg-10 col-md-10 col-sm-10 col-9">
                                         <form method="POST" action="thread" class="userInfo">
                                             <div class="form-group">
-                                                <input type="text" name="name" value="${targetName}" class="form-control form-control-lg mt-3" placeholder="名前" pattern="\S+" maxlength="10" required hidden>
                                                 <div class="input-group input-group-lg mt-4">
                                                     <textarea name="content" id="textarea" class="form-control form-control-lg " placeholder="いまどうしてる？ ※全角280文字まで" maxlength="280" required></textarea>
                                                 </div>
@@ -81,7 +80,7 @@
                                     <div class="col-xl-11 col-lg-11 col-md-10 col-sm-10 col-9 mt-4">
                                         <span class="h4"><c:out value="${thread.user_name}" /></span>
                                         <span class="h6 ml-3" style="color: gray;"><c:out value="${thread.date}" /></span>
-                                        <p class="h4 my-3" style="white-space: pre-wrap;"><c:out value="${thread.content}" /></p>
+                                        <p class="h4 my-3" style="white-space: pre-wrap; word-break: break-all;"><c:out value="${thread.content}" /></p>
                                         <p class="h4 my-3"><c:out value="${thread.tag}" /></p>
                                         <!-- icons -->
                                         <div class="row">
@@ -111,7 +110,7 @@
                             <div class="sticky-top bg-white">
                                 <div class="col-12">
                                     <div class="row">
-                                        <form method="POST" action="search" class="ml-4 mt-2 w-100" id="search-form" name="search-form" >
+                                        <form method="POST" action="search" class="ml-5 mt-2 w-100" id="search-form" name="search-form" >
                                             <div class="form-group row">
                                                 <div class="input-group-prepend">
                                                     <button class="btn btn-secondary bg-white mr-1" type="submit" id="button-addon1" style="border: none;"><i class="fas fa-search fa-fw fa-1x" style="color: cornflowerblue;"></i></button>
@@ -120,24 +119,24 @@
                                             </div>
                                         </form>
                                     </div>
+
+                                    <!-- login user -->
+                                    <div class="sticky-top">
+                                        <div class="col-12 mt-3 ml-4 login-user-top bg-light border-bottom">
+                                            <div class="row mx-auto">
+                                                <p class="h3 font-weight-bold pt-3 py-2 pl-2">現在のユーザー</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 ml-4 login-user-bottom bg-light ">
+                                            <div class="row">
+                                                <p class="h3 ml-4 pt-2 pb-3">${targetName.name}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- login user -->
                                 </div>
                             </div>
                             <!-- 検索フォーム -->
-
-                            <!-- login user -->
-                            <div class="sticky-top">
-                                <div class="col-11 mt-3 ml-4 login-user-top bg-light">
-                                    <div class="row mx-auto">
-                                        <p class="h3 font-weight-bold pt-3 py-2 pl-2">現在のユーザー</p>
-                                    </div>
-                                </div>
-                                <div class="col-11 ml-4 login-user-bottom bg-light">
-                                    <div class="row mx-auto">
-                                        <p class="h3 p-5"></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- login user -->
                         </div>
                     </div>
                 </div>

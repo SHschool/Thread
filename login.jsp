@@ -39,7 +39,7 @@
                                         <div class="row form-group mt-2 mb-4">
                                             <div class="input-group input-group-lg my-4">
                                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                                    <input type="text" name="userName" class="form-control form-control-lg mt-2" placeholder="名前を入力してください" pattern="\S+" required>
+                                                    <input type="text" name="userName" class="form-control form-control-lg mt-2" placeholder="名前を入力してください" data-max-length="20" pattern="\S+" required>
                                                     <!-- formが空だった時に表示される文章 -->
                                                     <div class="invalid-feedback ml-3"> 名前が入力されていません</div>
                                                 </div>
@@ -48,7 +48,7 @@
                                         <!-- password row -->
                                         <div class="row form-group my-4">
                                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                                <input type="password" name="password" class="form-control form-control-lg mt-2" placeholder="パスワードを入力して下さい" pattern="\S+" required>
+                                                <input type="password" name="password" class="form-control form-control-lg mt-2" placeholder="パスワードを入力して下さい" data-max-length="10" pattern="\S+" required>
                                                 <!-- formが空だった時に表示される文章 -->
                                                 <div class="invalid-feedback ml-3">パスワードが入力されていません</div>
                                             </div>
@@ -91,6 +91,23 @@
                         });
                     }, false);
                 })();
+
+                $(document).ready(function () {
+                    $(document).on('change keyup focus', '[data-max-length]', function () {
+                        var arr = $(this).val().split('');
+                        var len = 0;
+                        var maxlen = parseInt($(this).attr('data-max-length'));
+                        var str = '';
+                        for (i in arr) {
+                            len += (escape(arr[i]).match(/%u..../) && !(arr[i]).match(/^[ｦ-ﾟ]$/)) ? 2 : 1;
+                            if (len <= maxlen) {
+                                str += arr[i];
+                            }
+                        }
+                        $(this).val(str);
+                        return;
+                    });
+                });
             </script>
         </body>
 
