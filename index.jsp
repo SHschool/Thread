@@ -36,7 +36,7 @@
                         </div>
 
                         <!-- center -->
-                        <div class="col-xl-6 col-lg-9 col-md-9 col-sm-9 col-12">
+                        <div class="col-xl-6 col-lg-9 col-md-9 col-sm-10 col-12">
                             <div class="row sticky-top" id="top">
                                 <div class="col-12 bg-white border border-top-0">
                                     <p class="h3 my-3 ml-1 font-weight-bold"><a href="thread#top" style="text-decoration: none; color: black;">ホーム</a> </p>
@@ -47,18 +47,18 @@
                             <div class="collapse" id="collapseExample">
                                 <div class="row border border-top-0">
                                     <!-- icon -->
-                                    <div class="col-xl-1 col-lg-2 col-md-2 col-sm-2 col-3">
+                                    <div class="col-xl-1 col-lg-3 col-md-2 col-sm-2 col-3">
                                         <i class="far fa-user-circle fa-4x my-4"></i>
                                     </div>
                                     <!-- form -->
                                     <div class="col-xl-11 col-lg-10 col-md-10 col-sm-10 col-9">
                                         <form method="POST" action="thread" class="userInfo">
                                             <div class="form-group">
-                                                <input type="text" name="name" value="${targetName}" class="form-control form-control-lg mt-3" placeholder="名前" pattern="\S+" maxlength="20" required hidden>
+                                                <input type="text" name="name" value="${targetName}" class="form-control form-control-lg mt-3" placeholder="名前" pattern="\S+" maxlength="10" required hidden>
                                                 <div class="input-group input-group-lg mt-4">
-                                                    <textarea name="content" id="textarea" class="form-control form-control-lg " placeholder="いまどうしてる？" maxlength="280" required></textarea>
+                                                    <textarea name="content" id="textarea" class="form-control form-control-lg " placeholder="いまどうしてる？ ※全角280文字まで" maxlength="280" required></textarea>
                                                 </div>
-                                                <input type="text" name="tag" class="form-control form-control-lg mt-3" placeholder="タグを入力して下さい" pattern="\S+" maxlength="120">
+                                                <input type="text" name="tag" class="form-control form-control-lg mt-3" placeholder="タグを入力して下さい" pattern="\S+" maxlength="30">
                                             </div>
                                             <div class="text-right">
                                                 <button type="submit" class="btn btn-primary btn-lg my-3 mb-2 rounded-pill font-weight-bold"><span>ツイートする</span></button>
@@ -106,20 +106,39 @@
 
                         <!-- centerここまで -->
 
-                        <!-- 検索フォーム -->
-                        <div class="col-3">
-                            <div class="row sticky-top">
-                                <form method="POST" action="search" id="search-form" name="search-form" class="ml-5 mt-2 w-100">
-                                    <div class="form-group row">
-                                        <div class="input-group-prepend">
-                                            <button class="btn btn-secondary bg-white mr-1" type="submit" id="button-addon1" style="border: none;"><i class="fas fa-search fa-fw fa-1x" style="color: cornflowerblue;"></i></button>
-                                        </div>
-                                        <input type="text" name="tag" class="form-control form-control-lg col-10 py-4" placeholder="タグ検索" aria-label="text with button addon" aria-describedby="button-addon1" pattern="\S+"  style="border-radius: 100px; background-color: #EBEEF0;"  required>
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3">
+                            <!-- 検索フォーム -->
+                            <div class="sticky-top bg-white">
+                                <div class="col-12">
+                                    <div class="row">
+                                        <form method="POST" action="search" class="ml-4 mt-2 w-100" id="search-form" name="search-form" >
+                                            <div class="form-group row">
+                                                <div class="input-group-prepend">
+                                                    <button class="btn btn-secondary bg-white mr-1" type="submit" id="button-addon1" style="border: none;"><i class="fas fa-search fa-fw fa-1x" style="color: cornflowerblue;"></i></button>
+                                                </div>
+                                                <input type="text" name="tag" class="form-control form-control-lg w-100 col-10 py-4" maxlength="30" placeholder="タグ検索" aria-label="text with button addon" aria-describedby="button-addon1" pattern="\S+"  style="border-radius: 100px; background-color: #EBEEF0;"  required>
+                                            </div>
+                                        </form>
                                     </div>
-                                </form>
+                                </div>
                             </div>
+                            <!-- 検索フォーム -->
+
+                            <!-- login user -->
+                            <div class="sticky-top">
+                                <div class="col-11 mt-3 ml-4 login-user-top bg-light">
+                                    <div class="row mx-auto">
+                                        <p class="h3 font-weight-bold pt-3 py-2 pl-2">現在のユーザー</p>
+                                    </div>
+                                </div>
+                                <div class="col-11 ml-4 login-user-bottom bg-light">
+                                    <div class="row mx-auto">
+                                        <p class="h3 p-5"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- login user -->
                         </div>
-                        <!-- 検索フォーム -->
                     </div>
                 </div>
             </main>
