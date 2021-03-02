@@ -67,7 +67,7 @@
                                 </div>
                                 <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10 mt-4 mb-2">
                                     <span class="h4"><c:out value="${targetThreads.user_name}" /></span>
-                                    <p class="h4 my-3"><c:out value="${targetThreads.content}" /></p>
+                                    <p class="h4 my-3" style="white-space: pre-wrap; word-break: break-all;"><c:out value="${targetThreads.content}" /></p>
                                     <p class="h5 text-muted mb-3"><c:out value="${targetThreads.date}" /></p>
                                 </div>
                                 <div class="col-xl-1"></div>
@@ -85,7 +85,7 @@
                                     <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-9 mt-4">
                                         <span class="h4"><c:out value="${resThread.res_name}" /></span>
                                         <span class="h6 ml-3" style="color: gray;"><c:out value="${resThread.res_date}" /></span>
-                                        <p class="h4 my-3" style="white-space: pre-wrap;"><c:out value="${resThread.res_content}" /></p>
+                                        <p class="h4 my-3" style="white-space: pre-wrap; word-break: break-all;"><c:out value="${resThread.res_content}" /></p>
                                     </div>
                                 </div>
                             </c:forEach>
@@ -101,9 +101,8 @@
                                     <form method="POST" action="res" class="userInfo">
                                         <div class="form-group">
                                             <div class="input-group input-group-lg mt-4">
-                                                <input type="text" name="name" value="${targetName}" class="form-control form-control-lg rounded mt-3" placeholder="–¼‘O" pattern="\S+" maxlength="40" required hidden>
                                                 <div class="input-group input-group-lg mt-4">
-                                                    <textarea name="content" id="textarea" class="form-control rounded" placeholder="‚¢‚Ü‚Ç‚¤‚µ‚Ä‚éH" maxlength="280" style="border: none;" required></textarea>
+                                                    <textarea name="content" id="textarea" class="form-control rounded" placeholder="‚¢‚Ü‚Ç‚¤‚µ‚Ä‚éH" maxlength="280" ></textarea>
                                                 </div>
                                             </div>
                                         </div>
