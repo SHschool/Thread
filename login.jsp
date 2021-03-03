@@ -14,7 +14,7 @@
             <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
             <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-            <title>Twitterにログイン / Twitter</title>
+            <title>ログイン / Threader</title>
         </head>
 
         <body>
@@ -25,10 +25,10 @@
                         <div class="col-xl-8 col-12 mx-auto">
                             <!-- twitter icon -->
                             <div class="text-center">
-                                <i class="fab fa-twitter fa-fw fa-3x mt-4 my-4" style="color: cornflowerblue;"></i>
+                                <a href="thread" style="color: #e0193f;"><i class="fas fa-apple-alt fa-fw fa-4x mt-3 my-3"></i></a>
                             </div>
 
-                            <p class="h3 my-2 text-center font-weight-bold">Twitterにログイン</p>
+                            <p class="h3 my-2 text-center font-weight-bold">Threaderにログイン</p>
 
                             <!-- login form -->
                             <div class="row">

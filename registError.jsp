@@ -16,17 +16,13 @@
 
         <body>
             <main>
-                <div class="container-fluid">
+                <div class="container">
                     <div class="row">
-                        <!-- 中央寄せ用 -->
-                        <div class="col-xl-3"></div>
-                        <!-- 中央寄せ用 -->
-
                         <!-- center -->
-                        <div class="col-xl-6 col-12">
+                        <div class="col-xl-6 col-12 mx-auto">
                             <!-- twitter icon -->
                             <div class="text-center">
-                                <i class="fab fa-twitter fa-fw fa-3x mt-4 my-3" style="color: cornflowerblue;"></i>
+                                <a href="thread" style="color: #e0193f;"><i class="fas fa-apple-alt fa-fw fa-4x mt-3 my-3"></i></a>
                             </div>
 
                             <p class="h3 my-2 text-center font-weight-bold">そのデータは登録することができません</p>
@@ -37,13 +33,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- regist form -->
-                </div>
-
-                <!-- 中央寄せ用 -->
-                <div class="col-xl-3"></div>
-                <!-- 中央寄せ用 -->
-                </div>
                 </div>
             </main>
         </body>
