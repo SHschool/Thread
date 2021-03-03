@@ -18,16 +18,8 @@
 a { text-decoration: none;}
 a:hover { text-decoration: none;}
 
-.login-user-top {
-    border: 2px solid ;
-    border-bottom: 1px solid;
-    border-radius: 20px 20px 0 0;
-    border-color:#F7F9FA;
-}
-
-.login-user-bottom {
-    border: 2px solid;
-    border-top: 1px solid black;
-    border-radius: 0 0 20px 20px;
-    border-color: #F7F9FA;
+.login-user {
+    /* border-bottom: 2px solid; */
+    /* border-radius: 20px 20px 20px 20px; */
+    /* border-color:#F7F9FA; */
 }
