@@ -1,11 +1,11 @@
-<%@ page pageEncoding="SJIS" contentType="text/html;charset=SJIS" %>
+<%@ page pageEncoding="Windows-31J" contentType="text/html;charset=Windows-31J" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <!DOCTYPE html>
 
         <html lang="ja">
 
         <head>
-            <meta charset="SJIS">
+            <meta charset="Windows-31J">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
             <link rel="stylesheet" href="css/style.css">
@@ -14,38 +14,38 @@
             <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
             <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-            <title>ÉzÅ[ÉÄ / Threader</title>
+            <title>„Éõ„Éº„É† / Threader</title>
         </head>
 
         <body style="background-color: #52B785;">
             <main>
                 <div class="container-fluid">
                     <div class="row">
-                        <!-- âEäÒÇπóp -->
+                        <!-- Âè≥ÂØÑ„ÅõÁî® -->
                         <div class="col-1"></div>
                         <!-- sidebar -->
                         <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 d-none d-md-block" id="top">
                             <div class="row d-flex flex-column align-items-center sticky-top">
                                 <a href="thread" style="color: #e0193f;"><i class="fas fa-apple-alt fa-fw fa-4x mt-3 my-3"></i></a>
-                                <a href="thread" data-toggle="tooltip" data-placement="left" title="ÉzÅ[ÉÄÇ…ñﬂÇÈ" style="color: white;"><i class="fas fa-home fa-fw fa-3x my-4"></i></a>
-                                <a href="logout" data-toggle="tooltip" data-placement="left" title="ÉçÉOÉAÉEÉg" style="color: white;"><i class="fas fa-sign-out-alt fa-fw fa-3x my-4"></i></a>
-                                <a class="btn rounded-circle shadow my-3" role="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="background-color: #EBD870;  color: black;"><i class="far fa-edit fa-fw fa-2x py-2" data-toggle="tooltip" data-placement="left" title="Ç¬Ç‘Ç‚Ç≠"></i></a>
+                                <a href="thread" data-toggle="tooltip" data-placement="left" title="„Éõ„Éº„É†„Å´Êàª„Çã" style="color: white;"><i class="fas fa-home fa-fw fa-3x my-4"></i></a>
+                                <a href="logout" data-toggle="tooltip" data-placement="left" title="„É≠„Ç∞„Ç¢„Ç¶„Éà" style="color: white;"><i class="fas fa-sign-out-alt fa-fw fa-3x my-4"></i></a>
+                                <a class="btn rounded-circle shadow my-3" role="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="background-color: #EBD870;  color: black;"><i class="far fa-edit fa-fw fa-2x py-2" data-toggle="tooltip" data-placement="left" title="„Å§„Å∂„ÇÑ„Åè"></i></a>
                                 <a href="#top" class="my-2"><i class="far fa-arrow-alt-circle-up   fa-fw fa-4x my-3" style="color: white;"></i></a>
                                 <a href="#bottom" class="my-2"><i class="far fa-arrow-alt-circle-down fa-fw fa-4x" style="color: white;"></i></a>
                             </div>
                         </div>
 
                         <!-- center -->
-                        <div class="col-xl-6 col-lg-9 col-md-9 col-sm-10 col-12 bg-white">
+                        <div class="col-xl-6 col-lg-9 col-md-9 col-sm-10 col-12" style="background-color: #52B785;">
                             <div class="row sticky-top" id="top">
                                 <div class="col-12" style="border-left: 3px solid #DBE9FF; border-right: 3px solid #DBE9FF; border-bottom: 3px solid #DBE9FF; border-top-style: none; background-color: #fff;">
-                                    <p class="h3 my-3 ml-1 font-weight-bold"><a href="thread#top" style="text-decoration: none; color: black;">ÉzÅ[ÉÄ</a> </p>
+                                    <p class="h3 my-3 ml-1 font-weight-bold"><a href="thread#top" style="text-decoration: none; color: black;">„Éõ„Éº„É†</a> </p>
                                 </div>
                             </div>
 
-                            <!-- ìäçe -->
+                            <!-- ÊäïÁ®ø -->
                             <div class="collapse" id="collapseExample" >
-                                <div class="row border" style="border: 3px solid #DBE9FF; border-top: none;">
+                                <div class="row border bg-white" style="border: 3px solid #DBE9FF; border-top: none;">
                                     <!-- icon -->
                                     <div class="col-xl-1 col-lg-3 col-md-2 col-sm-2 col-3" style="border-left: 3px solid #DBE9FF; border-bottom: 3px solid #DBE9FF; ">
                                         <i class="far fa-user-circle fa-4x my-4"></i>
@@ -55,19 +55,19 @@
                                         <form method="POST" action="thread" class="userInfo">
                                             <div class="form-group">
                                                 <div class="input-group input-group-lg mt-4">
-                                                    <textarea name="content" id="textarea" class="form-control form-control-lg " placeholder="Ç¢Ç‹Ç«Ç§ÇµÇƒÇÈÅH" data-max-length="560" required></textarea>
+                                                    <textarea name="content" id="textarea" class="form-control form-control-lg " placeholder="„ÅÑ„Åæ„Å©„ÅÜ„Åó„Å¶„ÇãÔºü" data-max-length="560" required></textarea>
                                                 </div>
-                                                <input type="text" name="tag" class="form-control form-control-lg mt-3" placeholder="É^ÉOÇì¸óÕÇµÇƒâ∫Ç≥Ç¢" data-max-length="60">
+                                                <textarea name="tag" id="inputUserTag" class="form-control form-control-lg" placeholder="„Çø„Ç∞„ÇíÂÖ•Âäõ„Åó„Å¶‰∏ã„Åï„ÅÑ" data-max-length="60"></textarea>
                                             </div>
                                             <div class="text-right">
-                                                <button type="submit" class="btn btn-primary btn-lg my-3 mb-2 rounded-pill font-weight-bold"><span>Ç¬Ç‘Ç‚Ç≠</span></button>
+                                                <button type="submit" class="btn btn-success btn-lg my-3 mb-2 rounded-pill font-weight-bold" onclick="AddStringSharp();"><span>„Å§„Å∂„ÇÑ„Åè</span></button>
                                             </div>
                                         </form>
                                     </div>
-                                    <!-- formÇ±Ç±Ç‹Ç≈ -->
+                                    <!-- form„Åì„Åì„Åæ„Åß -->
                                 </div>
                             </div>
-                            <!-- ìäçe -->
+                            <!-- ÊäïÁ®ø -->
 
                             <!-- tweet -->
                             <c:forEach var="thread" items="${threads}">
@@ -81,20 +81,20 @@
                                         <span class="h4"><c:out value="${thread.user_name}" /></span>
                                         <span class="h6 ml-3" style="color: gray;"><c:out value="${thread.date}" /></span>
                                         <p class="h4 my-3" style="white-space: pre-wrap; word-break: break-all;"><c:out value="${thread.content}" /></p>
-                                        <p class="h4 my-3" style="color: cornflowerblue;"><c:out value="${thread.tag}" /></p>
+                                        <p class="h4 my-3" style="color: cornflowerblue;white-space: pre-wrap; word-break: break-all;"><c:out value="${thread.tag}" /></p>
                                         <!-- icons -->
                                         <div class="row">
                                             <!-- reply button -->
                                             <div class="col-xl-3 col-2">
-                                                <a href="res?threadid=${thread.thread_id}" data-toggle="tooltip" data-placement="left" title="ï‘êM" style="color:black;" ><i class="far fa-comment fa-fw fa-lg mt-3 mb-4"></i></a>
+                                                <a href="res?threadid=${thread.thread_id}" data-toggle="tooltip" data-placement="left" title="Ëøî‰ø°" style="color:black;" ><i class="far fa-comment fa-fw fa-lg mt-3 mb-4"></i></a>
                                             </div>
                                             <!-- likes button -->
                                             <div class="col-xl-3 col-2">
-                                                <a href="like?threadid=${thread.thread_id}" class="mt-2" data-toggle="tooltip" data-placement="top" title="Ç¢Ç¢ÇÀ"><i class="far fa-heart fa-fw fa-lg mt-3 mb-4" style="color: red;"><span class="ml-2" style="color: black; font-size: 21px;">${thread.likes}</span></i></a>
+                                                <a href="like?threadid=${thread.thread_id}" class="mt-2" data-toggle="tooltip" data-placement="top" title="„ÅÑ„ÅÑ„Å≠"><i class="far fa-heart fa-fw fa-lg mt-3 mb-4" style="color: red;"><span class="ml-2" style="color: black; font-size: 21px;">${thread.likes}</span></i></a>
                                             </div>
                                             <!-- delete button -->
                                             <div class="col-xl-3 col-2">
-                                                <a href="delete?threadid=${thread.thread_id}" class="mt-2" data-toggle="tooltip" data-placement="right" title="ÉcÉCÅ[ÉgÇçÌèú"><i class="far fa-trash-alt fa-fw fa-lg mt-3 mb-4" style="color: black;"></i></a>
+                                                <a href="delete?threadid=${thread.thread_id}" class="mt-2" data-toggle="tooltip" data-placement="right" title="„ÉÑ„Ç§„Éº„Éà„ÇíÂâäÈô§"><i class="far fa-trash-alt fa-fw fa-lg mt-3 mb-4" style="color: black;"></i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -102,46 +102,53 @@
                             </c:forEach>
                             <!-- tweet -->
                         </div>
-                        <!-- centerÇ±Ç±Ç‹Ç≈ -->
+                        <!-- center„Åì„Åì„Åæ„Åß -->
 
                         <!-- right -->
                         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3">
                             <div class="sticky-top">
                                 <div class="col-12">
-                                    <!-- åüçıÉtÉHÅ[ÉÄ -->
+                                    <!-- Ê§úÁ¥¢„Éï„Ç©„Éº„É† -->
                                     <div class="row">
                                         <form method="POST" action="search" class="ml-5 mt-2 w-100" id="search-form" name="search-form" >
                                             <div class="form-group row">
                                                 <div class="input-group-prepend">
                                                     <button class="btn btn-secondary px-3 rounded-circle" type="submit" id="button-addon1" style="border: none; background-color: white; border-radius: 75%"><i class="fas fa-search  fa-1x" style="color: cornflowerblue;"></i></button>
                                                 </div>
-                                                <input type="text" name="tag" class="form-control form-control-lg col-10 w-100 ml-3 py-4" data-max-length="30" placeholder="É^ÉOåüçı" aria-label="text with button addon" aria-describedby="button-addon1" pattern="\S+"  style="border-radius: 100px; background-color: white;"  required>
+                                                <input type="text" name="tag" class="form-control form-control-lg col-10 w-100 ml-3 py-4" data-max-length="30" placeholder="„Çø„Ç∞Ê§úÁ¥¢" aria-label="text with button addon" aria-describedby="button-addon1" pattern="\S+"  style="border-radius: 100px; background-color: white;"  required>
                                             </div>
                                         </form>
                                     </div>
                                 </div>
-                                    <!-- åüçıÉtÉHÅ[ÉÄ -->
+                                    <!-- Ê§úÁ¥¢„Éï„Ç©„Éº„É† -->
 
-                                <!-- åªç›ÇÃÉÜÅ[ÉUÅ[ -->
+                                <!-- ÁèæÂú®„ÅÆ„É¶„Éº„Ç∂„Éº -->
                                 <div class="col-12 mt-3 ml-4 p-5 login-user" style="background-image: url(images/cork_board.png); background-size: 450px 260px;">
                                     <div class="row mx-auto">
-                                        <p class="h3 font-weight-bold mx-auto pt-3 py-2 pb-3">åªç›ÇÃÉÜÅ[ÉUÅ[</p>
+                                        <p class="h3 font-weight-bold mx-auto pt-3 py-2 pb-3">ÁèæÂú®„ÅÆ„É¶„Éº„Ç∂„Éº</p>
                                     </div>
                                     <div class="row mx-auto border-top border-dark">
                                         <p class="h2 ml-4 pt-4 pb-4 mx-auto">${targetName.name}</p>
                                     </div>
+                                    <!-- <p class="font-weight-bold p-4 pt-5" style="color: #e0193f; font-size: 30px; margin-top: 10%;">${errorMess}</p> -->
                                 </div>
-                                <!-- åªç›ÇÃÉÜÅ[ÉUÅ[ -->
+                                <!-- ÁèæÂú®„ÅÆ„É¶„Éº„Ç∂„Éº -->
+
+                                <div class="col-12 mt-1 ml-4">
+                                    <div class="row mx-auto">
+                                        <p class="font-weight-bold p-2 pt-2" style="color: yellow; font-size: 32px; ">${errorMess}</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </main>
 
-            <!-- â∫Ç…à⁄ìÆóp -->
+            <!-- ‰∏ã„Å´ÁßªÂãïÁî® -->
             <footer id="bottom"></footer>
 
-            <!-- ÉXÉ}Ézóp -->
+            <!-- „Çπ„Éû„ÉõÁî® -->
             <footer class="fixed-bottom d-block d-sm-none">
                 <div class="col-12">
                     <div class="row flex-row-reverse" style="margin-right: 18px;">
@@ -169,14 +176,17 @@
             </footer>
 
             <script>
-                // ÉeÉLÉXÉgÉGÉäÉAÇ≈ãÛîíÇ∆â¸çsÇæÇØëóêMÇÉuÉçÉbÉN
+                // „ÉÜ„Ç≠„Çπ„Éà„Ç®„É™„Ç¢„ÅßÁ©∫ÁôΩ„Å®ÊîπË°å„Å†„ÅëÈÄÅ‰ø°„Çí„Éñ„É≠„ÉÉ„ÇØ
                 $('.userInfo').on('submit', function (evt) {
                     if (!$('#textarea').val().match(/[^\s]+/)) {
                         evt.preventDefault();
                         evt.stopPropagation();
                     }
                 });
-                // åüçıóp
+
+
+
+                // Ê§úÁ¥¢Áî®
                 function check() {
                     var a = document.search_form.q.value;
                     if (a == "") {
@@ -185,11 +195,11 @@
                         return false;
                     }
                 }
-                // ÉeÉLÉXÉgÉGÉäÉAÇÃçÇÇ≥é©ìÆí≤êÆ
+                // „ÉÜ„Ç≠„Çπ„Éà„Ç®„É™„Ç¢„ÅÆÈ´ò„ÅïËá™ÂãïË™øÊï¥
                 $("textarea").attr("rows", 2).on("input", e => {
                     $(e.target).height(0).innerHeight(e.target.scrollHeight);
                 });
-                // ÉXÉNÉçÅ[Éãóp
+                // „Çπ„ÇØ„É≠„Éº„É´Áî®
                 const smoothScrollTrigger = document.querySelectorAll('a[href^="#"]');
                 for (let i = 0; i < smoothScrollTrigger.length; i++) {
                     smoothScrollTrigger[i].addEventListener('click', (e) => {
@@ -206,7 +216,7 @@
                         });
                     });
                 }
-                // Ç¢Ç¢ÇÀÇµÇΩÇ∆Ç´Ç…à íuÇï€éùÇ∑ÇÈÇ‚Ç¬
+                // „ÅÑ„ÅÑ„Å≠„Åó„Åü„Å®„Åç„Å´‰ΩçÁΩÆ„Çí‰øùÊåÅ„Åô„Çã„ÇÑ„Å§
                 $(window).scroll(function () {
                     sessionStorage.scrollTop = $(this).scrollTop();
                 });
@@ -215,10 +225,10 @@
                         $(window).scrollTop(sessionStorage.scrollTop);
                     }
                 });
-                // ÉcÅ[ÉãÉ`ÉbÉvóp
+                // „ÉÑ„Éº„É´„ÉÅ„ÉÉ„ÉóÁî®
                 $('[data-toggle="tooltip"]').tooltip();
 
-                //  îºäpÇ∆ëSäpîªíËóp
+                //  ÂçäËßí„Å®ÂÖ®ËßíÂà§ÂÆöÁî®
                 $(document).ready(function () {
                     $(document).on('change keyup focus', '[data-max-length]', function () {
                         var arr = $(this).val().split('');
@@ -226,7 +236,7 @@
                         var maxlen = parseInt($(this).attr('data-max-length'));
                         var str = '';
                         for (i in arr) {
-                            len += (escape(arr[i]).match(/%u..../) && !(arr[i]).match(/^[¶-ﬂ]$/)) ? 2 : 1;
+                            len += (escape(arr[i]).match(/%u..../) && !(arr[i]).match(/^[ÔΩ¶-Ôæü]$/)) ? 2 : 1;
                             if (len <= maxlen) {
                                 str += arr[i];
                             }
@@ -235,6 +245,32 @@
                         return;
                     });
                 });
+
+                // „Çø„Ç∞„ÅÆËøΩÂä†
+                function AddStringSharp(){
+                    var splitWord = (/,|„ÄÅ|\n/); //ÂàÜÂâ≤„Åó„Åü„ÅÑ„ÉØ„Éº„Éâ
+                    var splitStringArray = document.getElementById('inputUserTag').value.split(splitWord);
+                    var combinedResult = ""; //ÁµêÂêàÁµêÊûú
+
+                    var Length = splitStringArray.length;
+                    for(var i = 0; i < Length ; i++){
+                        if(Length === 0){ //„Åù„ÇÇ„Åù„ÇÇ„Çø„Ç∞„ÅåÂÖ•Âäõ„Åï„Çå„Å¶„ÅÑ„Å™„ÅÑ„Å™„Çâ‰Ωï„ÇÇ„Åó„Å™„ÅÑ
+                            break;
+                        }
+                        
+                        // „ÇÇ„ÅóÊúÄÂàù„ÅÆÊñáÂ≠ó„Åå„ÄåÔºÉ„Äç„Åæ„Åü„ÅØ‰Ωï„ÇÇÂÖ•Âäõ„Åï„Çå„Å¶„ÅÑ„Å™„ÅÑÊôÇ„Å´„ÅØ„ÄåÔºÉ„Äç„ÅØËøΩÂä†„Åó„Å™„ÅÑ
+                        if((splitStringArray[i].slice(0,1) === "#") || (splitStringArray[i].slice(0,1).length === 0)){
+                            combinedResult += (splitStringArray[i] + "\n");
+                            continue;
+                        }
+
+                        // ÊúÄÂæå„ÅåÁ©∫Ë°å„Åò„ÇÉ„Å™„ÅÑ„Å™„ÇâÈ†≠ÊñáÂ≠ó„Å´„ÄåÔºÉ„Äç„ÇíËøΩÂä†
+                        if(!(i === Length-1 && splitStringArray[i].length === 0)){
+                            combinedResult += ("#" + splitStringArray[i] + "\n");
+                        }
+                    }
+                    document.getElementById('inputUserTag').value = combinedResult;
+                }
             </script>
         </body>
 
